@@ -1,0 +1,16 @@
+<mat-list class="card-box container">
+  <br>
+  <!--TODO: scrollbar para cada seccion-->
+  <div mat-subheader>Tus artistas</div>
+  <mat-list-item *ngFor="let artist of artists" >
+    <mat-icon mat-list-icon>person</mat-icon>
+    <div mat-line>{{artist.name}}</div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <div mat-subheader>Tus eventos</div>
+  <mat-list-item *ngFor="let event of events">
+    <mat-icon mat-list-icon>event</mat-icon>
+    <div mat-line>{{event.name}}</div>
+    <div mat-line> {{event.updated | date}} </div>
+  </mat-list-item>
+</mat-list>
