@@ -7,15 +7,3 @@
   top: 0;
   z-index: 1000;
 }
-
-.side-menu{
-  display: flex;
-  height: 75%;
-  width: 25%;
-  align-items: center;
-  justify-content: center;
-}
-
-.links-menu{
-  padding: 20px;
-}
