@@ -22,12 +22,32 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Artist3',
       updated: new Date('1/28/16'),
-    }
+    },
+    {
+      name: 'Artist4',
+      updated: new Date('1/28/16'),
+    },
+    {
+      name: 'Artist5',
+      updated: new Date('1/28/16'),
+    },
   ];
   events: Section[] = [
     {
       name: 'Vacation Itinerary',
       updated: new Date('2/20/16'),
+    },
+    {
+      name: 'Kitchen Remodel',
+      updated: new Date('1/18/16'),
+    },
+    {
+      name: 'Kitchen Remodel',
+      updated: new Date('1/18/16'),
+    },
+    {
+      name: 'Kitchen Remodel',
+      updated: new Date('1/18/16'),
     },
     {
       name: 'Kitchen Remodel',
