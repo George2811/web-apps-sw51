@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {HttpClientModule} from '@angular/common/http';
 // Angular Material
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,6 +26,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ScrollingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
