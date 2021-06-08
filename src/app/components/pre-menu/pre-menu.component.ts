@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: 'app-pre-menu',
+  templateUrl: './pre-menu.component.html',
+  styleUrls: ['./pre-menu.component.css']
 })
-export class ToolbarComponent implements OnInit {
+export class PreMenuComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 

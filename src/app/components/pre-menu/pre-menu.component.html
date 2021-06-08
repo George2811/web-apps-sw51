@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!--<link rel="stylesheet" href="styles.css">-->
+  <link rel="stylesheet" href="pre-menu.component.css">
+  <script src="https://kit.fontawesome.com/59e0a97c23.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+  <title>Peru Stars</title>
+</head>
+<body>
+<nav>
+  <div class="menu">
+    <div class="logo">
+      <a href="#">PeruStars</a>
+    </div>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="#purpose_tag">Propósito</a></li>
+      <li><a href="#benefits_tag">Beneficios</a></li>
+      <li><a href="#registration_tag">Regístrate</a></li>
+      <li><a href="#contact_tag">Contáctanos</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="cover">
+  <div class="img"></div>
+  <div class="center">
+    <div class="title">Hay un artista en tu interior</div>
+    <br>
+    <br>
+    <div class="sub_title">Descúbrelo</div>
+  </div>
+</div>
+
+
+<div class="purpose" id="purpose_tag">
+  <h4 class="default-h4">Nuestro Propósito</h4>
+  <div class="section_purpose">
+    <div class="artists">
+      <div class="img_artists"></div>
+      <div class="section_artists square">
+        <i class="fas fa-desktop section-icon"></i>
+        <h5 class="default-h5">Ser la plataforma definitiva para <br>artistas peruanos</h5>
+        <p class="default-p">Buscamos brindar una plataforma web a través de la cual distintos
+          artistas peruanos puedan promocionar su arte al público interesado. Así,
+          estos artistas podrán vivir de lo que les gusta hacer, además de atraer a personas
+          para que se interesen en el arte peruano.</p>
+      </div>
+    </div>
+    <div class="amateurs">
+      <div class="section_amateurs square">
+        <i class="fas fa-palette section-icon"></i>
+        <h5 class="default-h5">El lugar donde encontrarás <br>el arte que buscas</h5>
+        <p class="default-p">Somos el website en el cual el arte más moderno e innovador
+          se reúne. Para que los amantes del arte peruano o interesados en el mismo tengan al
+          alcance un sitio donde descubran obras de arte acorde a sus gustos y dar el reconocimiento
+          a los artistas detrás de tan fascinantes proyectos.</p>
+      </div>
+      <div class="img_amateurs"></div>
+    </div>
+  </div>
+</div>
+
+<div class="spacing"><hr></div>
+
+<div class="benefits" id="benefits_tag">
+  <h4 class="default-h4">Únete ahora y ...</h4>
+  <div class="artists_benefits">
+    <div class="img_benefits_artists"></div>
+    <div class="section_benefits_artists">
+      <ul>
+        <li><i class="fas fa-check"></i> Crea tu propio perfil.</li>
+        <li><i class="fas fa-check"></i> Sube y publicita tus proyectos.</li>
+        <li><i class="fas fa-check"></i> Organiza tus propios eventos.</li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="amateurs_benefits">
+    <div class="img_benefits_amateurs"></div>
+    <div class="section_benefits_amateurs">
+      <ul>
+        <li><i class="fas fa-check"></i> Descubre artistas, proyectos, eventos y más... </li>
+        <li><i class="fas fa-check"></i> Sigue a tus artistas favoritos.</li>
+        <li><i class="fas fa-check"></i> Arma tu calendario de eventos.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="spacing"><hr></div>
+
+<div class="registration" id="registration_tag">
+  <h4 class="default-h4">Regístrate Gratis</h4>
+  <div class="section_registration">
+    <div class="img_registration"></div>
+    <div class="section_registercontent">
+      <p>Únete ahora y obtén la oportunidad de recibir beneficios únicos.</p>
+      <input type="button" value="Regístrate Gratis" routerLink="/menu" routerLinkActive="active" >
+    </div>
+  </div>
+</div>
+
+<footer id="contact_tag">
+  <div class="contact">
+    <div class="section_contact">
+      <h6>Contáctanos</h6>
+      <p>info@uteam.com</p>
+      <p>(01) 333-3333 / (51) 999 999 999</p>
+    </div>
+    <div class="section_uteam">
+      Copyright © 2021 UX-Team
+    </div>
+    <div class="section_socialmedia">
+      <a href= "https://facebook.com" target="_blank"><i class="fab fa-facebook-f facebook"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram instagram"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter twitter"></i></a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+<router-outlet></router-outlet>

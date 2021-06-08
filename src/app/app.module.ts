@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // Routing
-import { routing } from "./components/app.routing";
+import { AppRouting } from "./app.routing";
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -16,13 +17,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { PreMenuComponent } from './components/pre-menu/pre-menu.component';
+import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    PreMenuComponent,
+    InterfaceGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule,
     MatListModule,
     MatSidenavModule,
-    routing
+    AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
