@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+// Routing
+import { routing } from "./components/app.routing";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -32,7 +33,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatMenuModule,
     MatCardModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
