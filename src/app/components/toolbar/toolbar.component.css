@@ -3,4 +3,19 @@
 }
 .toolbar{
   box-shadow: -1px 2px 15px 1px rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.side-menu{
+  display: flex;
+  height: 75%;
+  width: 25%;
+  align-items: center;
+  justify-content: center;
+}
+
+.links-menu{
+  padding: 20px;
 }

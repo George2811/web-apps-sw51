@@ -1,10 +1,15 @@
 <mat-toolbar class="toolbar">
-  <mat-icon>star</mat-icon>
+  <button mat-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
   <span>Peru Stars</span>
   <span class="example-spacer"></span>
+
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>account_circle</mat-icon>
   </button>
+
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
       <mat-icon>settings</mat-icon>
@@ -17,3 +22,19 @@
   </mat-menu>
 </mat-toolbar>
 
+<mat-sidenav-container class="side-menu">
+  <mat-sidenav #sidenav role="navigation" mode="side" class="links-menu" >
+    <mat-nav-list>
+     <div>
+       <br>
+       <br>
+       <br>
+       <br>
+       <h1>Obras de Arte</h1>
+       <h1>Eventos</h1>
+     </div>
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>
