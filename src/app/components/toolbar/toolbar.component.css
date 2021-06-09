@@ -1,9 +1,27 @@
+
 .example-spacer{
   width: 90%;
 }
+.spacer{
+  width: 5%;
+}
+
 a{
   text-decoration: none;
 }
+
+.Register{
+  background: linear-gradient(180deg, rgba(206,18,18,1) 0%, rgba(255,124,0,1) 19%, rgba(255,124,0,1) 52%, rgba(242,96,5,1) 67%, rgba(228,66,10,1) 84%, rgba(223,55,12,1) 93%, rgba(206,18,18,1) 100%);
+  border-radius: 40px;
+  border: none;
+  box-shadow: 2px 2px 5px #999;
+}
+
+.Register-text{
+  color: white;
+
+}
+
 a:visited {
   color: black;
 }
@@ -12,10 +30,15 @@ a:visited {
   /*position: fixed;
   top: 0;
   z-index: 1000;*/
+
 }
 
 .Logo{
   color: #ce1212;
   font-size: 35px;
   font-weight: 600;
+}
+
+.Options{
+  color: #ce1212;
 }

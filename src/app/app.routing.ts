@@ -10,11 +10,11 @@ import {RegisterFormComponent} from "./components/register-form/register-form.co
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
 
 const appRoutes:Routes = [
-  {path: '', component: PreMenuComponent, pathMatch: 'full'},
+
   {path: 'home', component: HomepageComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterFormComponent, pathMatch: 'full'},
   {path: 'login', component: LoginFormComponent, pathMatch: 'full'},
-  {path: 'pre-menu', component: AppComponent, pathMatch: 'full'},
+  {path: 'pre-menu', component: PreMenuComponent, pathMatch: 'full'},
   {path: 'menu', component: InterfaceGroupComponent, pathMatch: 'full'},
 
 ];
