@@ -1,0 +1,42 @@
+<app-toolbar></app-toolbar>
+<div class="homepage-container">
+  <app-sidebar></app-sidebar>
+  <div class="main-container">
+    <!--TODO: buscador-->
+    <mat-form-field class="example-form-field">
+      <mat-label>
+        <mat-icon>search</mat-icon>
+        Buscar...
+      </mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <h2 class="title">Artistas</h2>
+    <div class="artist-container">
+      <mat-card *ngFor="let name of names" class="artist-card">
+        <mat-icon>person</mat-icon>
+        <mat-card-title>{{name}}</mat-card-title>
+      </mat-card>
+    </div>
+
+    <h2 class="title">Obras</h2>
+    <div class="artwork-container">
+      <mat-card class="artwork-card" *ngFor="let name of names">
+        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <mat-card-title style="font-size: medium">Obra1</mat-card-title>
+          <mat-card-subtitle style="font-size: small">99/99/99</mat-card-subtitle>
+          <p style="font-size: small">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn">Ver más</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
