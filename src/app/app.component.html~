@@ -1,6 +1,6 @@
 
-<!--app-pre-menu></app-pre-menu>-->
-<app-terms-and-conditions></app-terms-and-conditions>
+<app-pre-menu></app-pre-menu>
+
 
 <!--
 <app-toolbar></app-toolbar>
