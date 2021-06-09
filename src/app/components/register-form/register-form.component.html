@@ -1,0 +1,50 @@
+<app-toolbar></app-toolbar>
+
+<mat-card class="form-container">
+  <mat-card-header>
+    <mat-card-title>Registrarse</mat-card-title><br>
+    <img mat-card-sm-image  src="./assets/img/membership.svg" alt="login image">
+  </mat-card-header>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="email" type="text" placeholder="Ex.great_artist21" required>
+        <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+          <span *ngIf="registerForm.controls.email.errors?.required">El username es requerido.</span>
+          <span *ngIf="registerForm.controls.email.errors?.email">El username debe ser válido.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Ex.username@example.com" required>
+        <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+          <span *ngIf="registerForm.controls.email.errors?.required">El e-mail es requerido.</span>
+          <span *ngIf="registerForm.controls.email.errors?.email">El e-mail debe ser válido.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="Password" required minlength="6">
+        <mat-error *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">
+          <span *ngIf="registerForm.controls.password.errors?.required">La contraseña es requerida.</span>
+          <span *ngIf="registerForm.controls.password.errors?.minlength">La contraseña debe ser de al menos 8 caracteres.</span>
+          <span *ngIf="registerForm.controls.password.errors?.pattern">La contraseña debe contener al menos una minúscula, una mayúscula, y un número o caracter especial.</span>
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">Artista</mat-radio-button>
+      <mat-radio-button value="2">Aficionado</mat-radio-button>
+    </mat-radio-group>
+    <mat-card-actions>
+      <button mat-raised-button
+              routerLink="/home"
+              routerLinkActive="active"
+              color="warn" type="submit" [disabled]="registerForm.invalid">
+        Registrar
+      </button>
+    </mat-card-actions>
+
+  </form>
+</mat-card>

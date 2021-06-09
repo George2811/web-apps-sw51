@@ -9,7 +9,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PreMenuComponent } from './components/pre-menu/pre-menu.component';
 import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 // Routing
 import { AppRouting } from "./app.routing";
 // Angular Material
@@ -26,7 +26,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from "@angular/forms";
 import { LoginFormComponent } from './components/login-form/login-form.component';
-
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     InterfaceGroupComponent,
     TermsAndConditionsComponent,
     HomepageComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     MatGridListModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatSlideToggleModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
