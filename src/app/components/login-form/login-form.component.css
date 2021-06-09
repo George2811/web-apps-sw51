@@ -1,0 +1,15 @@
+.form-container{
+  height: 83vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+mat-card-content{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+mat-card-actions{
+  text-align: center;
+}

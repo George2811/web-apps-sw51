@@ -9,6 +9,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PreMenuComponent } from './components/pre-menu/pre-menu.component';
 import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
+import {ReactiveFormsModule} from "@angular/forms";
 // Routing
 import { AppRouting } from "./app.routing";
 // Angular Material
@@ -24,6 +25,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from "@angular/forms";
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
@@ -34,11 +36,13 @@ import {FormsModule} from "@angular/forms";
     PreMenuComponent,
     InterfaceGroupComponent,
     TermsAndConditionsComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     ScrollingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
