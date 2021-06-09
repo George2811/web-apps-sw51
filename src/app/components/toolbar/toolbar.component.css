@@ -7,3 +7,9 @@
   top: 0;
   z-index: 1000;
 }
+
+.Logo{
+  color: #ce1212;
+  font-size: 35px;
+  font-weight: 600;
+}

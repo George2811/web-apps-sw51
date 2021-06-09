@@ -19,6 +19,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { PreMenuComponent } from './components/pre-menu/pre-menu.component';
 import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { InterfaceGroupComponent } from './components/interface-group/interface-
     ToolbarComponent,
     SidebarComponent,
     PreMenuComponent,
-    InterfaceGroupComponent
+    InterfaceGroupComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,
