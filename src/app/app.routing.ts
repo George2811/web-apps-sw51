@@ -12,9 +12,9 @@ import {RegisterFormComponent} from "./components/register-form/register-form.co
 const appRoutes:Routes = [
 
   {path: 'home', component: HomepageComponent, pathMatch: 'full'},
+  {path: 'about', component: PreMenuComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterFormComponent, pathMatch: 'full'},
   {path: 'login', component: LoginFormComponent, pathMatch: 'full'},
-  {path: 'pre-menu', component: PreMenuComponent, pathMatch: 'full'},
   {path: 'menu', component: InterfaceGroupComponent, pathMatch: 'full'},
 
 ];
