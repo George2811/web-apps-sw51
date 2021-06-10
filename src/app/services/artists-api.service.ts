@@ -8,8 +8,10 @@ import {catchError, retry} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ArtistsApiService {
+
   basePath = 'https://perustars-api.herokuapp.com/api/artists';
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
+
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse): Observable<never>{
@@ -28,5 +30,20 @@ export class ArtistsApiService {
     return this.http.get<Artist>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-  //TODO: crear los demás métodos
+
+  getAllArtist(): Observable<Artist>{
+    return  this.http.get<Artist>(this.basePath)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  updateArtist(id:number, item:Artist): Observable<Artist>{
+    return this.http.put<Artist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  deleteArtist(id: number):Observable<any>{
+    return  this.http.delete<Artist>(`${this.basePath}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 }
