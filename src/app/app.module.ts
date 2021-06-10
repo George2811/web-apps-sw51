@@ -32,6 +32,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ArtworksComponent } from './components/artworks/artworks.component';
+import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ArtworksComponent } from './components/artworks/artworks.component';
     HomepageComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ArtworksComponent
+    ArtworksComponent,
+    ArtworkIdComponent
   ],
   imports: [
     BrowserModule,
