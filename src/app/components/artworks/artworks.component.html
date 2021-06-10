@@ -1,0 +1,37 @@
+<br>
+<br>
+<div class="artwork-container">
+
+  <mat-card class="artwork-card" *ngFor="let artwork of artworks">
+
+    <mat-card-header class="artwork-header">
+      <div mat-card-avatar class="card-avatar"></div>
+      <mat-card-title style="font-size: medium">{{artwork}}</mat-card-title>
+      <!-- AQUI IRIA EL NOMBRE DEL ARTISTA COMO SUBTITULO<mat-card-subtitle>{{artwork.artist.brandName}}</mat-card-subtitle>-->
+    </mat-card-header>
+    <br>
+
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+
+    <mat-card-content>
+      <mat-card-title style="font-size: medium">{{artwork}}</mat-card-title>
+      <!-- AQUI NO SE MOSTRARIA EL LOREM, SINO, LA DESCRIPCION <p style="font-size: small">{{artwork.description}}</p>-->
+      <p style="font-size: small">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="warn">Ver más</button>
+      <button mat-button color="white"><mat-icon>delete</mat-icon></button>
+      <button mat-button color="white"><mat-icon>update</mat-icon></button>
+
+    </mat-card-actions>
+  </mat-card>
+  <br>
+  <br>
+</div>
+

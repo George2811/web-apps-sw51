@@ -31,6 +31,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ArtworksComponent } from './components/artworks/artworks.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TermsAndConditionsComponent,
     HomepageComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ArtworksComponent
   ],
   imports: [
     BrowserModule,
