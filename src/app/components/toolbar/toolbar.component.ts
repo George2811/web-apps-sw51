@@ -7,12 +7,12 @@ import {Router, ActivatedRoute} from "@angular/router";
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  logIn: boolean = false;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-  inSession(){
-    this.logIn = !this.logIn;
+  inSession(): boolean{
+    return this.router.url === '/home';
   }
+
 }

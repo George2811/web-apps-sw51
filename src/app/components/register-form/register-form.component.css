@@ -4,6 +4,19 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 100;
+}
+svg{
+  position: fixed;
+  z-index: 150;
+  right: -12%;
+  top: 220px;
+  height: 370px;
+}
+svg:first-of-type{
+  right: 75%;
+  top: -110px;
+  height: 800px;
 }
 mat-card-header{
   display: flex;
@@ -16,21 +29,24 @@ form{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 60vh;
   width: 28%;
 }
 mat-card-content{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 mat-radio-group{
   margin-top: -25px;
   display: flex;
   justify-content: space-around;
+  width: 100%;
 }
 mat-checkbox{
   text-align: center;
-  width: 100%;
+  width: fit-content;
   font-size: small;
 }
 mat-card-actions{

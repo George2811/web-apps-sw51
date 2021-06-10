@@ -35,7 +35,7 @@
       <mat-radio-button value="1">Artista</mat-radio-button>
       <mat-radio-button value="2">Aficionado</mat-radio-button>
     </mat-radio-group>
-    <mat-checkbox class="example-margin" formControlName="terms" required (click)="openDialog()">Términos y condiciones</mat-checkbox>
+    <mat-checkbox formControlName="terms" required (click)="openDialog()">Términos y condiciones</mat-checkbox>
     <mat-card-actions>
       <button mat-raised-button
               routerLink="/home"
@@ -44,6 +44,11 @@
         Registrar
       </button>
     </mat-card-actions>
-
   </form>
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FA4D56" d="M35.8,-38.4C50,-30.7,67.8,-22.9,70.3,-11.9C72.8,-1,60.1,13.2,50.3,28.2C40.6,43.1,33.9,59,24.4,59C14.8,59,2.4,43.2,-11,35.9C-24.5,28.5,-39,29.7,-48.3,23.2C-57.6,16.7,-61.7,2.6,-57,-7.7C-52.4,-17.9,-39,-24.2,-28,-32.6C-17.1,-40.9,-8.5,-51.3,1.1,-52.6C10.8,-54,21.5,-46.2,35.8,-38.4Z" transform="translate(100 100)" />
+  </svg>
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FA4D50" d="M64.4,-30.9C77.3,-14.9,77.4,14.9,64.5,38C51.6,61,25.8,77.4,2.8,75.7C-20.1,74.1,-40.2,54.5,-49.1,33.7C-58,12.9,-55.7,-9,-45.7,-23.4C-35.6,-37.8,-17.8,-44.7,4,-47C25.8,-49.3,51.5,-46.9,64.4,-30.9Z" transform="translate(100 100)" />
+  </svg>
 </mat-card>

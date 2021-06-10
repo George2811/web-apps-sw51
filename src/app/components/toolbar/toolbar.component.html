@@ -1,10 +1,10 @@
 <mat-toolbar class="toolbar">
   <span class="Logo">PeruStars</span>
   <span class="example-spacer"></span>
-  <div class="toolbar-options" *ngIf="!logIn">
+  <div class="toolbar-options" *ngIf="!inSession()">
     <button mat-button color="warn" routerLink="/" routerLinkActive="active">Home</button>
     <button mat-button color="warn" routerLink="/about" routerLinkActive="active">About</button>
-    <button mat-raised-button class="btn-color" routerLink="/home" routerLinkActive="active" (click)="inSession()">Iniciar Sesión</button>
+    <button mat-raised-button class="btn-color" routerLink="/login" routerLinkActive="active">Iniciar Sesión</button>
     <button mat-stroked-button color="warn" routerLink="/register" routerLinkActive="active">Registrar</button>
 <!--    <h2 class="Options" >Home</h2>
     <span class="spacer"></span>
@@ -17,7 +17,7 @@
     </button>-->
   </div>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" *ngIf="logIn">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" *ngIf="inSession()">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -31,7 +31,7 @@
     </button>
     <button mat-menu-item>
       <mat-icon>logout</mat-icon>
-      <span><a routerLink="/" routerLinkActive="active" (click)="inSession()">Cerrar Cesión</a></span>
+      <span><a routerLink="/" routerLinkActive="active">Cerrar Cesión</a></span>
     </button>
   </mat-menu>
 </mat-toolbar>
