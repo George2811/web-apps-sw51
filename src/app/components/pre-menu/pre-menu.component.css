@@ -372,6 +372,9 @@ h6{
   text-align: center;
   margin-bottom: 5px;
 }
+.terms-and-conditions{
+  color: white;
+}
 
 /* Responsive*/
 @media (max-width: 1000px){
@@ -515,7 +518,6 @@ h6{
   .registration{
     padding: 60px 0px;
   }
-
 }
 @media(max-width: 630px){
   .purpose{
