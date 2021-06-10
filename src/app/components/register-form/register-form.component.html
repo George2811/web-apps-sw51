@@ -1,7 +1,7 @@
 <mat-card class="form-container">
   <mat-card-header>
-    <mat-card-title>Registrarse</mat-card-title><br>
-    <img mat-card-sm-image  src="./assets/img/membership.svg" alt="login image">
+    <mat-card-title style="font-size: xx-large">Regístrate</mat-card-title><br>
+    <img mat-card-md-image  src="./assets/img/membership.svg" alt="login image">
   </mat-card-header>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
@@ -31,10 +31,11 @@
         </mat-error>
       </mat-form-field>
     </mat-card-content>
-    <mat-radio-group aria-label="Select an option">
+    <mat-radio-group aria-label="Select an option" formControlName="userType" required>
       <mat-radio-button value="1">Artista</mat-radio-button>
       <mat-radio-button value="2">Aficionado</mat-radio-button>
     </mat-radio-group>
+    <mat-checkbox class="example-margin" formControlName="terms" required (click)="openDialog()">Términos y condiciones</mat-checkbox>
     <mat-card-actions>
       <button mat-raised-button
               routerLink="/home"

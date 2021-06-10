@@ -5,25 +5,23 @@
   font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
 }
-.terms-container{
-  margin-top: 10vh;
-}
 .Titulo{
+  margin-top: 10vh;
   text-align: center;
-  font-size: 35px;
+  font-size: 20px;
   font-weight: 600;
 }
 .Parrafo{
   text-align: justify;
   padding-left: 90px;
-  font-size: 18px;
+  font-size: 14px;
   padding-right: 120px;
   line-height: normal;
 }
 .Subtitulo{
   text-align: left;
   padding-left: 90px;
-  font-size: 30px;
+  font-size: 18px;
   font-weight: 600;
   padding-right: 120px;
   line-height: normal;
@@ -31,7 +29,12 @@
 .lista{
   text-align: left;
   padding-left: 120px;
-  font-size: 18px;
+  font-size: 14px;
   padding-right: 120px;
   line-height: normal;
+}
+.btn-alternative{
+  display: flex;
+  justify-content: center;
+  padding: 40px 0px;
 }

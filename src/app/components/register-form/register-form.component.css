@@ -1,28 +1,38 @@
 .form-container{
-  height: 83vh;
+  margin-top: 16px;
+  height: 82vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 mat-card-header{
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
+  height: 40vh;
 }
 form{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 60vh;
+  width: 28%;
 }
 mat-card-content{
   display: flex;
   flex-direction: column;
-  width: 300px;
+}
+mat-radio-group{
+  margin-top: -25px;
+  display: flex;
+  justify-content: space-around;
+}
+mat-checkbox{
+  text-align: center;
+  width: 100%;
+  font-size: small;
 }
 mat-card-actions{
   text-align: center;
-}
-mat-radio-group{
-  display: flex;
-  justify-content: space-around;
 }
