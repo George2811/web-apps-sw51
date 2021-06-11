@@ -33,6 +33,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ArtworksComponent } from './components/artworks/artworks.component';
 import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component';
+import { HomePreviewComponent } from './components/home-preview/home-preview.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component
     LoginFormComponent,
     RegisterFormComponent,
     ArtworksComponent,
-    ArtworkIdComponent
+    ArtworkIdComponent,
+    HomePreviewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,31 @@
+<div class="img"></div>
+<div class="artworks-container container">
+  <h1><mat-icon>color_lens</mat-icon>Obras Destacadas</h1>
+  <mat-grid-list class="artworks-cards" cols="4" rowHeight="4:6" >
+    <mat-grid-tile *ngFor="let artworkElement of artworks">
+      <app-artworks [artwork]="artworkElement"></app-artworks>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="artists-container container">
+  <h1><mat-icon>brush</mat-icon>Artistas más seguidos</h1>
+  <mat-grid-list class="artworks-cards" cols="4" rowHeight="4:6">
+<!--    <mat-grid-tile>-->
+<!--      <app-artworks></app-artworks>-->
+<!--    </mat-grid-tile>-->
+  </mat-grid-list>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="events-container container">
+  <h1><mat-icon>event</mat-icon>Próximos Eventos</h1>
+  <mat-grid-list class="events-cards" cols="4" rowHeight="4:6" >
+    <mat-grid-tile *ngFor="let eventElement of events">
+      <app-artworks [event]="eventElement"></app-artworks>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

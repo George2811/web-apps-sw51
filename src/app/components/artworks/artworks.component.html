@@ -1,8 +1,38 @@
-<br>
-<br>
-<div class="artwork-container">
+<mat-card class="artwork-card" *ngIf="typeOfCard()=='artwork'">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <mat-card-title style="font-size: medium">{{artwork.name}}</mat-card-title>
+    <p style="font-size: small">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit elit.
+      Dignissimos dolorem minima minus siu.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(artwork.cost)}}</button>
+    <button mat-raised-button color="warn">Ver más</button>
+  </mat-card-actions>
+</mat-card>
 
-  <mat-card class="artwork-card" *ngFor="let artwork of artworks">
+<mat-card class="event-card" *ngIf="typeOfCard()=='event'">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <mat-card-title style="font-size: medium">{{event.title}}</mat-card-title>
+    <button mat-button color="white" class="date-event">
+      <mat-icon>insert_invitation</mat-icon>
+      {{dateToString(event.dateStart)}}  -
+      {{dateToString(event.dateEnd)}}
+    </button>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(event.cost)}}</button>
+    <button mat-raised-button color="warn">Ver más</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<div class="artwork-container" *ngIf="false">
+
+  <mat-card class="artworks-card" *ngFor="let artwork of artworks">
 
     <mat-card-header class="artwork-header">
       <div mat-card-avatar class="card-avatar"></div>
@@ -34,4 +64,3 @@
   <br>
   <br>
 </div>
-

@@ -1,16 +1,34 @@
-.card-avatar{
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.artwork-card, .event-card{
+  max-width: 200px;
+}
+p{
+  text-align: justify;
+}
+mat-card-actions{
+  display: flex;
+  justify-content: space-between;
 }
 
-.artwork-card{
-  max-width: 400px;
-  margin:auto;
 
-}
+
+
+
+
+
+
+
 
 .artwork-container{
   align-items: center;
 }
+.card-avatar{
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.artworks-card{
+  max-width: 200px;
+  margin:auto;
+}
+
 
 
