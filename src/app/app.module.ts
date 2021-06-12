@@ -35,6 +35,7 @@ import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component
 import { HomePreviewComponent } from './components/home-preview/home-preview.component';
 import { AboutViewComponent } from './components/about-view/about-view.component';
 import { LoginRequestDialogComponent } from './components/login-request-dialog/login-request-dialog.component';
+import { EventsIdComponent } from './components/events-id/events-id.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { LoginRequestDialogComponent } from './components/login-request-dialog/l
     ArtworkIdComponent,
     HomePreviewComponent,
     AboutViewComponent,
-    LoginRequestDialogComponent
+    LoginRequestDialogComponent,
+    EventsIdComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,50 @@
+.banner{
+  background: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  align-items: center;
+}
+
+.image{
+  max-width: max-content;
+  max-height: max-content;
+  min-height: auto;
+  min-width: auto;
+}
+
+.banner-tittle{
+
+  font-size: 35px;
+  font-weight: 800;
+  color: white;
+  line-height: 280px;
+
+}
+
+.info-container{
+  display: flex;
+
+}
+.left-content{
+  padding-left: 5%;
+  padding-right: 30%;
+}
+
+.right-content{
+  padding-right: 15%;
+}
+
+.btn-color{
+  color: white;
+  background: linear-gradient(175deg, #ff9143 0, #ff824a 12.5%, #ff734e 25%, #ff6352 37.5%, #f25353 50%, #df4453 62.5%, #cd3753 75%, #bd2c54 87.5%, #ae2455 100%);
+
+}
+
+.goBack{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
