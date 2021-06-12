@@ -6,7 +6,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {HttpClientModule} from '@angular/common/http';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { PreMenuComponent } from './components/pre-menu/pre-menu.component';
 import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -34,6 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ArtworksComponent } from './components/artworks/artworks.component';
 import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component';
 import { HomePreviewComponent } from './components/home-preview/home-preview.component';
+import { AboutViewComponent } from './components/about-view/about-view.component';
 
 
 @NgModule({
@@ -41,7 +41,6 @@ import { HomePreviewComponent } from './components/home-preview/home-preview.com
     AppComponent,
     ToolbarComponent,
     SidebarComponent,
-    PreMenuComponent,
     InterfaceGroupComponent,
     TermsAndConditionsComponent,
     HomepageComponent,
@@ -49,7 +48,8 @@ import { HomePreviewComponent } from './components/home-preview/home-preview.com
     RegisterFormComponent,
     ArtworksComponent,
     ArtworkIdComponent,
-    HomePreviewComponent
+    HomePreviewComponent,
+    AboutViewComponent
   ],
   imports: [
     BrowserModule,

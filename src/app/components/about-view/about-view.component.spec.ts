@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PreMenuComponent } from './pre-menu.component';
+import { AboutViewComponent } from './about-view.component';
 
-describe('PreMenuComponent', () => {
-  let component: PreMenuComponent;
-  let fixture: ComponentFixture<PreMenuComponent>;
+describe('AboutViewComponent', () => {
+  let component: AboutViewComponent;
+  let fixture: ComponentFixture<AboutViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreMenuComponent ]
+      declarations: [ AboutViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreMenuComponent);
+    fixture = TestBed.createComponent(AboutViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,6 +1,7 @@
 .card-box{
   width: 250px;
   position: sticky;
+  top: 0;
   border-right: 1px solid rgb(229, 230, 230);
   /*background: linear-gradient(180deg, rgba(206,18,18,1) 0%, rgba(255,124,0,1) 19%, rgba(255,124,0,1) 52%, rgba(242,96,5,1) 67%, rgba(228,66,10,1) 84%, rgba(223,55,12,1) 93%, rgba(206,18,18,1) 100%);*/
 }

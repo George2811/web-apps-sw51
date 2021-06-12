@@ -1,3 +1,6 @@
+.toolbar{
+  box-shadow: -1px 2px 15px 1px rgba(0,0,0,0.2);
+}
 .example-spacer{
   width: 90%;
 }
@@ -20,22 +23,8 @@ a{
 .mat-stroked-button{
   border-color: #fa1616;
 }
-/*.Register{
-  background: linear-gradient(175deg, #ff9143 0, #ff824a 12.5%, #ff734e 25%, #ff6352 37.5%, #f25353 50%, #df4453 62.5%, #cd3753 75%, #bd2c54 87.5%, #ae2455 100%);
-  border-radius: 40px;
-  border: none;
-  box-shadow: 2px 2px 5px #999;
-}
-
-.Register-text{
-  color: white;
-  font-size: medium;
-}*/
 a:visited {
   color: black;
-}
-.toolbar{
-  box-shadow: -1px 2px 15px 1px rgba(0,0,0,0.2);
 }
 .Logo{
   color: #f51717;
