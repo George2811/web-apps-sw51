@@ -7,10 +7,10 @@
     <mat-card-content>
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Username</mat-label>
-        <input matInput formControlName="email" type="text" placeholder="Ex.great_artist21" required>
-        <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
-          <span *ngIf="registerForm.controls.email.errors?.required">El username es requerido.</span>
-          <span *ngIf="registerForm.controls.email.errors?.email">El username debe ser válido.</span>
+        <input matInput formControlName="user" type="email" placeholder="Ex.great_artist21" required>
+        <mat-error *ngIf="registerForm.controls.user.touched && registerForm.controls.user.invalid">
+          <span *ngIf="registerForm.controls.user.errors?.required">El username es requerido.</span>
+          <span *ngIf="registerForm.controls.user.errors?.minlength">El username debe ser de al menos 8 caracteres.</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="form-field">

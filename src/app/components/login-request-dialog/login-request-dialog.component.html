@@ -1,0 +1,17 @@
+<div class="header">
+  <h1 mat-dialog-title>Inicia sesión o regístrate para continuar</h1>
+  <button mat-icon-button aria-label="Close icon" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <img src="./assets/img/please-login.svg" alt="login picture" width="90%" height="90%">
+  <div class="btns">
+    <button mat-raised-button color="warn"
+            routerLink="/login" routerLinkActive="active"
+            (click)="closeDialog()">Iniciar Sesión</button>
+    <button mat-stroked-button color="warn"
+            routerLink="/register" routerLinkActive="active"
+            (click)="closeDialog()">Regístrate</button>
+  </div>
+</div>

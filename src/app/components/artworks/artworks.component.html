@@ -9,7 +9,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(artwork.cost)}}</button>
-    <button mat-raised-button color="warn">Ver más</button>
+    <button mat-raised-button color="warn" (click)="openDialog()">Ver más</button>
   </mat-card-actions>
 </mat-card>
 
@@ -25,11 +25,33 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(event.cost)}}</button>
-    <button mat-raised-button color="warn">Ver más</button>
+    <button mat-raised-button color="warn" (click)="openDialog()">Ver más</button>
   </mat-card-actions>
 </mat-card>
 
-
+<mat-card class="artist-card" *ngIf="typeOfCard()=='artist'">
+  <mat-card-header>
+    <div mat-card-avatar class="artist-header-image"></div>
+    <mat-card-title>{{artist.brandName}}</mat-card-title>
+    <mat-card-subtitle>Brand Name</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <button mat-button color="white" class="date-event">
+      <mat-icon>brush</mat-icon> {{artist.specialty}}
+    </button>
+    <button mat-button color="white" class="date-event">
+      <mat-icon>insert_photo</mat-icon>
+      {{artist.numArtworks}}
+    </button>
+    <p style="font-size: small">
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit elitu adipisicing."
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="white"><mat-icon>groups</mat-icon>{{artist.followers}}</button>
+    <button mat-raised-button color="warn" (click)="openDialog()">Conocer</button>
+  </mat-card-actions>
+</mat-card>
 <div class="artwork-container" *ngIf="false">
 
   <mat-card class="artworks-card" *ngFor="let artwork of artworks">

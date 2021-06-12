@@ -92,6 +92,44 @@ export class HomePreviewComponent implements OnInit {
     }
   ];
 
+  artists: Object[] = [
+    {
+      brandName: 'DaVinci',
+      specialty: 'Escultor',
+      numArtworks: 8,
+      followers: 150
+    },
+    {
+      brandName: 'VanGoh',
+      specialty: 'Pintor',
+      numArtworks: 50,
+      followers: 150
+    },
+    {
+      brandName: 'DaVinci',
+      specialty: 'Escultor',
+      numArtworks: 50,
+      followers: 390
+    },
+    {
+      brandName: 'VanGoh',
+      specialty: 'Pintor',
+      numArtworks: 15,
+      followers: 250
+    },
+    {
+      brandName: 'DaVinci',
+      specialty: 'Escultor',
+      numArtworks: 10,
+      followers: 150
+    },
+    {
+      brandName: 'VanGoh',
+      specialty: 'Pintor',
+      numArtworks: 16,
+      followers: 210
+    }
+  ];
   constructor() { }
 
   ngOnInit(): void {

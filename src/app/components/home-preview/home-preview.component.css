@@ -1,6 +1,7 @@
 .img{
   background-image: url("src/assets/img/principal-img.jpg");
   height: 400px;
+  background-size: 100%;
 }
 .container{
   margin: 80px 8%;

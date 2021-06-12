@@ -1,12 +1,19 @@
 .artwork-card, .event-card{
   max-width: 240px;
 }
+.artist-card {
+  max-width: 200px;
+}
 p{
   text-align: justify;
 }
 mat-card-actions{
   display: flex;
   justify-content: space-between;
+}
+.artist-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
 
 

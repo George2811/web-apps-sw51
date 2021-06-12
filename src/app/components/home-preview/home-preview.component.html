@@ -12,10 +12,10 @@
 
 <div class="artists-container container">
   <h1><mat-icon>brush</mat-icon>Artistas más seguidos</h1>
-  <mat-grid-list class="artworks-cards" cols="4" rowHeight="4:6">
-<!--    <mat-grid-tile>-->
-<!--      <app-artworks></app-artworks>-->
-<!--    </mat-grid-tile>-->
+  <mat-grid-list class="artists-cards" cols="4" rowHeight="6:6" >
+    <mat-grid-tile *ngFor="let artistElement of artists">
+      <app-artworks [artist] ="artistElement"></app-artworks>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>
 
