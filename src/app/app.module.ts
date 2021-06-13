@@ -36,6 +36,7 @@ import { HomePreviewComponent } from './components/home-preview/home-preview.com
 import { AboutViewComponent } from './components/about-view/about-view.component';
 import { LoginRequestDialogComponent } from './components/login-request-dialog/login-request-dialog.component';
 import { EventsIdComponent } from './components/events-id/events-id.component';
+import { NewArtworkFormComponent } from './components/new-artwork-form/new-artwork-form.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { EventsIdComponent } from './components/events-id/events-id.component';
     HomePreviewComponent,
     AboutViewComponent,
     LoginRequestDialogComponent,
-    EventsIdComponent
+    EventsIdComponent,
+    NewArtworkFormComponent
   ],
   imports: [
     BrowserModule,
