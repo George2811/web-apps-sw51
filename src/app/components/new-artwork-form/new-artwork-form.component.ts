@@ -4,6 +4,8 @@ import {NgForm} from "@angular/forms";
 import {Artwork} from "../../models/artwork";
 import{Router,ActivatedRoute} from "@angular/router";
 import {ArtworksApiService} from "../../services/artworks-api.service";
+import {MatChipInputEvent} from "@angular/material/chips";
+import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-new-artwork-form',
@@ -12,12 +14,22 @@ import {ArtworksApiService} from "../../services/artworks-api.service";
 })
 export class NewArtworkFormComponent implements OnInit {
 
+  title = 'file-uploader';
   artworkForm : FormGroup;
   artworkData: Artwork = {} as Artwork;
-
+  strongPasswordPattern: string = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  links: string[] = [];
   constructor(private artworksApi:ArtworksApiService,private formBuilder: FormBuilder) {
     this.artworkForm = this.formBuilder.group({
-
+      title: [null, [Validators.required, Validators.maxLength(50)]],
+      description: [null, [Validators.required, Validators.maxLength(240) ]],
+      links:[null, [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
+      cost: [null, [Validators.required]]
     })
   }
 
@@ -40,6 +52,24 @@ export class NewArtworkFormComponent implements OnInit {
     subscribe();
   }
 
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our link
+    if (value) {
+      this.links.push(value);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(fruit: string): void {
+    const index = this.links.indexOf(fruit);
+    if (index >= 0) {
+      this.links.splice(index, 1);
+    }
+  }
 
 
 }
