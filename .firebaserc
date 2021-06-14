@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "perustars-app": {
+      "hosting": {
+        "webapp": [
+          "perustars-app"
+        ]
+      }
+    }
+  }
+}
