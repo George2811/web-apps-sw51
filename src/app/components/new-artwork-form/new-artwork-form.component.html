@@ -1,0 +1,91 @@
+<mat-card class="main-container">
+  <mat-card-header>
+  <mat-card-title class="form-tittle">Crear Obra de Arte</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="form-container">
+    <form [formGroup]="artworkForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-card-title class="form-title" style="font-size: small">Título: </mat-card-title>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Título de la obra</mat-label>
+          <input matInput formControlName="title" type="text" placeholder="Ejemplo. Nueva Obra" required>
+          <mat-error *ngIf="artworkForm.controls.title.touched && artworkForm.controls.title.invalid">
+            <span *ngIf="artworkForm.controls.title.errors?.required">El título es requerido.</span>
+            <span *ngIf="artworkForm.controls.title.errors?.maxlength">El título excede los 50 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-title class="form-description" style="font-size: small">Descripción: </mat-card-title>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Esta obra representa...</mat-label>
+          <textarea matInput formControlName="description" placeholder="Ex.username@example.com" required></textarea>
+          <mat-error *ngIf="artworkForm.controls.description.touched && artworkForm.controls.description.invalid">
+            <span *ngIf="artworkForm.controls.description.errors?.required">La descripción es requerida.</span>
+            <span *ngIf="artworkForm.controls.description.errors?.maxlength">La descripción excede los 240 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="links-form">
+          <mat-label>Agregar Links...</mat-label>
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let link of links" [selectable]="selectable"
+                      [removable]="removable" (removed)="remove(link)">
+              {{link}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="www.perustars.com"
+                   formControlName="links"
+                   type="url"
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+            <mat-error *ngIf="artworkForm.controls.links.touched && artworkForm.controls.links.invalid">
+              <span *ngIf="artworkForm.controls.links.errors?.pattern">La url no es válida.</span>
+            </mat-error>
+          </mat-chip-list>
+        </mat-form-field>
+
+
+        <mat-card-title class="form-cost-title" style="font-size: small">Costo</mat-card-title>
+        <mat-form-field appearance="fill" class="form-cost" floatLabel="always">
+          <mat-label>Costo S/.</mat-label>
+          <input matInput formControlName="cost" type="number" placeholder="50" required style="text-align: right">
+          <span matPrefix>$&nbsp;</span>
+          <mat-error *ngIf="artworkForm.controls.cost.touched && artworkForm.controls.cost.invalid">
+            <span *ngIf="artworkForm.controls.cost.errors?.required">El username es requerido.</span>
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <!--Botones-->
+      <mat-card-actions>
+        <button mat-stroked-button
+                routerLink="/home"
+                routerLinkActive="active"
+                color="warn" type="submit">
+          Guardar
+        </button>
+        <button mat-raised-button
+                routerLink="/home"
+                routerLinkActive="active"
+                color="warn" type="submit" [disabled]="artworkForm.invalid">
+          Publicar
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+
+  <!--<label for="singleFile">Upload file</label>
+  <br>
+  <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue1" />
+  <mat-file-upload-queue #fileUploadQueue1 [fileAlias]="'file'" [httpUrl]="'http://localhost:8080/jax-rs-jersey-application-sample'">
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
+  </mat-file-upload-queue>
+
+  <div style="width: 500px;">
+    <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]="'http://localhost:8080/jax-rs-jersey-application-sample'" multiple>
+      <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+  </div>-->
+</mat-card>

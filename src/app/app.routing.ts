@@ -9,6 +9,8 @@ import {TermsAndConditionsComponent} from "./components/terms-and-conditions/ter
 import {HomePreviewComponent} from "./components/home-preview/home-preview.component";
 import {ArtworkIdComponent} from "./components/artwork-id/artwork-id.component";
 import {AboutViewComponent} from "./components/about-view/about-view.component";
+import {EventsIdComponent} from "./components/events-id/events-id.component";
+import {NewArtworkFormComponent} from "./components/new-artwork-form/new-artwork-form.component";
 //Aqui se agregan las rutas con su respectivo componente
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
 
@@ -21,7 +23,9 @@ const appRoutes:Routes = [
   {path: 'login', component: LoginFormComponent, pathMatch: 'full'},
   {path: 'menu', component: InterfaceGroupComponent, pathMatch: 'full'},
   {path: 'artwork', component: ArtworkIdComponent, pathMatch: 'full'},
-  {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'}
+  {path: 'event', component: EventsIdComponent, pathMatch: 'full'},
+  {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
+  {path: 'artwork-form', component: NewArtworkFormComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

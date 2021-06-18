@@ -3,6 +3,7 @@
     <mat-card-title style="font-size: xx-large">Iniciar Sesión</mat-card-title>
     <img mat-card-md-image  src="./assets/img/programmer.svg" alt="login image">
   </mat-card-header>
+
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
       <mat-form-field appearance="outline" class="form-field">
@@ -13,6 +14,7 @@
           <span *ngIf="loginForm.controls.email.errors?.email">El e-mail debe ser válido.</span>
         </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" type="password" placeholder="Password" required minlength="6">
@@ -22,6 +24,7 @@
           <span *ngIf="loginForm.controls.password.errors?.pattern">La contraseña debe contener al menos una minúscula, una mayúscula, y un número o caracter especial.</span>
         </mat-error>
       </mat-form-field>
+
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button
@@ -32,6 +35,7 @@
       </button>
     </mat-card-actions>
   </form>
+
   <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <path fill="#FA4D56" d="M35.8,-38.4C50,-30.7,67.8,-22.9,70.3,-11.9C72.8,-1,60.1,13.2,50.3,28.2C40.6,43.1,33.9,59,24.4,59C14.8,59,2.4,43.2,-11,35.9C-24.5,28.5,-39,29.7,-48.3,23.2C-57.6,16.7,-61.7,2.6,-57,-7.7C-52.4,-17.9,-39,-24.2,-28,-32.6C-17.1,-40.9,-8.5,-51.3,1.1,-52.6C10.8,-54,21.5,-46.2,35.8,-38.4Z" transform="translate(100 100)" />
   </svg>

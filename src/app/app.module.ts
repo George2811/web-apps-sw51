@@ -8,7 +8,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
+import { ArtworksComponent } from './components/artworks/artworks.component';
+import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component';
+import { HomePreviewComponent } from './components/home-preview/home-preview.component';
+import { AboutViewComponent } from './components/about-view/about-view.component';
+import { LoginRequestDialogComponent } from './components/login-request-dialog/login-request-dialog.component';
+import { EventsIdComponent } from './components/events-id/events-id.component';
+import { NewArtworkFormComponent } from './components/new-artwork-form/new-artwork-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatFileUploadModule} from "angular-material-fileupload";
 // Routing
 import { AppRouting } from "./app.routing";
 // Angular Material
@@ -30,12 +38,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ArtworksComponent } from './components/artworks/artworks.component';
-import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component';
-import { HomePreviewComponent } from './components/home-preview/home-preview.component';
-import { AboutViewComponent } from './components/about-view/about-view.component';
-import { LoginRequestDialogComponent } from './components/login-request-dialog/login-request-dialog.component';
-import { EventsIdComponent } from './components/events-id/events-id.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -53,7 +56,8 @@ import { EventsIdComponent } from './components/events-id/events-id.component';
     HomePreviewComponent,
     AboutViewComponent,
     LoginRequestDialogComponent,
-    EventsIdComponent
+    EventsIdComponent,
+    NewArtworkFormComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { EventsIdComponent } from './components/events-id/events-id.component';
     MatSlideToggleModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFileUploadModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -104,6 +104,7 @@ input[type="checkbox"]{
   background-position: center;
   position: relative;
 }
+
 .img::before{
   content: '';
   position: absolute;
@@ -111,6 +112,7 @@ input[type="checkbox"]{
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
 }
+
 .center{
   position: absolute;
   top: 50%;
