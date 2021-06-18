@@ -9,7 +9,7 @@
         <mat-card-title class="form-title" style="font-size: small">Título: </mat-card-title>
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Título de la obra</mat-label>
-          <input matInput formControlName="title" type="text" placeholder="Ex.great_artist21" required>
+          <input matInput formControlName="title" type="text" placeholder="Ejemplo. Nueva Obra" required>
           <mat-error *ngIf="artworkForm.controls.title.touched && artworkForm.controls.title.invalid">
             <span *ngIf="artworkForm.controls.title.errors?.required">El título es requerido.</span>
             <span *ngIf="artworkForm.controls.title.errors?.maxlength">El título excede los 50 caracteres.</span>
@@ -47,7 +47,6 @@
           </mat-chip-list>
         </mat-form-field>
 
-        <!-- TODO: formulario debe admitir imágenes (investigar)-->
 
         <mat-card-title class="form-cost-title" style="font-size: small">Costo</mat-card-title>
         <mat-form-field appearance="fill" class="form-cost" floatLabel="always">
@@ -59,6 +58,7 @@
           </mat-error>
         </mat-form-field>
       </mat-card-content>
+      <!--Botones-->
       <mat-card-actions>
         <button mat-stroked-button
                 routerLink="/home"
