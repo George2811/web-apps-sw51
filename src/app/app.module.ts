@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { InterfaceGroupComponent } from './components/interface-group/interface-group.component';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
-import { ArtworksComponent } from './components/artworks/artworks.component';
+import { CardsComponent } from './components/cards/cards.component';
 import { ArtworkIdComponent } from './components/artwork-id/artwork-id.component';
 import { HomePreviewComponent } from './components/home-preview/home-preview.component';
 import { AboutViewComponent } from './components/about-view/about-view.component';
@@ -16,7 +16,10 @@ import { LoginRequestDialogComponent } from './components/login-request-dialog/l
 import { EventsIdComponent } from './components/events-id/events-id.component';
 import { NewArtworkFormComponent } from './components/new-artwork-form/new-artwork-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatFileUploadModule} from "angular-material-fileupload";
+import {LayoutModule} from '@angular/cdk/layout';
+import {FlexLayoutModule} from "@angular/flex-layout";
+
+
 // Routing
 import { AppRouting } from "./app.routing";
 // Angular Material
@@ -51,7 +54,7 @@ import {MatChipsModule} from '@angular/material/chips';
     HomepageComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ArtworksComponent,
+    CardsComponent,
     ArtworkIdComponent,
     HomePreviewComponent,
     AboutViewComponent,
@@ -81,8 +84,9 @@ import {MatChipsModule} from '@angular/material/chips';
     MatRadioModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatFileUploadModule,
-    MatChipsModule
+    MatChipsModule,
+    LayoutModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

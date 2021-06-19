@@ -12,7 +12,8 @@ mat-card-actions{
   justify-content: space-between;
 }
 .artist-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('https://picsum.photos/id/1011/300');
+  /*background-image: url('https://picsum.photos/id/1061/400');*/
   background-size: cover;
 }
 

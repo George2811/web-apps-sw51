@@ -1,20 +1,21 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginRequestDialogComponent} from "../login-request-dialog/login-request-dialog.component";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-artworks',
-  templateUrl: './artworks.component.html',
-  styleUrls: ['./artworks.component.css']
+  selector: 'app-cards',
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.css']
 })
-export class ArtworksComponent implements OnInit {
+export class CardsComponent implements OnInit {
   @Input() artwork: any;
   @Input() event: any;
   @Input() artist: any;
 
   artworks: string[] = ['Monalisa', 'La noche estrellada', 'El Beso'];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +35,9 @@ export class ArtworksComponent implements OnInit {
     if (this.artist)
       return 'artist';
     return '';
+  }
+  isLogged(): boolean{
+    return this.router.url === '/home';
   }
   openDialog() {
     const dialogRef = this.dialog.open(LoginRequestDialogComponent);

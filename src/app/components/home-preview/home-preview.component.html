@@ -3,7 +3,7 @@
   <h1><mat-icon>color_lens</mat-icon>Obras Destacadas</h1>
   <mat-grid-list class="artworks-cards" cols="4" rowHeight="4:6" >
     <mat-grid-tile *ngFor="let artworkElement of artworks">
-      <app-artworks [artwork]="artworkElement"></app-artworks>
+      <app-cards [artwork]="artworkElement"></app-cards>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
@@ -14,7 +14,7 @@
   <h1><mat-icon>brush</mat-icon>Artistas más seguidos</h1>
   <mat-grid-list class="artists-cards" cols="4" rowHeight="6:6" >
     <mat-grid-tile *ngFor="let artistElement of artists">
-      <app-artworks [artist] ="artistElement"></app-artworks>
+      <app-cards [artist] ="artistElement"></app-cards>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
@@ -25,7 +25,7 @@
   <h1><mat-icon>event</mat-icon>Próximos Eventos</h1>
   <mat-grid-list class="events-cards" cols="4" rowHeight="4:6" >
     <mat-grid-tile *ngFor="let eventElement of events">
-      <app-artworks [event]="eventElement"></app-artworks>
+      <app-cards [event]="eventElement"></app-cards>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

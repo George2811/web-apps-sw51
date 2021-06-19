@@ -128,6 +128,18 @@ export class HomePreviewComponent implements OnInit {
       specialty: 'Pintor',
       numArtworks: 16,
       followers: 210
+    },
+    {
+      brandName: 'DaVinci',
+      specialty: 'Escultor',
+      numArtworks: 10,
+      followers: 150
+    },
+    {
+      brandName: 'VanGoh',
+      specialty: 'Pintor',
+      numArtworks: 16,
+      followers: 210
     }
   ];
   constructor() { }

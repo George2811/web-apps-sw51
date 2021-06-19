@@ -7,12 +7,17 @@ import {Router, ActivatedRoute} from "@angular/router";
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+  viewsNotAllowed : string[] = ['/','/about','/login', '/register'];
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   inSession(): boolean{
-    return this.router.url === '/home';
+    for(const view of this.viewsNotAllowed){
+      if(this.router.url === view)
+        return false;
+    }
+    return true;
   }
 
 }

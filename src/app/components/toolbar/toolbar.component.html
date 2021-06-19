@@ -1,3 +1,4 @@
+
 <mat-toolbar class="toolbar">
   <span class="Logo">PeruStars</span>
   <span class="example-spacer"></span>
@@ -6,15 +7,6 @@
     <button mat-button color="warn" routerLink="/about" routerLinkActive="active">About</button>
     <button mat-raised-button class="btn-color" routerLink="/login" routerLinkActive="active">Iniciar Sesión</button>
     <button mat-stroked-button color="warn" routerLink="/register" routerLinkActive="active">Registrar</button>
-<!--    <h2 class="Options" >Home</h2>
-    <span class="spacer"></span>
-    <h2 class="Options">Obras</h2>
-    <span class="spacer"></span>
-    <h2 class="Options">Eventos</h2>
-    <span class="spacer"></span>
-    <button class="Register">
-      <h2 class="Register-text">Iniciar Sesion</h2>
-    </button>-->
   </div>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" *ngIf="inSession()">
@@ -35,4 +27,3 @@
     </button>
   </mat-menu>
 </mat-toolbar>
-

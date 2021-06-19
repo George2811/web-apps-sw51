@@ -12,30 +12,55 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
+
     <h2 class="title">Artistas</h2>
-    <div class="artist-container">
-      <mat-card *ngFor="let name of names" class="artist-card">
-        <mat-icon>person</mat-icon>
-        <mat-card-title>{{name}}</mat-card-title>
-      </mat-card>
+<!--    <div class="artist-container">-->
+<!--      <mat-card *ngFor="let name of names" class="artist-card">-->
+<!--        <mat-icon>person</mat-icon>-->
+<!--        <mat-card-title>{{name}}</mat-card-title>-->
+<!--      </mat-card>-->
+<!--    </div>-->
+    <div class="artists-container container">
+
+      <mat-grid-list class="cards" cols="4" rowHeight="6:6" >
+        <mat-grid-tile *ngFor="let artistElement of artists">
+          <app-cards [artist] ="artistElement"></app-cards>
+        </mat-grid-tile>
+      </mat-grid-list>
     </div>
 
     <h2 class="title">Obras</h2>
-    <div class="artwork-container">
-      <mat-card class="artwork-card" *ngFor="let name of names">
-        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <mat-card-title style="font-size: medium">Obra1</mat-card-title>
-          <mat-card-subtitle style="font-size: small">99/99/99</mat-card-subtitle>
-          <p style="font-size: small">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="warn">Ver más</button>
-        </mat-card-actions>
-      </mat-card>
-     </div>
+    <div class="artworks-container container">
+      <mat-grid-list class="cards" cols="4" rowHeight="4:6">
+        <mat-grid-tile *ngFor="let artworkElement of artworks">
+          <app-cards style="width: 220px" [artwork]="artworkElement"></app-cards>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+    <h2 class="title">Eventos</h2>
+    <div class="events-container container">
+      <mat-grid-list class="cards" cols="4" rowHeight="4:6">
+        <mat-grid-tile *ngFor="let eventElement of events">
+          <app-cards style="width: 220px" [event]="eventElement"></app-cards>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+<!--    <div class="artwork-container">-->
+<!--      <mat-card class="artwork-card" *ngFor="let name of names">-->
+<!--        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+<!--        <mat-card-content>-->
+<!--          <mat-card-title style="font-size: medium">Obra1</mat-card-title>-->
+<!--          <mat-card-subtitle style="font-size: small">99/99/99</mat-card-subtitle>-->
+<!--          <p style="font-size: small">-->
+<!--            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.-->
+<!--          </p>-->
+<!--        </mat-card-content>-->
+<!--        <mat-card-actions>-->
+<!--          <button mat-raised-button color="warn">Ver más</button>-->
+<!--        </mat-card-actions>-->
+<!--      </mat-card>-->
+<!--     </div>-->
     </div>
 </div>
 
