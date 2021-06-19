@@ -24,7 +24,7 @@ const appRoutes:Routes = [
   {path: 'about', component: AboutViewComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterFormComponent, pathMatch: 'full'},
   {path: 'login', component: LoginFormComponent, pathMatch: 'full'},
-  {path: 'menu', component: InterfaceGroupComponent, pathMatch: 'full'},
+  // {path: 'menu', component: InterfaceGroupComponent, pathMatch: 'full'},
   {path: 'artwork', component: ArtworkIdComponent, pathMatch: 'full'},
   {path: 'event', component: EventsIdComponent, pathMatch: 'full'},
   {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
@@ -38,4 +38,4 @@ const appRoutes:Routes = [
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
   })
-export class AppRouting{};
+export class AppRouting{}
