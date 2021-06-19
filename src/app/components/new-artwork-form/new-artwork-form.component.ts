@@ -17,7 +17,6 @@ export class NewArtworkFormComponent implements OnInit {
   title = 'file-uploader';
   artworkForm : FormGroup;
   artworkData: Artwork = {} as Artwork;
-  strongPasswordPattern: string = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
   visible = true;
   selectable = true;
   removable = true;

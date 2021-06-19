@@ -29,7 +29,7 @@
         <mat-card-title class="form-date-title" style="font-size: small">Fecha Inicial del Evento</mat-card-title>
         <mat-form-field appearance="fill" class="form-date" floatLabel="always">
           <mat-label>Fecha Inicial</mat-label>
-          <input matInput formControlName="date" type="date" placeholder="50" required style="text-align: center">
+          <input matInput formControlName="dateStart" type="date" placeholder="50" required style="text-align: center">
           <mat-error *ngIf="eventForm.controls.dateStart.touched && eventForm.controls.dateStart.invalid">
             <span *ngIf="eventForm.controls.dateStart.errors?.required">La fecha es requerida.</span>
           </mat-error>
@@ -38,9 +38,9 @@
         <mat-card-title class="form-date-title" style="font-size: small">Fecha Final del Evento</mat-card-title>
         <mat-form-field appearance="fill" class="form-date" floatLabel="always">
           <mat-label>Fecha Final</mat-label>
-          <input matInput formControlName="date" type="date" placeholder="50" required style="text-align: center">
+          <input matInput formControlName="dateEnd" type="date" placeholder="50" required style="text-align: center">
           <mat-error *ngIf="eventForm.controls.dateEnd.touched && eventForm.controls.dateEnd.invalid">
-            <span *ngIf="eventForm.controls.dateStart.errors?.required">La fecha es requerida.</span>
+            <span *ngIf="eventForm.controls.dateEnd.errors?.required">La fecha es requerida.</span>
           </mat-error>
         </mat-form-field>
 

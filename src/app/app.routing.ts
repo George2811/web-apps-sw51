@@ -27,9 +27,9 @@ const appRoutes:Routes = [
   {path: 'artwork', component: ArtworkIdComponent, pathMatch: 'full'},
   {path: 'event', component: EventsIdComponent, pathMatch: 'full'},
   {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
-  {path: 'artwork-form', component: NewArtworkFormComponent, pathMatch: 'full'},
+  {path: 'artwork/new', component: NewArtworkFormComponent, pathMatch: 'full'},
   {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
-  {path: 'event-form', component: NewEventFormComponent, pathMatch: 'full'}
+  {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
