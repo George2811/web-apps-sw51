@@ -121,6 +121,7 @@ a{
 
 .background-transparent{
   background: transparent;
+  box-shadow: none;
 }
 
 .artworks-section {
@@ -131,4 +132,41 @@ a{
 .my-artworks{
   margin-top: 30px;
   margin-left: 50px;
+  margin-right: 50px;
+}
+
+.events-section{
+  padding: 1px 0;
+}
+
+.my-events{
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.carousel-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.carousel-item{
+  display: block;
+}
+
+.arrow{
+  width: 100px;
+  height: 100px;
+}
+
+.arrow mat-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 9em;
+  opacity: 85%;
 }

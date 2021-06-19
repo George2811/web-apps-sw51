@@ -58,8 +58,41 @@
 <section class="artworks-section">
   <mat-card class="my-artworks background-transparent">
     <mat-card-title class="title text-white">Mis obras de arte</mat-card-title>
-    <mat-card-content>
-
+    <mat-card-content class="carousel-container">
+      <div class="carousel-container">
+        <button mat-icon-button class="background-transparent arrow text-white" (click)="backShowingElement(this.ArtworksCarousel)">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <mat-list-item class=" carousel-item
+        " *ngFor="let artwork of this.ArtworksCarousel.Showing">
+        <app-cards [artwork]="artwork"></app-cards>
+        </mat-list-item>
+        <button mat-icon-button class="background-transparent arrow text-white" (click)="nextShowingElement(this.ArtworksCarousel)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
     </mat-card-content>
   </mat-card>
+</section>
+
+<section class=" events-section
+        ">
+        <mat-card class="my-events background-transparent">
+          <mat-card-title class="title">Futuros eventos</mat-card-title>
+          <mat-card-content>
+            <div class="carousel-container">
+              <button mat-icon-button class="background-transparent arrow"
+                      (click)="backShowingElement(this.EventsCarousel)">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </button>
+              <mat-list-item class="carousel-item" *ngFor="let event of this.EventsCarousel.Showing">
+                <app-cards [event]="event"></app-cards>
+              </mat-list-item>
+              <button mat-icon-button class="background-transparent arrow"
+                      (click)="nextShowingElement(this.EventsCarousel)">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
 </section>
