@@ -27,7 +27,7 @@ export class NewEventFormComponent implements OnInit {
   constructor(private eventsApi:EventsApiService,private formBuilder: FormBuilder) {
     this.eventForm = this.formBuilder.group({
       title: [null, [Validators.required, Validators.maxLength(50)]],
-      description: [null, [Validators.required, Validators.maxLength(240) ]],
+      description: [null, [Validators.required, Validators.maxLength(300) ]],
       links:[null, [Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
       cost: [null, [Validators.required]],
       dateStart: [null, [Validators.required]],
