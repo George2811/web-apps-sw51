@@ -1,0 +1,65 @@
+<section>
+  <div class="shape">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+      <path d="M-5.92,83.38 C-5.92,84.38 509.31,143.58 509.87,144.56 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: #fff;"></path>
+    </svg>
+  </div>
+  <mat-card class="top-content background-transparent" [style.marginTop.px]="63">
+    <mat-card-content class="artist-image-container text-white">
+      <mat-card-title>Artist Name</mat-card-title>
+      <img mat-list-icon width="200" height="200" class="image-profile" src="../../../assets/img/amateur.jpg"
+           alt="ArtistaImg">
+    </mat-card-content>
+    <mat-card-content class="artist-top-data">
+      <div>
+        <p>XXX seguidores</p>
+        <p>Correo/num contacto</p>
+      </div>
+      <div mat-list-icon class="artist-icons">
+        <button mat-icon-button>
+          <a href="https://www.facebook.com/" target="_blank">
+            <mat-icon class="top-icon"><i class="fab fa-facebook"></i></mat-icon>
+          </a>
+        </button>
+        <button mat-icon-button>
+          <a href="https://www.instagram.com/" target="_blank">
+            <mat-icon class="top-icon"><i class="fab fa-instagram"></i></mat-icon>
+          </a>
+        </button>
+        <button mat-icon-button>
+          <a href="https://twitter.com/" target="_blank">
+            <mat-icon class="top-icon"><i class="fab fa-twitter"></i></mat-icon>
+          </a>
+        </button>
+      </div>
+      <div class="artist-phrase">
+        <p>"Aquí va texto de una frase célebre Aquí va texto de una frase célebre Aquí va texto de una frase célebre
+          Aquí va texto de una frase célebre"</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="btn-special-container">
+    <button id="followBtn" mat-button class="btn-special-color text-white"
+            (click)="updateFollowState()">{{this.followAction}}</button>
+  </div>
+</section>
+
+<section>
+  <mat-card class="who-am-i background-transparent">
+    <mat-card-title class="title">¿Quién soy?</mat-card-title>
+    <p class="paragraph">"Aquí va texto de su descripción Aquí va texto de su descripción Aquí va texto de su
+      descripción Aquí va texto de
+      su descripción Aquí va texto de su descripción Aquí va texto de su descripción Aquí va texto de su
+      descripción Aquí va texto de su descripción."</p>
+  </mat-card>
+</section>
+
+<section class="artworks-section">
+  <mat-card class="my-artworks background-transparent">
+    <mat-card-title class="title text-white">Mis obras de arte</mat-card-title>
+    <mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+</section>

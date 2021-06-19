@@ -1,0 +1,134 @@
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.shape {
+  height: 60vh;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(203, 144, 40, 1) 0%, rgba(255, 0, 0, 1) 100%);
+  stroke: none;
+  position: relative;
+  top: 0;
+}
+
+.top-content {
+  top: 0;
+  position: absolute;
+  box-shadow: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-profile{
+  border-radius: 500px;
+}
+
+.artist-image-container{
+  text-align: center;
+  margin-left: 110px;
+  padding-top: 65px;
+}
+
+.artist-image-container>mat-card-title{
+  font-weight: 560;
+}
+
+.artist-top-data{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 0px 0px 0;
+}
+
+.artist-top-data>div{
+  width: 30%;
+  color: white;
+  text-align: center;
+}
+
+.artist-icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 20%;
+}
+
+.artist-icons>button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artist-icons mat-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.artist-phrase{
+  font-size: 17px;
+}
+
+.btn-special-container{
+  display: flex;
+  justify-content: center;
+  float: right;
+  width: 400px;
+}
+
+.btn-special-color {
+  font-weight: 500;
+  width: 110px;
+  height: 40px;
+  min-height: 30px;
+  background: radial-gradient(circle, rgba(203, 144, 40, 1) 0%, rgba(221, 0, 0, 1) 100%);
+  margin-top: -60px;
+  transition: all 0.4s ease;
+}
+
+.resizeBtn{
+  width: 130px;
+  transition: all 0.4s ease;
+}
+
+.who-am-i{
+  margin-left: 50px;
+  margin-top: 18px;
+  margin-bottom: 36px;
+  max-width: 800px;
+  box-shadow: none;
+}
+
+.title{
+  margin-bottom: 24px;
+  margin-left: 10px;
+}
+
+.paragraph{
+  font-size: 1.15em;
+}
+
+.text-dark{
+  color: black;
+}
+
+.text-white{
+  color: white;
+}
+
+.background-transparent{
+  background: transparent;
+}
+
+.artworks-section {
+  background: linear-gradient(90deg, rgba(236, 187, 61, 1) 0%, rgba(223, 0, 0, 1) 100%);
+  padding: 1px 0;
+}
+
+.my-artworks{
+  margin-top: 30px;
+  margin-left: 50px;
+}

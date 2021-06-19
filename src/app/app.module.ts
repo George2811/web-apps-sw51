@@ -42,6 +42,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {MatChipsModule} from '@angular/material/chips';
     AboutViewComponent,
     LoginRequestDialogComponent,
     EventsIdComponent,
-    NewArtworkFormComponent
+    NewArtworkFormComponent,
+    ArtistProfileComponent,
   ],
   imports: [
     BrowserModule,
