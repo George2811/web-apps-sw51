@@ -40,11 +40,14 @@
 <!--    TODO: Arregla esta vaina-->
 <div class="specialties-container">
 <h1>Tus artes favoritas</h1>
-  <mat-grid-list class="specialty-cards" cols="4" rowHeight="6:6">
-    <mat-grid-tile *ngFor="let specialtyElement of specialties">
+  <mat-grid-list class="specialty-cards" cols="4" rowHeight="5:6">
+    <mat-grid-tile *ngFor="let specialtyElement of specialties, let i = index">
       <mat-card class="specialty-card">
           <img mat-card-image src="https://picsum.photos/id/1002/800" alt="Specialty Photo">
-          <mat-card-content>
+          <mat-card-content class="specialty-select">
+            <button mat-mini-fab color="white" aria-label="Example icon button with a home icon">
+              <mat-icon [class.red-color]="selected[i]">favorite</mat-icon>
+            </button>
             <mat-card-title style="font-size: medium">{{specialtyElement}}</mat-card-title>
           </mat-card-content>
         </mat-card>

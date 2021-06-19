@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Specialty} from "../../models/specialty";
 
 @Component({
   selector: 'app-hobbyist-profile',
@@ -8,7 +9,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class HobbyistProfileComponent implements OnInit {
 
-  specialties: string[] = ['Pintura','Escultura','Canto','Danza','Actuación','Producción'];
+  specialties: Object[] = ['Pintura','Escultura','Canto','Danza','Teatro','Producción','Cine'];
+  selected: boolean[] = [true, false, false, true, false, true];
   loginForm: FormGroup;
   strongPasswordPattern: string = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
   constructor(private formBuilder: FormBuilder) {

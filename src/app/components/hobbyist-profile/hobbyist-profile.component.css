@@ -46,7 +46,6 @@ mat-card-content{
   margin: 80px 8%;
 }
 .specialty-card{
-
   max-width: 200px;
 }
 .specialty-card:hover{
@@ -54,6 +53,15 @@ mat-card-content{
 }
 mat-card-content{
   text-align: center;
+}
+.specialty-select{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.red-color{
+  color: #ff3636;
 }
 h1{
   text-align: center;

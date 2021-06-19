@@ -37,7 +37,7 @@ export class CardsComponent implements OnInit {
     return '';
   }
   isLogged(): boolean{
-    return this.router.url === '/home';
+    return this.router.url === '/home'? true : this.router.url === '/artist-profile';
   }
   openDialog() {
     const dialogRef = this.dialog.open(LoginRequestDialogComponent);

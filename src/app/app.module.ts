@@ -46,8 +46,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { HobbyistProfileComponent } from './components/hobbyist-profile/hobbyist-profile.component';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
