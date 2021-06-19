@@ -25,28 +25,7 @@
             <span *ngIf="eventForm.controls.description.errors?.maxlength">La descripción excede los 300 caracteres.</span>
           </mat-error>
         </mat-form-field>
-
-        <mat-form-field class="links-form">
-          <mat-label>Agregar Links...</mat-label>
-          <mat-chip-list #chipList aria-label="Fruit selection">
-            <mat-chip *ngFor="let link of links" [selectable]="selectable"
-                      [removable]="removable" (removed)="remove(link)">
-              {{link}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="www.perustars.com"
-                   formControlName="links"
-                   type="url"
-                   [matChipInputFor]="chipList"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                   [matChipInputAddOnBlur]="addOnBlur"
-                   (matChipInputTokenEnd)="add($event)">
-            <mat-error *ngIf="eventForm.controls.links.touched && eventForm.controls.links.invalid">
-              <span *ngIf="eventForm.controls.links.errors?.pattern">La url no es válida.</span>
-            </mat-error>
-          </mat-chip-list>
-        </mat-form-field>
-
+        
         <mat-card-title class="form-date-title" style="font-size: small">Fecha Inicial del Evento</mat-card-title>
         <mat-form-field appearance="fill" class="form-date" floatLabel="always">
           <mat-label>Fecha Inicial</mat-label>
