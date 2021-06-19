@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Hobbyists} from "../models/hobbyists";
+import {Hobbyist} from "../models/hobbyist";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 
@@ -23,13 +23,13 @@ export class HobbyistsApiService {
     return throwError('Something happened with request, please try again later.');
   }
 
-  addHobbyist(item:any):Observable<Hobbyists>{
-    return this.http.post<Hobbyists>(this.basePath, JSON.stringify(item), this.httpOptions)
+  addHobbyist(item:any):Observable<Hobbyist>{
+    return this.http.post<Hobbyist>(this.basePath, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  updateHobbyist(id:number, item:Hobbyists):Observable<any>{
-    return this.http.put<Hobbyists>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
+  updateHobbyist(id:number, item:Hobbyist):Observable<any>{
+    return this.http.put<Hobbyist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 }

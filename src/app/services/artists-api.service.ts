@@ -16,7 +16,7 @@ export class ArtistsApiService {
 
   handleError(error: HttpErrorResponse): Observable<never>{
     if (error.error instanceof ErrorEvent){
-      console.log('An error ocurred: ', error.error.message);
+      console.log('An error occurred: ', error.error.message);
     } else{
       console.log(`Backend returned code ${error.status}, body was: ${error.error}`);
     }

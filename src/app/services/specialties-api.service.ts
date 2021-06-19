@@ -6,7 +6,7 @@ import {catchError, retry} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class SpecialtysApiService {
+export class SpecialtiesApiService {
 
   constructor() { }
 }
