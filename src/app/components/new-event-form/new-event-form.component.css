@@ -1,0 +1,33 @@
+.main-container{
+  margin: auto;
+  margin-top: 15px;
+  width: 80%;
+}
+mat-card-header{
+  justify-content: center;
+}
+.form-container{
+  width: 80%;
+  margin: auto;
+}
+mat-card-content{
+  display: flex;
+  flex-direction: column;
+}
+textarea{
+  max-height: 100px;
+}
+.links-form{
+  width: 50%;
+}
+.form-cost{
+  width: 20%;
+  min-width: 120px;
+}
+mat-card-actions{
+  width: fit-content;
+  margin: auto;
+}
+.mat-stroked-button{
+  border: 1px solid #ff1500;
+}
