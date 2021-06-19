@@ -13,13 +13,14 @@ import {EventsIdComponent} from "./components/events-id/events-id.component";
 import {NewArtworkFormComponent} from "./components/new-artwork-form/new-artwork-form.component";
 import {HobbyistProfileComponent} from "./components/hobbyist-profile/hobbyist-profile.component";
 import {NewEventFormComponent} from "./components/new-event-form/new-event-form.component";
+import {ArtistProfileComponent} from "./components/artist-profile/artist-profile.component";
+
 //Aqui se agregan las rutas con su respectivo componente
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
 
 const appRoutes:Routes = [
   {path: '', component: HomePreviewComponent, pathMatch: 'full'},
   {path: 'home', component: HomepageComponent, pathMatch: 'full'},
-
   {path: 'about', component: AboutViewComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterFormComponent, pathMatch: 'full'},
   {path: 'login', component: LoginFormComponent, pathMatch: 'full'},
@@ -29,7 +30,8 @@ const appRoutes:Routes = [
   {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
   {path: 'artwork/new', component: NewArtworkFormComponent, pathMatch: 'full'},
   {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
-  {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'}
+  {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'},
+  {path: 'artist-profile', component: ArtistProfileComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

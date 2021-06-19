@@ -38,7 +38,7 @@
     <mat-checkbox formControlName="terms" required (click)="openDialog()">Términos y condiciones</mat-checkbox>
     <mat-card-actions>
       <button mat-raised-button
-              routerLink="/home"
+              (click)="sendUserToNextPage()"
               routerLinkActive="active"
               color="warn" type="submit" [disabled]="registerForm.invalid">
         Registrar
