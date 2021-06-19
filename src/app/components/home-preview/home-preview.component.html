@@ -23,7 +23,7 @@
 
 <div class="events-container container">
   <h1><mat-icon>event</mat-icon>Próximos Eventos</h1>
-  <mat-grid-list class="events-cards" cols="4" rowHeight="4:6" >
+  <mat-grid-list class="events-cards" cols="4" rowHeight="4:6">
     <mat-grid-tile *ngFor="let eventElement of events">
       <app-cards [event]="eventElement"></app-cards>
     </mat-grid-tile>

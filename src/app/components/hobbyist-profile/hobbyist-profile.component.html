@@ -1,0 +1,61 @@
+<div class="shape">
+  <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+    <path d="M-5.92,83.38 C-5.92,84.38 509.31,143.58 509.87,144.56 L500.00,150.00 L0.00,150.00 Z"
+          style="stroke: none; fill: #fff;"></path>
+  </svg>
+</div>
+
+<mat-card class="profile-card">
+  <mat-card-title class="name-profile">Shiba Inu</mat-card-title>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+  </mat-card-header>
+</mat-card>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-card-content>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Ex.username@example.com" required>
+      <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+        <span *ngIf="loginForm.controls.email.errors?.required">El e-mail es requerido.</span>
+        <span *ngIf="loginForm.controls.email.errors?.email">El e-mail debe ser válido.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Password" required minlength="6">
+      <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+        <span *ngIf="loginForm.controls.password.errors?.required">La contraseña es requerida.</span>
+        <span *ngIf="loginForm.controls.password.errors?.minlength">La contraseña debe ser de al menos 8 caracteres.</span>
+        <span *ngIf="loginForm.controls.password.errors?.pattern">La contraseña debe contener al menos una minúscula, una mayúscula, y un número o caracter especial.</span>
+      </mat-error>
+    </mat-form-field>
+<!--    TODO: aqui va el button si es que no funciona abajo-->
+  </mat-card-content>
+</form>
+
+<!--    TODO: Arregla esta vaina-->
+<div class="specialties-container">
+  <h1><mat-icon>brush</mat-icon>Artistas más seguidos</h1>
+  <mat-grid-list cols="4" rowHeight="4:8">
+      <mat-card class="specialty-cards" *ngFor="let specialtyElement of specialties">
+        <img mat-card-image src="https://picsum.photos/id/184/800" alt="Specialty Photo">
+        <mat-card-content>
+          <mat-card-title style="font-size: medium">{{specialtyElement}}</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+  </mat-grid-list>
+</div>
+
+<mat-card-actions>
+  <button mat-raised-button
+          routerLink="/home"
+          routerLinkActive="active"
+          color="warn" type="submit" [disabled]="loginForm.invalid">
+    Guardar cambios
+  </button>
+</mat-card-actions>
+

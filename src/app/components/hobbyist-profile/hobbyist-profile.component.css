@@ -1,0 +1,48 @@
+.shape {
+  height: 60vh;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(203, 144, 40, 1) 0%, rgba(255, 0, 0, 1) 100%);
+  stroke: none;
+  position: relative;
+  top: 0;
+}
+.profile-card{
+  width: 100%;
+  box-shadow: none;
+  position: absolute;
+  background: transparent;
+  top: 0;
+}
+.name-profile{
+  position: absolute;
+  top: 8rem;
+  left: 46%;
+  z-index: 500;
+  color: white;
+}
+.mat-card-avatar{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 10rem;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.example-header-image {
+  background-image: url('https://picsum.photos/id/1005/5760/3840');
+  background-size: cover;
+}
+mat-card-content{
+  width: 80%;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.specialty-cards{
+  max-width: 250px;
+}
+mat-card-content{
+  text-align: center;
+}
