@@ -14,6 +14,7 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <mat-card-content>
+  <h1>Tus datos</h1>
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" type="email" placeholder="Ex.username@example.com" required>
@@ -38,19 +39,20 @@
 
 <!--    TODO: Arregla esta vaina-->
 <div class="specialties-container">
-  <h1><mat-icon>brush</mat-icon>Artistas más seguidos</h1>
-  <mat-grid-list cols="4" rowHeight="4:8">
-      <mat-card class="specialty-cards" *ngFor="let specialtyElement of specialties">
-        <img mat-card-image src="https://picsum.photos/id/184/800" alt="Specialty Photo">
-        <mat-card-content>
-          <mat-card-title style="font-size: medium">{{specialtyElement}}</mat-card-title>
-        </mat-card-content>
-      </mat-card>
-
+<h1>Tus artes favoritas</h1>
+  <mat-grid-list class="specialty-cards" cols="4" rowHeight="6:6">
+    <mat-grid-tile *ngFor="let specialtyElement of specialties">
+      <mat-card class="specialty-card">
+          <img mat-card-image src="https://picsum.photos/id/1002/800" alt="Specialty Photo">
+          <mat-card-content>
+            <mat-card-title style="font-size: medium">{{specialtyElement}}</mat-card-title>
+          </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>
 
-<mat-card-actions>
+<mat-card-actions class="save-container">
   <button mat-raised-button
           routerLink="/home"
           routerLinkActive="active"

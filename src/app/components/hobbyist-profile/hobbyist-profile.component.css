@@ -5,6 +5,7 @@
   stroke: none;
   position: relative;
   top: 0;
+
 }
 .profile-card{
   width: 100%;
@@ -21,6 +22,7 @@
   color: white;
 }
 .mat-card-avatar{
+
   width: 200px;
   height: 200px;
   position: absolute;
@@ -40,9 +42,26 @@ mat-card-content{
   display: flex;
   flex-direction: column;
 }
-.specialty-cards{
-  max-width: 250px;
+.specialties-container{
+  margin: 80px 8%;
+}
+.specialty-card{
+
+  max-width: 200px;
+}
+.specialty-card:hover{
+  cursor: pointer;
 }
 mat-card-content{
   text-align: center;
+}
+h1{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.save-container{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
 }
