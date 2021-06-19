@@ -1,0 +1,87 @@
+<mat-card class="main-container">
+  <mat-card-header>
+    <mat-card-title class="form-tittle">Crear Evento</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="form-container">
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-card-title class="form-title" style="font-size: small">Título: </mat-card-title>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Nombre del Evento</mat-label>
+          <input matInput formControlName="title" type="text" placeholder="Ejemplo. Nuevo Evento" required>
+          <mat-error *ngIf="eventForm.controls.title.touched && eventForm.controls.title.invalid">
+            <span *ngIf="eventForm.controls.title.errors?.required">El título es requerido.</span>
+            <span *ngIf="eventForm.controls.title.errors?.maxlength">El título excede los 50 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-title class="form-description" style="font-size: small">Descripción: </mat-card-title>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Esta evento presenta...</mat-label>
+          <textarea matInput formControlName="description" placeholder="Ex.username@example.com" required></textarea>
+          <mat-error *ngIf="eventForm.controls.description.touched && eventForm.controls.description.invalid">
+            <span *ngIf="eventForm.controls.description.errors?.required">La descripción es requerida.</span>
+            <span *ngIf="eventForm.controls.description.errors?.maxlength">La descripción excede los 300 caracteres.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-title class="form-date-title" style="font-size: small">Fecha Inicial del Evento</mat-card-title>
+        <mat-form-field appearance="fill" class="form-date" floatLabel="always">
+          <mat-label>Fecha Inicial</mat-label>
+          <input matInput formControlName="date" type="date" placeholder="50" required style="text-align: center">
+          <mat-error *ngIf="eventForm.controls.dateStart.touched && eventForm.controls.dateStart.invalid">
+            <span *ngIf="eventForm.controls.dateStart.errors?.required">La fecha es requerida.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-title class="form-date-title" style="font-size: small">Fecha Final del Evento</mat-card-title>
+        <mat-form-field appearance="fill" class="form-date" floatLabel="always">
+          <mat-label>Fecha Final</mat-label>
+          <input matInput formControlName="date" type="date" placeholder="50" required style="text-align: center">
+          <mat-error *ngIf="eventForm.controls.dateEnd.touched && eventForm.controls.dateEnd.invalid">
+            <span *ngIf="eventForm.controls.dateStart.errors?.required">La fecha es requerida.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-title class="form-cost-title" style="font-size: small">Costo</mat-card-title>
+        <mat-form-field appearance="fill" class="form-cost" floatLabel="always">
+          <mat-label>Costo S/.</mat-label>
+          <input matInput formControlName="cost" type="number" placeholder="50" required style="text-align: right">
+          <span matPrefix>$&nbsp;</span>
+          <mat-error *ngIf="eventForm.controls.cost.touched && eventForm.controls.cost.invalid">
+            <span *ngIf="eventForm.controls.cost.errors?.required">El costo es requerido.</span>
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <!--Botones-->
+      <mat-card-actions>
+        <button mat-stroked-button
+                routerLink="/home"
+                routerLinkActive="active"
+                color="warn" type="submit">
+          Guardar
+        </button>
+        <button mat-raised-button
+                routerLink="/home"
+                routerLinkActive="active"
+                color="warn" type="submit" [disabled]="eventForm.invalid">
+          Publicar
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+
+  <!--<label for="singleFile">Upload file</label>
+  <br>
+  <input id="singleFile" type="file" [fileUploadInputFor]="fileUploadQueue1" />
+  <mat-file-upload-queue #fileUploadQueue1 [fileAlias]="'file'" [httpUrl]="'http://localhost:8080/jax-rs-jersey-application-sample'">
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue1.files; let i = index"></mat-file-upload>
+  </mat-file-upload-queue>
+
+  <div style="width: 500px;">
+    <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]="'http://localhost:8080/jax-rs-jersey-application-sample'" multiple>
+      <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+  </div>-->
+</mat-card>

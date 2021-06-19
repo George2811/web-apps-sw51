@@ -12,6 +12,7 @@ import {AboutViewComponent} from "./components/about-view/about-view.component";
 import {EventsIdComponent} from "./components/events-id/events-id.component";
 import {NewArtworkFormComponent} from "./components/new-artwork-form/new-artwork-form.component";
 import {HobbyistProfileComponent} from "./components/hobbyist-profile/hobbyist-profile.component";
+import {NewEventFormComponent} from "./components/new-event-form/new-event-form.component";
 //Aqui se agregan las rutas con su respectivo componente
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
 
@@ -27,7 +28,8 @@ const appRoutes:Routes = [
   {path: 'event', component: EventsIdComponent, pathMatch: 'full'},
   {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
   {path: 'artwork-form', component: NewArtworkFormComponent, pathMatch: 'full'},
-  {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'}
+  {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
+  {path: 'event-form', component: NewEventFormComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
