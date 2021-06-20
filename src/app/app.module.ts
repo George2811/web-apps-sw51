@@ -45,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { HobbyistProfileComponent } from './components/hobbyist-profile/hobbyist-profile.component';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
+import { ArtistEventCardComponent } from './components/artist-event-card/artist-event-card.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ArtistProfileComponent } from './components/artist-profile/artist-profi
     NewArtworkFormComponent,
     HobbyistProfileComponent,
     NewEventFormComponent,
-    ArtistProfileComponent
+    ArtistProfileComponent,
+    ArtistEventCardComponent,
   ],
   imports: [
     BrowserModule,

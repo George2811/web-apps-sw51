@@ -1,0 +1,21 @@
+<mat-card class="event-card">
+  <img mat-card-image src="https://picsum.photos/id/184/800" alt="Photo of a Shiba Inu">
+  <div class="event-data">
+    <mat-card-content class="border">
+      <mat-card-title style="font-size: medium" class="border">{{event.title}}</mat-card-title>
+      <button mat-button color="white" class="invitation-btn">
+        <mat-icon>insert_invitation</mat-icon>
+        {{dateToString(event.dateStart)}}  -
+        {{dateToString(event.dateEnd)}}
+      </button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam assumenda autem blanditiis,
+        earum</p>
+    </mat-card-content>
+    <mat-card-actions class="border">
+      <button mat-button color="white" class="button">
+        <mat-icon>attach_money</mat-icon>
+        {{priceArtwork(event.cost)}}</button>
+      <button class="button special-btn" mat-raised-button color="warn" routerLink="/event">Ver más</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

@@ -150,10 +150,25 @@ a{
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
 }
 
 .carousel-item{
   display: block;
+  transition: all 0.4s ease;
+}
+
+.carousel-item-enter{
+  margin-right: -100%;
+  opacity: 0%;
+  transition: all 0.4s ease;
+}
+
+.carousel-item-out{
+  margin-left: -100%;
+  opacity: 0%;
+  transition: all 0.4s ease;
 }
 
 .arrow{
