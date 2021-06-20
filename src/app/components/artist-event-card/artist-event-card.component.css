@@ -1,0 +1,42 @@
+.event-card{
+  max-width: 1000px;
+  max-height: 300px;
+  display: flex;
+  padding: 0;
+}
+
+.event-card>img{
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.event-data{
+  display: flex;
+  flex-direction: column;
+  width: 50% !important;
+  margin: 30px 20px;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.event-data>mat-card-actions{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.button{
+  width: 110px;
+  margin-left: 0;
+  font-size: 1.2em;
+}
+
+.special-btn{
+  background: radial-gradient(circle, rgba(203, 144, 40, 1) 0%, rgba(221, 0, 0, 1) 100%);
+}
+
+.invitation-btn{
+  margin-left: -10px;
+}

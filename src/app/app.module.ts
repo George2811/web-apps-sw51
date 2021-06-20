@@ -43,6 +43,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
+import { ArtistEventCardComponent } from './components/artist-event-card/artist-event-card.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { ArtistProfileComponent } from './components/artist-profile/artist-profi
     EventsIdComponent,
     NewArtworkFormComponent,
     ArtistProfileComponent,
+    ArtistEventCardComponent,
   ],
   imports: [
     BrowserModule,
