@@ -1,0 +1,35 @@
+<div class="main-div">
+<mat-card class="main-content">
+
+  <mat-card-header>
+    <mat-card-title class="form-tittle">Confirma tu asistencia</mat-card-title>
+  </mat-card-header>
+
+  <mat-form-field appearance="fill" class="form-date" floatLabel="always">
+    <mat-label>Fecha Final</mat-label>
+    <input matInput formControlName="dateEnd" type="date" placeholder="50" required style="text-align: center">
+    <mat-error *ngIf="assistanceForm.controls.assistanceDate.touched && assistanceForm.controls.assistanceDate.invalid">
+      <span *ngIf="assistanceForm.controls.assistanceDate.errors?.required">La fecha es requerida.</span>
+    </mat-error>
+  </mat-form-field>
+
+
+  <!--Botones-->
+  <mat-card-actions>
+    <button mat-stroked-button
+            color="warn" type="submit"
+    (click)="back()">
+      Volver
+    </button>
+    <button mat-raised-button
+            routerLink=""
+            routerLinkActive="active"
+            color="warn" type="submit" [disabled]="assistanceForm.invalid" >
+      Asistir
+    </button>
+  </mat-card-actions>
+
+</mat-card>
+</div>
+
+

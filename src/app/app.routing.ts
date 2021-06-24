@@ -14,6 +14,7 @@ import {NewArtworkFormComponent} from "./components/new-artwork-form/new-artwork
 import {HobbyistProfileComponent} from "./components/hobbyist-profile/hobbyist-profile.component";
 import {NewEventFormComponent} from "./components/new-event-form/new-event-form.component";
 import {ArtistProfileComponent} from "./components/artist-profile/artist-profile.component";
+import {AssistanceFormComponent} from "./components/assistance-form/assistance-form.component";
 
 //Aqui se agregan las rutas con su respectivo componente
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
@@ -31,7 +32,8 @@ const appRoutes:Routes = [
   {path: 'artwork/new', component: NewArtworkFormComponent, pathMatch: 'full'},
   {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
   {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'},
-  {path: 'artist-profile', component: ArtistProfileComponent, pathMatch: 'full'}
+  {path: 'artist-profile', component: ArtistProfileComponent, pathMatch: 'full'},
+  {path: 'assistance', component:AssistanceFormComponent, pathMatch:'full'}
 ];
 
 @NgModule({
