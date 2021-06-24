@@ -5,11 +5,58 @@
             style="stroke: none; fill: #fff;"></path>
     </svg>
   </div>
-  <mat-card class="top-content background-transparent" [style.marginTop.px]="63">
+
+  <div class="edit-actions border-prueba">
+    <div *ngIf="isArtist" class="edit-image">
+      <button mat-mini-fab color="white" (click)="showImageEditOption($event)" class="">
+        <mat-icon><i class="fas fa-pencil-alt"></i></mat-icon>
+      </button>
+      <div class="edit-image-options" id="image-options">
+        <app-open-file-dialog requiredFileType="image/png, image/jpeg, image/jpg"
+                              (sendImageEvent)="setImageUrl($event)"></app-open-file-dialog>
+        <button mat-mini-fab color="white" (click)="removeImage()" class="">
+          <mat-icon><i class="fas fa-trash"></i></mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="edit-contact">
+      <mat-form-field appearance="legacy" id="contact-input-edit" class="edit-contact-input" (click)="FormClick($event)">
+        <mat-label>Input</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <div *ngIf="isArtist" class= "">
+        <button mat-mini-fab color="white" class="" (click)="ShowContactEditForm($event)">
+          <mat-icon><i class="fas fa-pencil-alt"></i></mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="edit-social-media">
+      <div *ngIf="isArtist" class="">
+        <button mat-mini-fab color="white" class="">
+          <mat-icon><i class="fas fa-pencil-alt"></i></mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="edit-phrase">
+      <mat-form-field appearance="legacy" id="phrase-input-edit" class="edit-phrase-input" (click)="FormClick($event)">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div *ngIf="isArtist" class="">
+        <button mat-mini-fab color="white" (click)="ShowPhraseEditForm($event)">
+          <mat-icon><i class="fas fa-pencil-alt"></i></mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <mat-card class="top-content background-transparent" style="margin-top:63px;">
     <mat-card-content class="artist-image-container text-white">
       <mat-card-title>Artist Name</mat-card-title>
-      <img mat-list-icon width="200" height="200" class="image-profile" src="https://picsum.photos/id/1011/300"
-           alt="ArtistaImg">
+      <div>
+        <img mat-list-icon width="200" height="200" class="image-profile" [src]="imageUrl"
+             alt="ArtistaImg">
+      </div>
     </mat-card-content>
     <mat-card-content class="artist-top-data">
       <div>
@@ -64,7 +111,7 @@
                 (click)="backShowingElement(this.ArtworksCarousel, 'art')">
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
-        <mat-list-item class="carousel-item carousel-item-enter art" *ngFor="let artwork of this.ArtworksCarousel.Showing">
+        <mat-list-item class="carousel-item art" *ngFor="let artwork of this.ArtworksCarousel.Showing">
           <app-cards [artwork]="artwork"></app-cards>
         </mat-list-item>
         <button mat-icon-button class="background-transparent arrow text-white"
@@ -76,8 +123,7 @@
   </mat-card>
 </section>
 
-<section class=" events-section
-        ">
+<section class="events-section">
   <mat-card class="my-events background-transparent">
     <mat-card-title class="title">Futuros eventos</mat-card-title>
     <mat-card-content>
@@ -86,7 +132,7 @@
                 (click)="backShowingElement(this.EventsCarousel, 'eve')">
           <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
-        <mat-list-item class="carousel-item carousel-item-enter eve" *ngFor="let event of this.EventsCarousel.Showing">
+        <mat-list-item class="carousel-item hide-c-item eve" *ngFor="let event of this.EventsCarousel.Showing">
           <app-artist-event-card [event]="event"></app-artist-event-card>
         </mat-list-item>
         <button mat-icon-button class="background-transparent arrow"

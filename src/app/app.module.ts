@@ -46,6 +46,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { HobbyistProfileComponent } from './components/hobbyist-profile/hobbyist-profile.component';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
 import { ArtistEventCardComponent } from './components/artist-event-card/artist-event-card.component';
+import { OpenFileDialogComponent } from './components/open-file-dialog/open-file-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ArtistEventCardComponent } from './components/artist-event-card/artist-
     NewEventFormComponent,
     ArtistProfileComponent,
     ArtistEventCardComponent,
+    OpenFileDialogComponent,
   ],
   imports: [
     BrowserModule,

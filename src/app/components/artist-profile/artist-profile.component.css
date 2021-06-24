@@ -34,6 +34,11 @@ a{
   font-weight: 560;
 }
 
+.artist-image-container>div {
+  display: flex;
+  flex-direction: column;
+}
+
 .artist-top-data{
   display: flex;
   flex-direction: row;
@@ -149,26 +154,43 @@ a{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  max-width: 100%;
   margin-top: 50px !important;
   margin-bottom: 50px !important;
+  overflow-x: hidden;
 }
 
 .carousel-item{
   display: block;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
-.carousel-item-enter{
+.carousel-item-enter-right{
   margin-right: -100%;
   opacity: 0%;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
-.carousel-item-out{
+.carousel-item-enter-left{
   margin-left: -100%;
   opacity: 0%;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
+}
+
+.carousel-item-out-left{
+  margin-left: -100%;
+  opacity: 0%;
+  transition: all 0.3s ease;
+}
+
+.carousel-item-out-right{
+  margin-right: -100%;
+  opacity: 0%;
+  transition: all 0.3s ease;
+}
+
+.hide-c-item{
+  opacity: 0%;
 }
 
 .arrow{
@@ -184,4 +206,135 @@ a{
   height: 100px;
   font-size: 9em;
   opacity: 85%;
+}
+
+mat-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border-prueba{
+  border: 2px solid blue;
+}
+
+.d-flex{
+  display: flex;
+}
+
+d-block{
+  display: block;
+}
+
+d-in-line{
+  display: inline;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.justify-space-between{
+  justify-content: space-between;
+}
+
+.justify-space-around{
+  justify-content: space-around;
+}
+
+.justify-space-evenly{
+  justify-content: space-evenly;
+}
+
+.justify-self-center{
+  justify-self: center;
+}
+
+.align-items-center{
+  align-items: center;
+}
+
+.my-auto{
+  margin: auto 0;
+}
+
+.pos-relative{
+  position: relative;
+}
+
+.ml--130{
+  margin-left: -130px;
+}
+
+.edit-actions{
+  display: flex;
+  top:-150px;
+  z-index: 5;
+  position: relative;
+}
+
+.edit-image{
+  margin-left: 290px;
+}
+
+.width-150{
+  width: 50px !important;
+}
+
+.edit-image-options{
+  opacity: 0%;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+}
+.image-options-show{
+  opacity: 100%;
+  transition: all 0.3s ease;
+}
+
+.edit-contact{
+  display: flex;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+
+.edit-contact-input{
+  opacity: 0%;
+  transition: all 0.3s ease;
+}
+
+.edit-contact-input-show{
+  opacity: 100%;
+  transition: all 0.3s ease;
+}
+
+.edit-social-media{
+  margin-left: 52px;
+  margin-top: -40px;
+}
+
+.edit-social-input{
+  opacity: 0%;
+  transition: all 0.3s ease;
+}
+
+.edit-social-input-show{
+  opacity: 100%;
+  transition: all 0.3s ease;
+}
+
+.edit-phrase{
+  margin-top: -150px;
+  display: flex;
+  margin-left: 70px;
+}
+
+.edit-phrase-input{
+  opacity: 0%;
+  transition: all 0.3s ease;
+}
+
+.edit-phrase-input-show{
+  opacity: 100%;
+  transition: all 0.3s ease;
 }

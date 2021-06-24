@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {max} from "rxjs/operators";
+import {ArtistProfileService} from "../../services/artist-profile.service";
 
 @Component({
   selector: 'app-artist-profile',
@@ -7,8 +8,12 @@ import {max} from "rxjs/operators";
   styleUrls: ['./artist-profile.component.css']
 })
 export class ArtistProfileComponent implements OnInit {
+  isArtist: boolean = true;
   followAction: string = 'Seguir';
   followBtn: HTMLElement | null = null;
+  imageUrl = "https://picsum.photos/id/1011/300";
+  showContactEdit: boolean = false;
+  showPhraseEdit: boolean = false;
   ArtworksCarousel = {
     Name: 'artworks',
     Showing: <any>[],
@@ -106,13 +111,14 @@ export class ArtistProfileComponent implements OnInit {
     Index: 1
   }
 
-  constructor() {
+  constructor(private artistProfileService: ArtistProfileService) {
   }
 
   ngOnInit(): void {
     this.followBtn = document.getElementById('followBtn');
-    this.updateCarousel(this.EventsCarousel, 'eve');
-    this.updateCarousel(this.ArtworksCarousel, 'art');
+    this.updateCarousel(this.EventsCarousel, 'eve', 'right');
+    this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
+    this.isArtist = this.artistProfileService.getArtist();
   }
 
   updateFollowState() {
@@ -125,25 +131,35 @@ export class ArtistProfileComponent implements OnInit {
     }
   }
 
-  updateCarousel(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
+  updateCarousel(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string, direction: string) {
     let currentItems = document.getElementsByClassName(_class);
     for (let i = 0; i < currentItems.length; i++) {
-      currentItems[i].classList.add('carousel-item-out');
+      currentItems[i].classList.add(`carousel-item-out-${direction === 'right' ? 'left' : 'right'}`);
     }
 
     setTimeout(function () {
       carousel.Showing = [];
       for (let i = 0; i < carousel.cardsShowing; i++) {
-        carousel.Showing.push(carousel.All[(carousel.Index - 1) * carousel.cardsShowing + i])
+        let item = carousel.All[(carousel.Index - 1) * carousel.cardsShowing + i];
+        if (item)
+          carousel.Showing.push(item);
       }
-    }, 400);
+      currentItems = document.getElementsByClassName(_class);
+    }, 300);
+
+    setTimeout(function () {
+      for (let i = 0; i < currentItems.length; i++) {
+        currentItems[i].classList.add(`carousel-item-enter-${direction === 'right' ? 'right' : 'left'}`);
+      }
+    }, 300);
 
     setTimeout(function () {
       currentItems = document.getElementsByClassName(_class);
       for (let i = 0; i < currentItems.length; i++) {
-        currentItems[i].classList.remove('carousel-item-enter');
+        currentItems[i].classList.remove(`carousel-item-enter-${direction === 'right' ? 'right' : 'left'}`);
+        currentItems[i].classList.remove("hide-c-item");
       }
-    }, 500);
+    }, 400);
   }
 
   nextShowingElement(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
@@ -156,10 +172,11 @@ export class ArtistProfileComponent implements OnInit {
       carousel.Index++;
       if (carousel.Index > maxIndex)
         carousel.Index = maxIndex;
-      this.updateCarousel(carousel, _class);
     }
-    //console.log('maxIndex: ' + maxIndex);
-    //console.log('index: ' + carousel.Index);
+    else if (carousel.Index === maxIndex)
+      carousel.Index = 1;
+
+    this.updateCarousel(carousel, _class, 'right');
   }
 
   backShowingElement(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
@@ -167,7 +184,50 @@ export class ArtistProfileComponent implements OnInit {
       carousel.Index--;
       if (carousel.Index <= 0)
         carousel.Index = 1;
-      this.updateCarousel(carousel, _class);
     }
+
+    else if (carousel.Index === 1) {
+      let maxIndex = carousel.All.length / carousel.cardsShowing;
+      if (maxIndex > Math.trunc(maxIndex)) {
+        maxIndex = Math.trunc(maxIndex);
+        maxIndex++;
+      }
+      carousel.Index = maxIndex;
+    }
+
+    this.updateCarousel(carousel, _class, 'left');
+  }
+
+  @HostListener('document:click', ['$event']) onDocumentClick(event: any) {
+    document.getElementById('image-options')?.classList.remove('image-options-show');
+    document.getElementById('contact-input-edit')?.classList.remove('edit-social-input-show');
+    document.getElementById('phrase-input-edit')?.classList.remove('edit-phrase-input-show');
+  }
+
+  setImageUrl(url: any){
+    this.imageUrl = url;
+  }
+
+  removeImage(){
+    this.imageUrl = "https://picsum.photos/id/1011/300";
+  }
+
+  showImageEditOption(event: any) {
+    document.getElementById('image-options')?.classList.add('image-options-show');
+    event.stopPropagation();
+  }
+
+  ShowContactEditForm(event: any){
+    document.getElementById('contact-input-edit')?.classList.add('edit-social-input-show');
+    event.stopPropagation();
+  }
+
+  ShowPhraseEditForm(event: any){
+    document.getElementById('phrase-input-edit')?.classList.add('edit-phrase-input-show');
+    event.stopPropagation();
+  }
+
+  FormClick(event: any){
+    event.stopPropagation();
   }
 }
