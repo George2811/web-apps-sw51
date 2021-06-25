@@ -1,3 +1,7 @@
+.first-sections{
+  height: 100vh;
+}
+
 a{
   text-decoration: none;
   color: white;
@@ -270,7 +274,6 @@ d-in-line{
   display: flex;
   top:-150px;
   z-index: 5;
-  position: relative;
 }
 
 .edit-image{
@@ -337,4 +340,25 @@ d-in-line{
 .edit-phrase-input-show{
   opacity: 100%;
   transition: all 0.3s ease;
+}
+
+.title-section-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-button{
+  font-weight: 500;
+  width: 110px;
+  height: 40px;
+  min-height: 30px;
+  background: radial-gradient(circle, rgba(203, 144, 40, 1) 0%, rgb(194, 0, 0) 100%);
+}
+
+.section-button-white{
+  font-weight: 500;
+  width: 110px;
+  height: 40px;
+  min-height: 30px;
+  background-color: white;
 }

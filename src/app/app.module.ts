@@ -47,6 +47,9 @@ import { HobbyistProfileComponent } from './components/hobbyist-profile/hobbyist
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
 import { ArtistEventCardComponent } from './components/artist-event-card/artist-event-card.component';
 import { OpenFileDialogComponent } from './components/open-file-dialog/open-file-dialog.component';
+import { AssistanceFormComponent } from './components/assistance-form/assistance-form.component';
+import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
+import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,9 @@ import { OpenFileDialogComponent } from './components/open-file-dialog/open-file
     ArtistProfileComponent,
     ArtistEventCardComponent,
     OpenFileDialogComponent,
+    AssistanceFormComponent,
+    RecoverPasswordFormComponent,
+    RecoverPasswordDialogComponent,
   ],
   imports: [
     BrowserModule,
