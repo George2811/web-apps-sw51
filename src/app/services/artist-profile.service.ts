@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ArtistProfileService {
-  isArtist: boolean = true;
+  isArtist: boolean = false;
   constructor() { }
 
   setArtist(isArtist: boolean) {

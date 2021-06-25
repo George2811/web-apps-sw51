@@ -7,7 +7,7 @@ import {Router, ActivatedRoute} from "@angular/router";
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  viewsNotAllowed : string[] = ['/','/about','/login', '/register'];
+  viewsNotAllowed : string[] = ['/','/about','/login', '/register', '/recover'];
   constructor(private router: Router) { }
 
   ngOnInit(): void {

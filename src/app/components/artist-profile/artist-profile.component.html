@@ -107,7 +107,9 @@
   <mat-card class="my-artworks background-transparent">
     <div class="title-section-container">
       <mat-card-title class="title text-white">Mis obras de arte</mat-card-title>
-      <button mat-stroked-button color="warn" class="section-button-white">Agregar +</button>
+      <button *ngIf="isArtist" mat-stroked-button color="warn" class="section-button-white" routerLink="/artwork/new"
+              routerLinkActive="active">Agregar +
+      </button>
     </div>
     <mat-card-content>
       <div class="carousel-container">
@@ -131,7 +133,8 @@
   <mat-card class="my-events background-transparent">
     <div class="title-section-container">
       <mat-card-title class="title">Futuros eventos</mat-card-title>
-      <button mat-button class="section-button text-white">Agregar +</button>
+      <button *ngIf="isArtist" mat-button class="section-button text-white" routerLink="/event/new" routerLinkActive="active">Agregar +
+      </button>
     </div>
     <mat-card-content>
       <div class="carousel-container">
