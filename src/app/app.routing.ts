@@ -16,6 +16,7 @@ import {NewEventFormComponent} from "./components/new-event-form/new-event-form.
 import {ArtistProfileComponent} from "./components/artist-profile/artist-profile.component";
 import {AssistanceFormComponent} from "./components/assistance-form/assistance-form.component";
 import {RecoverPasswordFormComponent} from "./components/recover-password-form/recover-password-form.component";
+import {FavoriteArtworksComponent} from "./components/favorite-artworks/favorite-artworks.component";
 
 //Aqui se agregan las rutas con su respectivo componente
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
@@ -30,6 +31,7 @@ const appRoutes:Routes = [
   {path: 'artwork', component: ArtworkIdComponent, pathMatch: 'full'},
   {path: 'event', component: EventsIdComponent, pathMatch: 'full'},
   {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
+  {path: 'favorites', component: FavoriteArtworksComponent, pathMatch: 'full'},
   {path: 'artwork/new', component: NewArtworkFormComponent, pathMatch: 'full'},
   {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
   {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'},

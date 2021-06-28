@@ -50,6 +50,7 @@ import { OpenFileDialogComponent } from './components/open-file-dialog/open-file
 import { AssistanceFormComponent } from './components/assistance-form/assistance-form.component';
 import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
 import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
+import { FavoriteArtworksComponent } from './components/favorite-artworks/favorite-artworks.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { RecoverPasswordDialogComponent } from './components/recover-password-di
     AssistanceFormComponent,
     RecoverPasswordFormComponent,
     RecoverPasswordDialogComponent,
+    FavoriteArtworksComponent,
   ],
   imports: [
     BrowserModule,

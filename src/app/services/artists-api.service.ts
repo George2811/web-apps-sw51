@@ -3,6 +3,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Artist} from "../models/artist";
 import {catchError, retry} from "rxjs/operators";
+import {Pageable} from "../models/pageable";
+import {J} from "@angular/cdk/keycodes";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class ArtistsApiService {
 
   basePath = 'https://perustars-api.herokuapp.com/api/artists';
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
-
+  //pageable: Pageable = new Pageable();
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse): Observable<never>{
@@ -32,6 +34,7 @@ export class ArtistsApiService {
   }
 
   getAllArtist(): Observable<Artist>{
+    //this.http.request("GET", this.basePath, {body: this.pageable});
     return  this.http.get<Artist>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
