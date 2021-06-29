@@ -8,9 +8,11 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class ToolbarComponent implements OnInit {
   viewsNotAllowed : string[] = ['/','/about','/login', '/register', '/recover'];
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+
   }
   inSession(): boolean{
     for(const view of this.viewsNotAllowed){

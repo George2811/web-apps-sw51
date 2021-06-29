@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-login-form',
@@ -8,8 +11,17 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
   strongPasswordPattern: string = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private router:Router,
+              private authService: AuthService,
+              private tokenStorageService: TokenStorageService)
+
+  {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email ]],
       password: [null, [Validators.required, Validators.minLength(8), Validators.pattern(this.strongPasswordPattern)]]
@@ -17,12 +29,40 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.tokenStorageService.getToken()){
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorageService.getUser().roles;
+    }
+  }
+  reloadPage():void{
+    window.location.reload();
   }
   onSubmit(): void {
     if (this.loginForm.invalid) {
       return;
     }
     console.log(this.loginForm.value);
+    this.authService.login(this.loginForm.value).subscribe(
+      data=>{
+           console.log(data);
+           this.tokenStorageService.saveToken(data.token);
+           this.tokenStorageService.saveUser(data);
+           this.isLoginFailed = false;
+           this.isLoggedIn = true;
+           this.roles = this.tokenStorageService.getUser().roles;
+           return this.router.navigate(['/home']).then(()=>{
+             console.log(this.router.url);
+             window.location.reload();
+           });
+      },
+      error => {
+        console.log(error.error.errorMessage);
+        this.errorMessage = error.error.errorMessage;
+        this.isLoginFailed = true;
+        this.isLoginFailed = false;
+      }
+      );
   }
-
 }
+
+

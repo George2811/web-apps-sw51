@@ -50,6 +50,7 @@ import { OpenFileDialogComponent } from './components/open-file-dialog/open-file
 import { AssistanceFormComponent } from './components/assistance-form/assistance-form.component';
 import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
 import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
+import {authInterceptorProviders} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -103,7 +104,7 @@ import { RecoverPasswordDialogComponent } from './components/recover-password-di
     LayoutModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
