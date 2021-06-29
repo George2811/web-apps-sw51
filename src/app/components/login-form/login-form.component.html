@@ -8,10 +8,10 @@
     <mat-card-content>
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>E-mail</mat-label>
-        <input matInput formControlName="email" type="email" placeholder="Ex.username@example.com" required>
-        <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
-          <span *ngIf="loginForm.controls.email.errors?.required">El e-mail es requerido.</span>
-          <span *ngIf="loginForm.controls.email.errors?.email">El e-mail debe ser válido.</span>
+        <input matInput formControlName="username" type="email" placeholder="Ex.username@example.com" required>
+        <mat-error *ngIf="loginForm.controls.username.touched && loginForm.controls.username.invalid">
+          <span *ngIf="loginForm.controls.username.errors?.required">El e-mail es requerido.</span>
+          <span *ngIf="loginForm.controls.username.errors?.email">El e-mail debe ser válido.</span>
         </mat-error>
       </mat-form-field>
 
