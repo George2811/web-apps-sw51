@@ -61,6 +61,13 @@ export class ArtworksApiService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getArtworkNameById(id:number):Observable<string>{
+    return this.http.get<string>(`${this.basePath}/${id}/title`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 
-
+  getArtworkCostById(id:number):Observable<number>{
+    return this.http.get<number>(`${this.basePath}/${id}/cost`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }

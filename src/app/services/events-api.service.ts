@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {Event} from "../models/event";
+import {DatePipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,18 @@ export class EventsApiService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  getEventTitleById(id: number):Observable<string>{
+    return this.http.get<string>(`${this.basePath}/${id}/title`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 
+  getEventCostById(id: number):Observable<number>{
+    return this.http.get<number>(`${this.basePath}/${id}/cost`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 
-
+  getDateStartById(id: number):Observable<string>{
+    return this.http.get<string>(`${this.basePath}/${id}/dateStart`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }

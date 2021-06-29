@@ -32,7 +32,7 @@ export class ArtistsApiService {
   }
 
   getAllArtist(): Observable<Artist>{
-    return  this.http.get<Artist>(this.basePath)
+    return this.http.get<Artist>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -45,5 +45,6 @@ export class ArtistsApiService {
     return  this.http.delete<Artist>(`${this.basePath}/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
 
 }

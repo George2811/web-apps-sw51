@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ArtworksApiService} from "../../services/artworks-api.service";
+import {ArtistsApiService} from "../../services/artists-api.service";
+import {EventsApiService} from "../../services/events-api.service";
+import {Artwork} from "../../models/artwork";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-homepage',
@@ -6,91 +12,94 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  artworkPath = 'https://perustars-api.herokuapp.com/api/artworks';
+  httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   names: string[] = ['person1','person1','person1','person1','person1','person1'];
   value = '';
   artworks: Object[] = [
     {
-      name: 'Vacation Itinerary',
-      cost: 801,
+      name: this.artworkService.getArtworkNameById(1),
+      cost: this.artworkService.getArtworkCostById(1)
     },
     {
-      name: 'Kitchen Remodel',
-      cost: 261.6
+      name: this.artworkService.getArtworkNameById(2),
+      cost: this.artworkService.getArtworkCostById(2)
     },
     {
-      name: 'Kitchen Remodel',
-      cost: 494
+      name: this.artworkService.getArtworkNameById(3),
+      cost: this.artworkService.getArtworkCostById(3)
     },
     {
-      name: 'Kitchen Remodel',
-      cost: 0.00,
+      name: this.artworkService.getArtworkNameById(4),
+      cost: this.artworkService.getArtworkCostById(4)
     },
     {
-      name: 'Kitchen Remodel',
-      cost: 50.5
+      name: this.artworkService.getArtworkNameById(5),
+      cost: this.artworkService.getArtworkCostById(5)
     },
     {
-      name: 'Kitchen Remodel',
-      cost: 70.5
+      name: this.artworkService.getArtworkNameById(6),
+      cost: this.artworkService.getArtworkCostById(6)
     },
     {
-      name: 'Kitchen Example',
-      cost: 40.5
+      name: this.artworkService.getArtworkNameById(7),
+      cost: this.artworkService.getArtworkCostById(7)
     },
     {
-      name: 'Last Example',
-      cost: 40.5
+      name: this.artworkService.getArtworkNameById(8),
+      cost: this.artworkService.getArtworkCostById(8)
     }
   ];
+
   events: Object[] = [
     {
-      title: 'event1 example',
-      dateStart: new Date('06/10/21'),
+      title: this.eventsService.getEventTitleById(1),
+      dateStart: this.eventsService.getDateStartById(1),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(1)
     },
     {
-      title: 'event2 example',
+      title: this.eventsService.getEventTitleById(2),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(2)
     },
     {
-      title: 'event3 example',
+      title: this.eventsService.getEventTitleById(3),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(3)
     },
     {
-      title: 'event4 example',
+      title: this.eventsService.getEventTitleById(4),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 0
+      cost: this.eventsService.getEventCostById(4)
     },
     {
-      title: 'event5 example',
+      title: this.eventsService.getEventTitleById(5),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(5)
     },
     {
-      title: 'event6 example',
+      title: this.eventsService.getEventTitleById(6),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(6)
     },
     {
-      title: 'event7 example',
+      title: this.eventsService.getEventTitleById(7),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(7)
     },
     {
-      title: 'event8 example',
+      title: this.eventsService.getEventTitleById(8),
       dateStart: new Date('06/10/21'),
       dateEnd: new Date('06/15/21'),
-      cost: 50.6
+      cost: this.eventsService.getEventCostById(8)
     }
   ];
 
@@ -144,9 +153,19 @@ export class HomepageComponent implements OnInit {
       followers: 210
     }
   ];
-  constructor() { }
+
+  constructor(private artworkService: ArtworksApiService, private artistService: ArtistsApiService,
+              private eventsService : EventsApiService) { }
 
   ngOnInit(): void {
+    // this.artworks;
+    this.artworkService.getAllArtwork();
+      //.subscribe((data: Artwork[]) => {this.artworks=data;
+        //console.log(`artworks: ${this.artworks}`);});
+    this.artistService.getAllArtist();
+      //.subscribe((data: any[]) => {this.artists=data;
+        //console.log(`artists: ${this.artists}`);});
+    this.eventsService.getAllEvent();
   }
 
 }

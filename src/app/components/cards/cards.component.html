@@ -3,8 +3,7 @@
   <mat-card-content>
     <mat-card-title style="font-size: medium">{{artwork.name}}</mat-card-title>
     <p style="font-size: small">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit elit.
-      Dignissimos dolorem minima minus siu.
+      {{artwork.description}}
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -46,7 +45,7 @@
       {{artist.numArtworks}}
     </button>
     <p style="font-size: small">
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit elitu adipisicing."
+      {{artist.phrase}}
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -55,6 +54,7 @@
     <button *ngIf="!isLogged()" mat-raised-button color="warn" (click)="openDialog()">Conocer</button>
   </mat-card-actions>
 </mat-card>
+
 <div class="artwork-container" *ngIf="false">
 
   <mat-card class="artworks-card" *ngFor="let artwork of artworks">
@@ -67,7 +67,6 @@
     <br>
 
     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-
 
     <mat-card-content>
       <mat-card-title style="font-size: medium">{{artwork}}</mat-card-title>

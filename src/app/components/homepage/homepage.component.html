@@ -32,8 +32,8 @@
     <h2 class="title">Obras</h2>
     <div class="artworks-container container">
       <mat-grid-list class="cards" cols="4" rowHeight="4:6">
-        <mat-grid-tile *ngFor="let artworkElement of artworks">
-          <app-cards style="width: 220px" [artwork]="artworkElement"></app-cards>
+        <mat-grid-tile *ngFor="let artwork of artworks">
+          <app-cards style="width: 220px" [artwork]="artwork"></app-cards>
         </mat-grid-tile>
       </mat-grid-list>
     </div>
