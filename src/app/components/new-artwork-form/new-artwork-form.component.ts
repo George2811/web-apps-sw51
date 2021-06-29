@@ -6,6 +6,7 @@ import{Router,ActivatedRoute} from "@angular/router";
 import {ArtworksApiService} from "../../services/artworks-api.service";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-new-artwork-form',
@@ -23,7 +24,7 @@ export class NewArtworkFormComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   links: string[] = [];
-  constructor(private artworksApi:ArtworksApiService,private formBuilder: FormBuilder) {
+  constructor(private location: Location,private artworksApi:ArtworksApiService,private formBuilder: FormBuilder) {
     this.artworkForm = this.formBuilder.group({
       title: [null, [Validators.required, Validators.maxLength(50)]],
       description: [null, [Validators.required, Validators.maxLength(240) ]],
@@ -34,6 +35,11 @@ export class NewArtworkFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  back(): void{
+    this.location.back();
+  }
+
 
   onSubmit(): void {
     if (this.artworkForm.invalid) {
