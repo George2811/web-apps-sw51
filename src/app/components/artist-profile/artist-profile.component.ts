@@ -1,6 +1,11 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {max} from "rxjs/operators";
 import {ArtistProfileService} from "../../services/artist-profile.service";
+import {ArtworksApiService} from "../../services/artworks-api.service";
+import {EventsApiService} from "../../services/events-api.service";
+import {ArtistsApiService} from "../../services/artists-api.service";
+import { Router, ActivatedRoute } from '@angular/router';
+import {Artist} from "../../models/artist";
 
 @Component({
   selector: 'app-artist-profile',
@@ -8,117 +13,69 @@ import {ArtistProfileService} from "../../services/artist-profile.service";
   styleUrls: ['./artist-profile.component.css']
 })
 export class ArtistProfileComponent implements OnInit {
+  artist: Artist = {} as Artist;
+  artistId!: number;
   isArtist: boolean = true;
   followAction: string = 'Seguir';
   followBtn: HTMLElement | null = null;
   imageUrl = "https://picsum.photos/id/1011/300";
   showContactEdit: boolean = false;
   showPhraseEdit: boolean = false;
+
   ArtworksCarousel = {
     Name: 'artworks',
     Showing: <any>[],
-    All: [
-      {
-        name: 'Vacation Itinerary',
-        cost: 801,
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 261.6
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 494
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 0.00,
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 50.5
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 70.5
-      },
-      {
-        name: 'Kitchen Example',
-        cost: 40.5
-      },
-      {
-        name: 'Last Example',
-        cost: 40.5
-      }
-    ],
+    All: [],
     cardsShowing: 3,
     Index: 1
   };
+
   EventsCarousel = {
     Name: 'events',
     Showing: <any>[],
-    All: [
-      {
-        title: 'Event1 Example',
-        dateStart: new Date('06/10/21'),
-        dateEnd: new Date('06/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event2 Example',
-        dateStart: new Date('07/10/21'),
-        dateEnd: new Date('07/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event3 Example',
-        dateStart: new Date('08/10/21'),
-        dateEnd: new Date('08/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event4 Example',
-        dateStart: new Date('09/10/21'),
-        dateEnd: new Date('09/15/21'),
-        cost: 0
-      },
-      {
-        title: 'Event5 Example',
-        dateStart: new Date('10/10/21'),
-        dateEnd: new Date('10/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event6 Example',
-        dateStart: new Date('11/10/21'),
-        dateEnd: new Date('11/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event7 Example',
-        dateStart: new Date('12/10/21'),
-        dateEnd: new Date('12/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event8 Example',
-        dateStart: new Date('13/10/21'),
-        dateEnd: new Date('13/15/21'),
-        cost: 50.6
-      }
-    ],
+    All: [],
     cardsShowing: 1,
     Index: 1
   }
 
-  constructor(private artistProfileService: ArtistProfileService) {
-  }
+  constructor(private artistProfileService: ArtistProfileService,
+              private activatedrouter: ActivatedRoute, private router: Router,
+              private artworksApiService: ArtworksApiService, private eventsApiService: EventsApiService,
+              private artistsApiService: ArtistsApiService) {}
 
   ngOnInit(): void {
     this.followBtn = document.getElementById('followBtn');
     this.updateCarousel(this.EventsCarousel, 'eve', 'right');
     this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
     this.isArtist = this.artistProfileService.getArtist();
+    this.artistId = Number(this.activatedrouter.params.subscribe( (params: any) => {
+      if (params.id) {
+        const id = params.id;
+        console.log(id);
+        this.retrieveArtist(id);
+        return id;
+      }
+    }));
+  }
+
+  getAllArtworksByArtistId(id: number): void{
+    this.artworksApiService.getAllArtworkByArtistId(id).subscribe((response:any) => {
+      this.ArtworksCarousel.Showing.push(response.data.slice(id,id+3));
+    })
+  }
+
+  getAllEventsByArtistId(id: number): void{
+    this.eventsApiService.getAllEventsByArtistId(id).subscribe((response:any) => {
+      this.EventsCarousel.Showing.push(response.data.slice(id,id+3));
+    })
+  }
+
+  retrieveArtist(id: number): void {
+    this.artistsApiService.getArtistById(id)
+      .subscribe((response:any) => {
+        this.artist = response.data;
+        console.log(this.artist);
+      })
   }
 
   updateFollowState() {

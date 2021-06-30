@@ -13,12 +13,13 @@ export class CardsComponent implements OnInit {
   @Input() event: any;
   @Input() artist: any;
 
-  artworks: string[] = ['Monalisa', 'La noche estrellada', 'El Beso'];
+  //artworks: string[] = ['Monalisa', 'La noche estrellada', 'El Beso'];
 
   constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
   }
+
   priceArtwork(price : number): string{
     if (price !== 0)
       return `${price}`

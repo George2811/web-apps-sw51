@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ArtworksApiService} from "../../services/artworks-api.service";
+import {ArtistsApiService} from "../../services/artists-api.service";
+import {EventsApiService} from "../../services/events-api.service";
 
 @Component({
   selector: 'app-home-preview',
@@ -6,145 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-preview.component.css']
 })
 export class HomePreviewComponent implements OnInit {
-  artworks: Object[] = [
-    {
-      name: 'Vacation Itinerary',
-      cost: 801,
-    },
-    {
-      name: 'Kitchen Remodel',
-      cost: 261.6
-    },
-    {
-      name: 'Kitchen Remodel',
-      cost: 494
-    },
-    {
-      name: 'Kitchen Remodel',
-      cost: 0.00,
-    },
-    {
-      name: 'Kitchen Remodel',
-      cost: 50.5
-    },
-    {
-      name: 'Kitchen Remodel',
-      cost: 70.5
-    },
-    {
-      name: 'Kitchen Example',
-      cost: 40.5
-    },
-    {
-      name: 'Last Example',
-      cost: 40.5
-    }
-  ];
+  artworks: Object[] = [];
 
-  events: Object[] = [
-    {
-      title: 'event1 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    },
-    {
-      title: 'event2 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    },
-    {
-      title: 'event3 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    },
-    {
-      title: 'event4 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 0
-    },
-    {
-      title: 'event5 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    },
-    {
-      title: 'event6 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    },
-    {
-      title: 'event7 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    },
-    {
-      title: 'event8 example',
-      dateStart: new Date('06/10/21'),
-      dateEnd: new Date('06/15/21'),
-      cost: 50.6
-    }
-  ];
+  events: Object[] = [];
 
-  artists: Object[] = [
-    {
-      brandName: 'DaVinci',
-      specialty: 'Escultor',
-      numArtworks: 8,
-      followers: 150
-    },
-    {
-      brandName: 'VanGoh',
-      specialty: 'Pintor',
-      numArtworks: 50,
-      followers: 150
-    },
-    {
-      brandName: 'DaVinci',
-      specialty: 'Escultor',
-      numArtworks: 50,
-      followers: 390
-    },
-    {
-      brandName: 'VanGoh',
-      specialty: 'Pintor',
-      numArtworks: 15,
-      followers: 250
-    },
-    {
-      brandName: 'DaVinci',
-      specialty: 'Escultor',
-      numArtworks: 10,
-      followers: 150
-    },
-    {
-      brandName: 'VanGoh',
-      specialty: 'Pintor',
-      numArtworks: 16,
-      followers: 210
-    },
-    {
-      brandName: 'DaVinci',
-      specialty: 'Escultor',
-      numArtworks: 10,
-      followers: 150
-    },
-    {
-      brandName: 'VanGoh',
-      specialty: 'Pintor',
-      numArtworks: 16,
-      followers: 210
-    }
-  ];
-  constructor() { }
+  artists: Object[] = [];
+
+  constructor(private artworkService: ArtworksApiService, private artistService: ArtistsApiService,
+              private eventsService : EventsApiService) { }
 
   ngOnInit(): void {
+    this.getAllArtworks();
+    this.getAllArtists();
+    this.getAllEvents();
   }
 
+  getAllArtworks(): void {
+    this.artworkService.getAllArtwork().subscribe((response:any) => {
+      this.artworks.push(response.data.slice(0,8));
+    })
+  }
+
+  getAllArtists(): void{
+    this.artistService.getAllArtist().subscribe((response:any) => {
+      this.artists = response.data.slice(0,8);
+    })
+  }
+
+  getAllEvents(): void{
+    this.eventsService.getAllEvent().subscribe((response:any) => {
+      this.events = response.data.slice(0,8);
+    })
+  }
 }

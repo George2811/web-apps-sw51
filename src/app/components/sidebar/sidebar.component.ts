@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ArtistsApiService} from "../../services/artists-api.service";
+import {EventsApiService} from "../../services/events-api.service";
 
 export interface Section {
   name: string;

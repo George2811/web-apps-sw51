@@ -12,6 +12,8 @@ export class ArtistEventCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
   priceArtwork(price : number): string{
     if (price !== 0)
       return `${price}`
