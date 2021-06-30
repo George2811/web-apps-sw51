@@ -43,7 +43,8 @@ export class ArtworksApiService {
 
   getAllArtwork():Observable<Artwork>{
     return  this.http.get<Artwork>(this.basePath)
-      .pipe(retry(2), catchError(this.handleError));
+      //.pipe(retry(2), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   getAllArtworkByArtistId(artistid:number):Observable<Artwork>{

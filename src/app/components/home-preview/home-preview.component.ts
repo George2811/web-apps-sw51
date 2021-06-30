@@ -9,11 +9,11 @@ import {EventsApiService} from "../../services/events-api.service";
   styleUrls: ['./home-preview.component.css']
 })
 export class HomePreviewComponent implements OnInit {
-  artworks: Object[] = [];
+  artworks: Array<any> = [];
 
-  events: Object[] = [];
+  events: Array<any> = [];
 
-  artists: Object[] = [];
+  artists: Array<any> = [];
 
   constructor(private artworkService: ArtworksApiService, private artistService: ArtistsApiService,
               private eventsService : EventsApiService) { }

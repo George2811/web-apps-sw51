@@ -12,7 +12,7 @@ import {DatePipe} from "@angular/common";
 })
 export class HomepageComponent implements OnInit {
 
-  names: string[] = ['person1','person1','person1','person1','person1','person1'];
+  //names: string[] = ['person1','person1','person1','person1','person1','person1'];
   value = '';
   artworks: Object[] = [];
 
@@ -35,8 +35,9 @@ export class HomepageComponent implements OnInit {
 
   getAllArtworks(): void {
     this.artworkService.getAllArtwork().subscribe((response:any) => {
-      this.artworks.push(response.data.slice(0,8));
-    })
+      this.artworks = response;
+      console.log(this.artworks);
+    });
   }
 
   getAllArtists(): void{

@@ -4,6 +4,7 @@ import {Observable, throwError} from "rxjs";
 import {Artist} from "../models/artist";
 import {catchError, retry} from "rxjs/operators";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,7 +34,7 @@ export class ArtistsApiService {
 
   getAllArtist(): Observable<Artist>{
     return this.http.get<Artist>(this.basePath)
-      .pipe(retry(2), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   updateArtist(id:number, item:Artist): Observable<Artist>{
