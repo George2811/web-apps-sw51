@@ -20,14 +20,22 @@ export class HomePreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllArtworks();
-    this.getAllArtists();
-    this.getAllEvents();
+    // this.getAllArtists();
+    // this.getAllEvents();
   }
 
   getAllArtworks(): void {
-    this.artworkService.getAllArtwork().subscribe((response:any) => {
-      this.artworks.push(response.data.slice(0,8));
+    this.artworkService.getAllArtwork().subscribe((response: any) => {
+      for (let i = 0; i < 8; i++) {
+        this.artworks.push({
+          name: response.content[i].title,
+          description: response.content[i].description,
+          cost: response.content[i].cost
+        });
+      }
     })
+    console.log(this.artworks);
+    console.log("CONSUMIDO");
   }
 
   getAllArtists(): void{
