@@ -52,4 +52,11 @@ export class CardsComponent implements OnInit {
     });
   }
 
+  goToArtwork(artistId:number,artworkId: number) {
+    this.router.navigate([`/artist/${artistId}/artwork/${artworkId}`]);
+  }
+
+  goToEvent(artistId:number, eventId:number) {
+    this.router.navigate([`/artist/${artistId}/event/${eventId}`]);
+  }
 }

@@ -33,7 +33,9 @@ export class HomepageComponent implements OnInit {
         this.artworks.push({
           name: response.content[i].title,
           description: response.content[i].description,
-          cost: response.content[i].cost
+          cost: response.content[i].cost,
+          artistId: response.content[i].artistId,
+          id: response.content[i].id
         });
       }
     })
@@ -64,7 +66,9 @@ export class HomepageComponent implements OnInit {
           title: response.content[i].title,
           dateStart: response.content[i].dateStart,
           dateEnd: response.content[i].dateEnd,
-          cost: response.content[i].cost
+          cost: response.content[i].cost,
+          id: response.content[i].id,
+          artistId: response.content[i].artistId
         });
       }
     })

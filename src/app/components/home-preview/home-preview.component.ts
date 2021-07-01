@@ -32,11 +32,12 @@ export class HomePreviewComponent implements OnInit {
         this.artworks.push({
           name: response.content[i].title,
           description: response.content[i].description,
-          cost: response.content[i].cost
+          cost: response.content[i].cost,
         });
       }
+      console.log(response);
     })
-    console.log(this.artworks);
+    //console.log(this.artworks);
     console.log("CONSUMIDO");
   }
 

@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./artwork-id.component.css']
 })
 export class ArtworkIdComponent implements OnInit {
-  artworkData: Artwork = {} as Artwork;
+  artwork: any;
   artworkId!: number
 
 
@@ -33,8 +33,8 @@ export class ArtworkIdComponent implements OnInit {
   retrieveArtwork(artistid: number, id: number): void {
     this.artworksApiService.getArtworkByIdAndArtistId(artistid, id)
       .subscribe((response:any) => {
-        this.artworkData = response.data;
-        console.log(this.artworkData);
+        this.artwork = response.data;
+        console.log(this.artwork);
       })
   }
 
