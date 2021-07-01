@@ -20,13 +20,15 @@ export class HomePreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllArtworks();
-    // this.getAllArtists();
-    // this.getAllEvents();
+    this.getAllArtists();
+    this.getAllEvents();
   }
 
   getAllArtworks(): void {
     this.artworkService.getAllArtwork().subscribe((response: any) => {
-      for (let i = 0; i < 8; i++) {
+
+
+      for(let i = 0; i < response.content.length; i++) {
         this.artworks.push({
           name: response.content[i].title,
           description: response.content[i].description,
@@ -39,14 +41,36 @@ export class HomePreviewComponent implements OnInit {
   }
 
   getAllArtists(): void{
+
     this.artistService.getAllArtist().subscribe((response:any) => {
-      this.artists = response.data.slice(0,8);
+
+      for(let i = 0; i < response.content.length; i++) {
+        this.artists.push({
+          brandName: response.content[i].brandName,
+          phrase: response.content[i].phrase,
+          firstName: response.content[i].firstName,
+          lastName: response.content[i].lastName,
+          specialtyName:response.content[i].specialtyName
+        });
+      }
     })
+    console.log(this.artists);
+    console.log("CONSUMIDO");
   }
 
   getAllEvents(): void{
     this.eventsService.getAllEvent().subscribe((response:any) => {
-      this.events = response.data.slice(0,8);
+      for(let i = 0; i < response.content.length; i++) {
+        this.events.push({
+          title: response.content[i].title,
+          dateStart: response.content[i].dateStart,
+          dateEnd: response.content[i].dateEnd,
+          cost: response.content[i].cost
+        });
+      }
     })
+    console.log(this.events);
+    console.log("CONSUMIDO");
   }
+
 }

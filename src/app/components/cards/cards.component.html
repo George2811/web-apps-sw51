@@ -19,8 +19,8 @@
     <mat-card-title style="font-size: medium">{{event.title}}</mat-card-title>
     <button mat-button color="white" class="date-event">
       <mat-icon>insert_invitation</mat-icon>
-      {{dateToString(event.dateStart)}}  -
-      {{dateToString(event.dateEnd)}}
+      {{event.dateStart.slice(0,10)}}   hasta
+        {{event.dateEnd.slice(0,10)}}
     </button>
   </mat-card-content>
   <mat-card-actions>
@@ -34,7 +34,7 @@
   <mat-card-header>
     <div mat-card-avatar class="artist-header-image"></div>
     <mat-card-title>{{artist.brandName}}</mat-card-title>
-    <mat-card-subtitle>Brand Name</mat-card-subtitle>
+    <mat-card-subtitle>{{artist.firstName}} {{artist.lastName}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <button mat-button color="white" class="date-event">
@@ -42,14 +42,14 @@
     </button>
     <button mat-button color="white" class="date-event">
       <mat-icon>insert_photo</mat-icon>
-      {{artist.numArtworks}}
+      {{getRandomNumber(50)}}
     </button>
     <p style="font-size: small">
       {{artist.phrase}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="white"><mat-icon>groups</mat-icon>{{artist.followers}}</button>
+    <button mat-button color="white"><mat-icon>groups</mat-icon>{{getRandomNumber(500)}}</button>
     <button *ngIf="isLogged()" mat-raised-button color="warn" routerLink="/artist-profile">Conocer</button>
     <button *ngIf="!isLogged()" mat-raised-button color="warn" (click)="openDialog()">Conocer</button>
   </mat-card-actions>

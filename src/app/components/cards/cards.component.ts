@@ -20,6 +20,10 @@ export class CardsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getRandomNumber(num:number){
+    return Math.floor(Math.random() * num);
+  }
+
   priceArtwork(price : number): string{
     if (price !== 0)
       return `${price}`
