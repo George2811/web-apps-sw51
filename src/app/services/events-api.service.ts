@@ -43,7 +43,7 @@ export class EventsApiService {
   }
 
   getAllEvent():Observable<Event>{
-    return  this.http.get<Event>(this.basePath)
+    return this.http.get<Event>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
 
