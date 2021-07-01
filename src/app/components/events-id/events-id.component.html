@@ -1,6 +1,6 @@
 
 <div class="banner">
-  <h1 class="banner-tittle">{{eventData.title}}</h1>
+  <h1 class="banner-tittle">{{event.title}}</h1>
   <button mat-raised-button class="btn-color"
           routerLink="/assistance"
           routerLinkActive="active">Asistir</button>
@@ -13,13 +13,13 @@
   <div class="left-content">
     <h1>Descripción</h1>
     <br>
-    <p>{{eventData.description}}</p>
+    <p>{{event.description}}</p>
   </div>
 
   <div class="right-content">
     <h1>Datos: </h1>
-    <p><mat-icon>event</mat-icon>Fecha de inicio: {{(eventData.dateStart)}}</p>
-    <p><mat-icon>event</mat-icon>Fecha de fin: {{eventData.dateEnd}}</p>
+    <p><mat-icon>event</mat-icon>Fecha de inicio: {{(event.dateStart)}}</p>
+    <p><mat-icon>event</mat-icon>Fecha de fin: {{event.dateEnd}}</p>
     <button mat-button color="white"><mat-icon>share</mat-icon>Compartir</button>
   </div>
 

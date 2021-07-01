@@ -11,31 +11,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ArtworkIdComponent implements OnInit {
   artwork: any;
-  artworkId!: number
-
 
   constructor(private location: Location,
               private activatedrouter: ActivatedRoute, private router: Router,
               private artworksApiService: ArtworksApiService) { }
 
   ngOnInit(): void {
-    this.artworkId = Number(this.activatedrouter.params.subscribe( (params: any) => {
-      if (params.id) {
-        const id = params.id;
-        const artistId = params.artistId;
-        console.log(id);
-        this.retrieveArtwork(artistId, id)
-        return id;
-      }
-    }));
+    this.retrieveArtwork(this.artwork.artistId, this.artwork.id);
   }
 
   retrieveArtwork(artistid: number, id: number): void {
-    this.artworksApiService.getArtworkByIdAndArtistId(artistid, id)
-      .subscribe((response:any) => {
-        this.artwork = response.data;
-        console.log(this.artwork);
-      })
+    this.artworksApiService.getArtworkByIdAndArtistId(artistid, id).subscribe((response:any) => {
+      this.artwork.push({
+        title: response.content.title,
+        description: response.content.description,
+        cost: response.content.cost
+      });
+    })
+    console.log(this.artwork);
+    console.log("CONSUMIDO");
   }
 
   back(): void{
