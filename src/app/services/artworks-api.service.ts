@@ -12,7 +12,7 @@ import {catchError, retry} from "rxjs/operators";
 export class ArtworksApiService {
 
   basePath = 'https://perustars-api.herokuapp.com/api/artworks';
-  ArtistArtworkPath = `https://perustars-api.herokuapp.com/api/artist/`;
+  ArtistArtworkPath = `https://perustars-api.herokuapp.com/api/artists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }

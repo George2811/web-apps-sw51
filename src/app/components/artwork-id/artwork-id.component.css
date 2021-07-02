@@ -46,5 +46,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.dollar-icon{
+  font-size: 1em;
+}
+
+.artwork-actions{
+  display: flex;
 }

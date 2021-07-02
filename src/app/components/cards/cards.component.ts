@@ -42,7 +42,7 @@ export class CardsComponent implements OnInit {
     return '';
   }
   isLogged(): boolean{
-    return this.router.url === '/home'? true : this.router.url === '/artist-profile';
+    return this.router.url === '/home' || this.router.url === '/artist-profile' || this.router.url === '/favorites';
   }
   openDialog() {
     const dialogRef = this.dialog.open(LoginRequestDialogComponent);
