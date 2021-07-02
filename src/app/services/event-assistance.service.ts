@@ -10,7 +10,7 @@ import {Artwork} from "../models/artwork";
 })
 export class EventAssistanceService {
 
-  basepath =`https://perustars-api.herokuapp.com/api/hobbyist`;
+  basePath =`https://perustars-api.herokuapp.com/api/hobbyist/`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
@@ -25,17 +25,17 @@ export class EventAssistanceService {
   }
 
   addEventAssistance(hobbyistId: number, eventId: number):Observable<EventAssistance>{
-    return this.http.post<EventAssistance>(`${this.basepath}/${hobbyistId}/events/${eventId}`, this.httpOptions)
+    return this.http.post<EventAssistance>(`${this.basePath}/${hobbyistId}/events/${eventId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   deleteEventAssistance(hobbyistId: number, eventId: number):Observable<EventAssistance>{
-    return this.http.delete<EventAssistance>(`${this.basepath}/${hobbyistId}/events/${eventId}`, this.httpOptions)
+    return this.http.delete<EventAssistance>(`${this.basePath}/${hobbyistId}/events/${eventId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   getEventAssistance(hobbyistId:number):Observable<Event>{
-    return this.http.get<Event>(`${this.basepath}/${hobbyistId}/events`, this.httpOptions)
+    return this.http.get<Event>(`${this.basePath}${hobbyistId}/events`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
