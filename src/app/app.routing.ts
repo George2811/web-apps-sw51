@@ -33,7 +33,7 @@ const appRoutes:Routes = [
   {path: 'artwork/new', component: NewArtworkFormComponent, pathMatch: 'full'},
   {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
   {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'},
-  {path: 'artist-profile', component: ArtistProfileComponent, pathMatch: 'full'},
+  {path: 'artist/:id', component: ArtistProfileComponent, pathMatch: 'full'},
   {path: 'assistance', component:AssistanceFormComponent, pathMatch:'full'},
   {path: 'recover', component: RecoverPasswordFormComponent, pathMatch: 'full'}
 ];

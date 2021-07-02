@@ -36,9 +36,9 @@ export class HomepageComponent implements OnInit {
           cost: response.content[i].cost
         });
       }
+        console.log(this.artworks)
+        console.log("CONSUMIDO");
     })
-    console.log(this.artworks);
-    console.log("CONSUMIDO");
   }
 
   getAllArtists(): void{

@@ -51,5 +51,15 @@ export class CardsComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  getRandomNumberForImage(min: number, max: number): number{
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  getImage(): string{
+    return `https://picsum.photos/id/${this.getRandomNumberForImage(1060,1086)}/3900/3120`;
+  }
+  goToArtist(id: number): void{
+    this.router.navigate([`/artist/${id}`]);
+  }
+
 
 }
