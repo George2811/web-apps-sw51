@@ -1,11 +1,14 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {max} from "rxjs/operators";
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ArtistProfileService} from "../../services/artist-profile.service";
 import {ArtworksApiService} from "../../services/artworks-api.service";
 import {EventsApiService} from "../../services/events-api.service";
 import {ArtistsApiService} from "../../services/artists-api.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import {Artist} from "../../models/artist";
+import {FollowersApiService} from "../../services/followers-api.service.service";
+import {Hobbyist} from "../../models/hobbyist";
+import {HobbyistsApiService} from "../../services/hobbyists-api.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-artist-profile',
@@ -14,13 +17,14 @@ import {Artist} from "../../models/artist";
 })
 export class ArtistProfileComponent implements OnInit {
   artist: Artist = {} as Artist;
+  hobbyist: Hobbyist = {} as Hobbyist;
   //artistId!: number;
   isArtist: boolean = true;
   followAction: string = 'Seguir';
   followBtn: HTMLElement | null = null;
   imageUrl = "https://picsum.photos/id/1011/300";
-  showContactEdit: boolean = false;
-  showPhraseEdit: boolean = false;
+  //showContactEdit: boolean = false;
+  //showPhraseEdit: boolean = false;
 
   ArtworksCarousel = {
     Name: 'artworks',
@@ -38,10 +42,11 @@ export class ArtistProfileComponent implements OnInit {
     Index: 1
   }
 
-  constructor(private artistProfileService: ArtistProfileService,
+  constructor(private artistProfileService: ArtistProfileService, private hobbyistApiService: HobbyistsApiService,
               private route: ActivatedRoute, private router: Router,
               private artworksApiService: ArtworksApiService, private eventsApiService: EventsApiService,
-              private artistsApiService: ArtistsApiService) {}
+              private artistsApiService: ArtistsApiService, private followerApiService: FollowersApiService,
+              private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
     this.followBtn = document.getElementById('followBtn');
@@ -56,8 +61,7 @@ export class ArtistProfileComponent implements OnInit {
     this.route.params.subscribe((params:any) => { this.getAllArtworksByArtistId(params.id); });
     this.route.params.subscribe((params:any) => { this.getAllEventsByArtistId(params.id); });
     this.route.params.subscribe((params:any) => { this.retrieveArtist(params.id); })
-    this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
-    this.updateCarousel(this.EventsCarousel, 'eve', 'right');
+    this.getHobbyistByUserId(this.tokenStorageService.getUser().userId);
   }
 
   getAllArtworksByArtistId(id: number): void{
@@ -72,6 +76,7 @@ export class ArtistProfileComponent implements OnInit {
         })
       }
       console.log(response.content.length);
+      this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
     })
     console.log(this.ArtworksCarousel);
     console.log("CONSUMIDO");
@@ -90,8 +95,22 @@ export class ArtistProfileComponent implements OnInit {
         })
       }
       console.log(this.EventsCarousel.All);
+      this.updateCarousel(this.EventsCarousel, 'eve', 'right');
     })
     console.log("CONSUMIDO");
+  }
+
+  getAllFollwedArtistByHobbyistId(hobbyistId: number) {
+    this.followerApiService.getAllFollwedArtistByHobbyistId(hobbyistId).subscribe((response:any) => {
+      console.log(response);
+      this.followAction="Seguir";
+      for(let i = 0; i < response.content.length; i++){
+        if (this.artist.id === response.content[i].id) {
+          this.followAction="Dejar de Seguir";
+          break;
+        }
+      }
+    });
   }
 
   retrieveArtist(id: number): void {
@@ -101,14 +120,36 @@ export class ArtistProfileComponent implements OnInit {
       })
   }
 
-  updateFollowState() {
-    if (this.followAction === 'Seguir') {
+  getHobbyistByUserId(userId: number) {
+    this.hobbyistApiService.getHobbyistByUserId(userId).subscribe((response: any) => {
+      this.hobbyist = response;
+      this.getAllFollwedArtistByHobbyistId(this.hobbyist.id);
+    });
+  }
+
+  postFollower(hobbyistId: number, artistId: number) {
+    this.followerApiService.addFollower(hobbyistId, artistId).subscribe((response:any) => {
+      console.log(response);
       this.followAction = 'Dejar de Seguir';
-      this.followBtn?.classList.add('resizeBtn');
-    } else {
+    });
+  }
+
+  deleteFollower(hobbyistId: number, artistId: number) {
+    this.followerApiService.deleteFollower(hobbyistId, artistId).subscribe((response:any) => {
+      console.log(response);
       this.followAction = 'Seguir';
-      this.followBtn?.classList.remove('resizeBtn');
-    }
+    });
+  }
+
+  updateFollowState() {
+    if (this.followAction === 'Seguir')
+      //this.followAction = 'Dejar de Seguir';
+      this.postFollower(this.hobbyist.id, this.artist.id);
+      //this.followBtn?.classList.add('resizeBtn');
+     else
+      //this.followAction = 'Seguir';
+      //this.followBtn?.classList.remove('resizeBtn');
+      this.deleteFollower(this.hobbyist.id, this.artist.id);
   }
 
   updateCarousel(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string, direction: string) {
@@ -213,5 +254,9 @@ export class ArtistProfileComponent implements OnInit {
 
   FormClick(event: any){
     event.stopPropagation();
+  }
+
+  getRandomNumber(num:number){
+    return Math.floor(Math.random() * num);
   }
 }
