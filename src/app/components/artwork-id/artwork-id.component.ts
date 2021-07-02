@@ -13,7 +13,7 @@ export class ArtworkIdComponent implements OnInit {
   artwork: any;
 
   constructor(private location: Location,
-              private activatedrouter: ActivatedRoute, private router: Router,
+              private route: ActivatedRoute, private router: Router,
               private artworksApiService: ArtworksApiService) { }
 
   ngOnInit(): void {
@@ -23,9 +23,9 @@ export class ArtworkIdComponent implements OnInit {
   retrieveArtwork(artistid: number, id: number): void {
     this.artworksApiService.getArtworkByIdAndArtistId(artistid, id).subscribe((response:any) => {
       this.artwork.push({
-        title: response.content.title,
-        description: response.content.description,
-        cost: response.content.cost
+        title: response.content[id].title,
+        description: response.content[id].description,
+        cost: response.content[id].cost
       });
     })
     console.log(this.artwork);

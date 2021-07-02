@@ -14,7 +14,7 @@ import {Artist} from "../../models/artist";
 })
 export class ArtistProfileComponent implements OnInit {
   artist: Artist = {} as Artist;
-  artistId!: number;
+  //artistId!: number;
   isArtist: boolean = true;
   followAction: string = 'Seguir';
   followBtn: HTMLElement | null = null;
@@ -25,7 +25,7 @@ export class ArtistProfileComponent implements OnInit {
   ArtworksCarousel = {
     Name: 'artworks',
     Showing: <any>[],
-    All: [],
+    All: <any>[],
     cardsShowing: 3,
     Index: 1
   };
@@ -33,47 +33,70 @@ export class ArtistProfileComponent implements OnInit {
   EventsCarousel = {
     Name: 'events',
     Showing: <any>[],
-    All: [],
+    All: <any>[],
     cardsShowing: 1,
     Index: 1
   }
 
   constructor(private artistProfileService: ArtistProfileService,
-              private activatedrouter: ActivatedRoute, private router: Router,
+              private route: ActivatedRoute, private router: Router,
               private artworksApiService: ArtworksApiService, private eventsApiService: EventsApiService,
               private artistsApiService: ArtistsApiService) {}
 
   ngOnInit(): void {
     this.followBtn = document.getElementById('followBtn');
-    this.updateCarousel(this.EventsCarousel, 'eve', 'right');
-    this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
     this.isArtist = this.artistProfileService.getArtist();
-    this.artistId = Number(this.activatedrouter.params.subscribe( (params: any) => {
-      if (params.id) {
-        const id = params.id;
-        console.log(id);
-        this.retrieveArtist(id);
-        return id;
-      }
-    }));
+    //this.artistId = Number(this.route.params.subscribe( (params: any) => {
+      //if (params.id) {
+        //const id = params.id;
+        //console.log(id);
+        //return id;
+      //}
+    //}));
+    this.route.params.subscribe((params:any) => { this.getAllArtworksByArtistId(params.id); });
+    this.route.params.subscribe((params:any) => { this.getAllEventsByArtistId(params.id); });
+    this.route.params.subscribe((params:any) => { this.retrieveArtist(params.id); })
+    this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
+    this.updateCarousel(this.EventsCarousel, 'eve', 'right');
   }
 
   getAllArtworksByArtistId(id: number): void{
     this.artworksApiService.getAllArtworkByArtistId(id).subscribe((response:any) => {
-      this.ArtworksCarousel.Showing.push(response.data.slice(id,id+3));
+      for(let i=0; i<response.content.length; i++){
+        this.ArtworksCarousel.All.push({
+          name: response.content[i].title,
+          description: response.content[i].description,
+          cost: response.content[i].cost,
+          artistId: response.content[i].artistId,
+          id: response.content[i].id
+        })
+      }
+      console.log(response.content.length);
     })
+    console.log(this.ArtworksCarousel);
+    console.log("CONSUMIDO");
   }
 
   getAllEventsByArtistId(id: number): void{
     this.eventsApiService.getAllEventsByArtistId(id).subscribe((response:any) => {
-      this.EventsCarousel.Showing.push(response.data.slice(id,id+3));
+      for(let i=0; i<response.content.length; i++){
+        this.EventsCarousel.All.push({
+          title: response.content[i].title,
+          dateStart: response.content[i].dateStart,
+          dateEnd: response.content[i].dateEnd,
+          cost: response.content[i].cost,
+          id: response.content[i].id,
+          artistId: response.content[i].artistId
+        })
+      }
+      console.log(this.EventsCarousel.All);
     })
+    console.log("CONSUMIDO");
   }
 
   retrieveArtist(id: number): void {
-    this.artistsApiService.getArtistById(id)
-      .subscribe((response:any) => {
-        this.artist = response.data;
+    this.artistsApiService.getArtistById(id).subscribe((response:any) => {
+        this.artist = response;
         console.log(this.artist);
       })
   }
@@ -120,6 +143,8 @@ export class ArtistProfileComponent implements OnInit {
   }
 
   nextShowingElement(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
+    if (carousel.All.length === carousel.cardsShowing)
+      return;
     let maxIndex = carousel.All.length / carousel.cardsShowing;
     if (maxIndex > Math.trunc(maxIndex)) {
       maxIndex = Math.trunc(maxIndex);
@@ -137,6 +162,8 @@ export class ArtistProfileComponent implements OnInit {
   }
 
   backShowingElement(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
+    if (carousel.All.length === carousel.cardsShowing)
+      return;
     if (carousel.Index > 1) {
       carousel.Index--;
       if (carousel.Index <= 0)

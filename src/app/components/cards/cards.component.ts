@@ -59,4 +59,8 @@ export class CardsComponent implements OnInit {
   goToEvent(artistId:number, eventId:number) {
     this.router.navigate([`/artist/${artistId}/event/${eventId}`]);
   }
+
+  goToArtist(id:number) {
+    this.router.navigate([`artist-profile/${id}`]);
+  }
 }

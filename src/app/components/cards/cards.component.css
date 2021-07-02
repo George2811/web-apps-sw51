@@ -1,4 +1,4 @@
-.artwork-card, .event-card{
+.artwork-card {
   max-width: 240px;
 }
 .artist-card {
@@ -17,7 +17,13 @@ mat-card-actions{
   background-size: cover;
 }
 
+.event-card {
+  max-width: 240px;
+}
 
+.date-event {
+  margin-left: -15px;
+}
 
 
 

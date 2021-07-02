@@ -12,7 +12,7 @@ import {DatePipe} from "@angular/common";
 export class EventsApiService {
 
   basePath = 'https://perustars-api.herokuapp.com/api/events';
-  ArtistEventPath = `https://perustars-api.herokuapp.com/api/artist/`;
+  ArtistEventPath = `https://perustars-api.herokuapp.com/api/artists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
