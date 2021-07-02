@@ -3,7 +3,6 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import {Event} from "../models/event";
-import {DatePipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ import {DatePipe} from "@angular/common";
 export class EventsApiService {
 
   basePath = 'https://perustars-api.herokuapp.com/api/events';
-  ArtistEventPath = `https://perustars-api.herokuapp.com/api/artist/`;
+  ArtistEventPath = `https://perustars-api.herokuapp.com/api/artists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }

@@ -2,7 +2,7 @@
 <div class="banner">
   <h1 class="banner-tittle">{{eventData.title}}</h1>
   <button mat-raised-button class="btn-color"
-          routerLink="/assistance"
+          (click)="goToScheduled(eventData.artistId, eventData.id)"
           routerLinkActive="active">Asistir</button>
 </div>
 
@@ -18,8 +18,8 @@
 
   <div class="right-content">
     <h1>Datos: </h1>
-    <p><mat-icon>event</mat-icon>Fecha de inicio: {{(eventData.dateStart)}}</p>
-    <p><mat-icon>event</mat-icon>Fecha de fin: {{eventData.dateEnd}}</p>
+    <p><mat-icon>event</mat-icon>Fecha de inicio: {{(eventData.dateStart.slice(0,10))}}</p>
+    <p><mat-icon>event</mat-icon>Fecha de fin: {{eventData.dateEnd.slice(0,10)}}</p>
     <button mat-button color="white"><mat-icon>share</mat-icon>Compartir</button>
   </div>
 

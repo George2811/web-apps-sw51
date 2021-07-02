@@ -5,14 +5,15 @@
     <mat-card-title class="form-tittle">Confirma tu asistencia</mat-card-title>
   </mat-card-header>
 
-  <mat-form-field appearance="fill" class="form-date" floatLabel="always">
+  <mat-form-field [formGroup]="assistanceForm" appearance="fill" class="form-date" floatLabel="always">
     <mat-label>Fecha Final</mat-label>
-    <input matInput formControlName="dateEnd" type="date" placeholder="50" required style="text-align: center">
+    <input matInput [matDatepicker]="myDatePicker" type="date" placeholder="50" required style="text-align: center">
+    <mat-datepicker-toggle matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
     <mat-error *ngIf="assistanceForm.controls.assistanceDate.touched && assistanceForm.controls.assistanceDate.invalid">
       <span *ngIf="assistanceForm.controls.assistanceDate.errors?.required">La fecha es requerida.</span>
     </mat-error>
   </mat-form-field>
-
 
   <!--Botones-->
   <mat-card-actions>

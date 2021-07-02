@@ -43,6 +43,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HobbyistProfileComponent } from './components/hobbyist-profile/hobbyist-profile.component';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
 import { ArtistEventCardComponent } from './components/artist-event-card/artist-event-card.component';
@@ -51,6 +52,7 @@ import { AssistanceFormComponent } from './components/assistance-form/assistance
 import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
 import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
 import {authInterceptorProviders} from "./helpers/auth.interceptor";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -102,7 +104,10 @@ import {authInterceptorProviders} from "./helpers/auth.interceptor";
     MatDialogModule,
     MatChipsModule,
     LayoutModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

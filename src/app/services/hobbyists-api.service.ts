@@ -32,4 +32,8 @@ export class HobbyistsApiService {
     return this.http.put<Hobbyist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+  getByUserId(userId: number):Observable<Hobbyist>{
+    return this.http.get<Hobbyist>(`${this.basePath}/userid/${userId}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 }
