@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
 import {Artwork} from "../../models/artwork";
 import {ArtworksApiService} from "../../services/artworks-api.service";
-import { Router, ActivatedRoute } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
+import {TokenStorageService} from "../../services/token-storage.service";
+import {HobbyistsApiService} from "../../services/hobbyists-api.service";
+import {FavoriteArtworkApiService} from "../../services/favorite-artwork-api.service";
+import {Hobbyist} from "../../models/hobbyist";
 
 @Component({
   selector: 'app-artwork-id',
@@ -10,29 +14,74 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./artwork-id.component.css']
 })
 export class ArtworkIdComponent implements OnInit {
-  artwork: any;
+  artwork: Artwork = { } as Artwork;
+  hobbyist: Hobbyist = { } as Hobbyist;
+  color: string = "";
 
   constructor(private location: Location,
-              private route: ActivatedRoute, private router: Router,
-              private artworksApiService: ArtworksApiService) { }
+              private activatedRouter: ActivatedRoute, private router: Router,
+              private artworksApiService: ArtworksApiService,
+              private tokenStorageService: TokenStorageService,
+              private favoriteArtworkApiService: FavoriteArtworkApiService,
+              private hobbyistApiService: HobbyistsApiService) {
+  }
 
   ngOnInit(): void {
-    this.retrieveArtwork(this.artwork.artistId, this.artwork.id);
+    this.activatedRouter.params.subscribe((params: any) => {
+      this.getArtworkById(params.id, params.artistId);
+    });
+
+    this.getHobbyistByUserId(this.tokenStorageService.getUser().userId);
   }
 
-  retrieveArtwork(artistid: number, id: number): void {
-    this.artworksApiService.getArtworkByIdAndArtistId(artistid, id).subscribe((response:any) => {
-      this.artwork.push({
-        title: response.content[id].title,
-        description: response.content[id].description,
-        cost: response.content[id].cost
-      });
-    })
-    console.log(this.artwork);
-    console.log("CONSUMIDO");
+  getArtworkById(id:number, artistId:number) {
+    this.artworksApiService.getArtworkByIdAndArtistId(artistId, id).subscribe((response: any) => {
+      this.artwork = response;
+    });
   }
 
-  back(): void{
+  getHobbyistByUserId(userId: number) {
+    this.hobbyistApiService.getHobbyistByUserId(userId).subscribe((response: any) => {
+      this.hobbyist = response;
+      this.getAllArtworksByHobbyistId(this.hobbyist.id);
+    });
+  }
+
+  getAllArtworksByHobbyistId(hobbystId:number) {
+    this.favoriteArtworkApiService.getFavoriteArtwork(hobbystId).subscribe((response: any) => {
+      console.log(response);
+      this.color = "";
+      for(let i = 0; i < response.content.length; i++){
+        if (this.artwork.id === response.content[i].id) {
+          this.color = 'warn';
+          break;
+        }
+      }
+    });
+  }
+
+  postFavoriteArtwork(hobbyistId: number, artworkId: number) {
+    this.favoriteArtworkApiService.addFavoriteArtwork(hobbyistId, artworkId).subscribe((response: any) => {
+      console.log(response);
+      this.color = 'warn';
+    });
+  }
+
+  deleteFavoriteArtwork(hobbyistId: number, artworkId: number) {
+    this.favoriteArtworkApiService.deleteFavoriteArtwork(hobbyistId, artworkId).subscribe((response:any) => {
+      console.log(response);
+      this.color = '';
+    });
+  }
+
+  favoriteInteraction() {
+    if (this.color === 'warn')
+      this.deleteFavoriteArtwork(this.hobbyist.id, this.artwork.id);
+    else
+      this.postFavoriteArtwork(this.hobbyist.id, this.artwork.id);
+  }
+
+  back(): void {
     this.location.back();
   }
 }

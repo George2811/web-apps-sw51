@@ -51,6 +51,7 @@ import { AssistanceFormComponent } from './components/assistance-form/assistance
 import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
 import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
 import {authInterceptorProviders} from "./helpers/auth.interceptor";
+import { FavoriteViewComponent } from './components/favorite-view/favorite-view.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import {authInterceptorProviders} from "./helpers/auth.interceptor";
     AssistanceFormComponent,
     RecoverPasswordFormComponent,
     RecoverPasswordDialogComponent,
+    FavoriteViewComponent,
   ],
   imports: [
     BrowserModule,

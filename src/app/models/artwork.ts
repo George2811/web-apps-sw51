@@ -3,6 +3,6 @@ export interface Artwork {
   title: string;
   description: string;
   cost: number;
-  linkInfo: string;
-  
+  linkInfo: any;
+  artistId: number;
 }
