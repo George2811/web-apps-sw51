@@ -1,7 +1,8 @@
 
 <mat-toolbar class="toolbar">
   <span class="Logo">PeruStars</span>
-  <button *ngIf="isLoggedIn" mat-button routerLink="/home" routerLinkActive="active">Home</button>
+  <button *ngIf="isLoggedIn" mat-button routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon> Home</button>
+  <button *ngIf="isLoggedIn" mat-button routerLink="/favorites" routerLinkActive="active"><mat-icon>star</mat-icon> Favoritos</button>
   <span class="example-spacer"></span>
   <div class="toolbar-options" *ngIf="!isLoggedIn">
     <button mat-button color="warn" routerLink="/" routerLinkActive="active">Home</button>

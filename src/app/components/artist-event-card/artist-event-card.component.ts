@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-artist-event-card',
@@ -7,20 +8,19 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ArtistEventCardComponent implements OnInit {
   @Input() event: any;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  goToEvent(artistId: number, eventId: number) {
+    this.router.navigate([`/artist/${artistId}/event/${eventId}`]);
+  }
 
 
   priceArtwork(price : number): string{
     if (price !== 0)
       return `${price}`
     return 'free';
-  }
-
-  dateToString(date: Date): string{
-    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
   }
 }

@@ -10,30 +10,26 @@ import {Event} from "../../models/event";
   styleUrls: ['./events-id.component.css']
 })
 export class EventsIdComponent implements OnInit {
-  eventId!: number;
-  eventData: Event = {} as Event;
+  event: any
 
   constructor(private location: Location, private eventsApiService: EventsApiService,
               private activatedrouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.eventId = Number(this.activatedrouter.params.subscribe( (params: any) => {
-      if (params.id) {
-        const id = params.id;
-        const artistId = params.artistId;
-        console.log(id);
-        this.retrieveEvent(artistId, id)
-        return id;
-      }
-    }));
+    this.retrieveEvent(this.event.artistId, this.event.id);
   }
 
   retrieveEvent(artistid: number, id: number): void {
-    this.eventsApiService.getEventByIdAndArtistId(artistid, id)
-      .subscribe((response:any) => {
-        this.eventData = response.data;
-        console.log(this.eventData);
-      })
+    this.eventsApiService.getEventByIdAndArtistId(artistid, id).subscribe((response:any) => {
+      this.event.push({
+        title: response.content.title,
+        description: response.content.description,
+        dateStart: response.content.dateStart,
+        dateEnd: response.content.dateEnd
+      });
+    })
+    console.log(this.event);
+    console.log("CONSUMIDO");
   }
 
   back(): void{

@@ -28,7 +28,7 @@ export class ArtistsApiService {
       .pipe(retry(2), catchError(this.handleError));
   }
   getArtistById(id: number): Observable<Artist> {
-    return this.http.get<Artist>(`${this.basePath}/${id}`, this.httpOptions)
+    return this.http.get<Artist>(`${this.basePath}/id/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -38,12 +38,12 @@ export class ArtistsApiService {
   }
 
   updateArtist(id:number, item:Artist): Observable<Artist>{
-    return this.http.put<Artist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
+    return this.http.put<Artist>(`${this.basePath}/id/${id}`,JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   deleteArtist(id: number):Observable<any>{
-    return  this.http.delete<Artist>(`${this.basePath}/${id}`, this.httpOptions)
+    return  this.http.delete<Artist>(`${this.basePath}/id/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

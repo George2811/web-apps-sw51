@@ -8,9 +8,9 @@ import {Artwork} from "../models/artwork";
 @Injectable({
   providedIn: 'root'
 })
-export class FavoritArtoworkService {
+export class FavoriteArtworkApiService {
 
-  basepath =`https://perustars-api.herokuapp.com/api/hobbyist`;
+  basepath =`https://perustars-api.herokuapp.com/api/hobbyists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
