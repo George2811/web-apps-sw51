@@ -27,12 +27,12 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHobbyistByUserId(this.tokenStorageService.getUser().userId);
+
   }
 
   getHobbyistByUserId(userId: number) {
     this.hobbyistApiService.getHobbyistByUserId(userId).subscribe((response: any) => {
       this.hobbyist = response;
-
       this.getAllFollowedArtistsByHobbyistId(this.hobbyist.id);
       this.getEventAssistance(this.hobbyist.id);
     });
@@ -58,7 +58,7 @@ export class SidebarComponent implements OnInit {
           updated: Date.now()
         });
       }
-      console.log(this.events);
+      console.log(response);
     });
   }
 }
