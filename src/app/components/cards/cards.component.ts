@@ -42,7 +42,7 @@ export class CardsComponent implements OnInit {
     return '';
   }
   isLogged(): boolean{
-    return this.router.url === '/home'? true : this.router.url === '/artist-profile';
+    return this.router.url === '/home' || this.router.url === '/artist-profile' || this.router.url === '/favorites';
   }
   openDialog() {
     const dialogRef = this.dialog.open(LoginRequestDialogComponent);
@@ -57,9 +57,9 @@ export class CardsComponent implements OnInit {
   getImage(): string{
     return `https://picsum.photos/id/${this.getRandomNumberForImage(1060,1086)}/3900/3120`;
   }
-  goToArtist(id: number): void{
+  /*goToArtist(id: number): void{
     this.router.navigate([`/artist/${id}`]);
-  }
+  }*/
 
 
   goToArtwork(artistId:number,artworkId: number) {
@@ -68,5 +68,9 @@ export class CardsComponent implements OnInit {
 
   goToEvent(artistId:number, eventId:number) {
     this.router.navigate([`/artist/${artistId}/event/${eventId}`]);
+  }
+
+  goToArtist(id:number) {
+    this.router.navigate([`artist-profile/${id}`]);
   }
 }

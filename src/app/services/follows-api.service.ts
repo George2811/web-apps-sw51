@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Hobbyist} from "../models/hobbyist";
 import {Observable, throwError} from "rxjs";
+import {Artist} from "../models/artist";
 import {catchError, retry} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HobbyistsApiService {
+export class FollowsApiService {
 
-  basePath = 'https://perustars-api.herokuapp.com/api/hobbyists';
+  basePath = 'https://perustars-api.herokuapp.com/api/hobbyists/';
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
@@ -22,19 +22,9 @@ export class HobbyistsApiService {
     }
     return throwError('Something happened with request, please try again later.');
   }
-
-  addHobbyist(item:any):Observable<Hobbyist>{
-    return this.http.post<Hobbyist>(this.basePath, JSON.stringify(item), this.httpOptions)
+  getAllFollowedArtistsByHobbyistId(hobbyistId: number): Observable<Artist>{
+    return this.http.get<Artist>(`${this.basePath}${hobbyistId}/artists`,this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
-  }
 
-  updateHobbyist(id:number, item:Hobbyist):Observable<any>{
-    return this.http.put<Hobbyist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
-  getByUserId(userId: number):Observable<Hobbyist>{
-    return this.http.get<Hobbyist>(`${this.basePath}/userid/${userId}`, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
   }
 }

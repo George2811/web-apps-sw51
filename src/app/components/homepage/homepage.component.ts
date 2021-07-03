@@ -51,7 +51,8 @@ export class HomepageComponent implements OnInit {
           phrase: response.content[i].phrase,
           firstName: response.content[i].firstName,
           lastName: response.content[i].lastName,
-          specialtyName:response.content[i].specialtyName
+          specialtyName:response.content[i].specialtyName,
+          id: response.content[i].id
         });
       }
     })

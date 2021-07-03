@@ -14,6 +14,7 @@ import {Hobbyist} from "../../models/hobbyist";
   styleUrls: ['./events-id.component.css']
 })
 export class EventsIdComponent implements OnInit {
+
   currentUser: any;
   eventId!: number;
   eventData: Event = {} as Event;

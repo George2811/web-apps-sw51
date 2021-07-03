@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FavoritArtoworkService } from './favorit-artowork.service';
+import { FavoriteArtworkApiService } from './favorite-artwork-api.service';
 
 describe('FavoritArtoworkService', () => {
-  let service: FavoritArtoworkService;
+  let service: FavoriteArtworkApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FavoritArtoworkService);
+    service = TestBed.inject(FavoriteArtworkApiService);
   });
 
   it('should be created', () => {

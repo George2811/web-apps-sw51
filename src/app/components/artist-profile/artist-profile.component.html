@@ -52,7 +52,7 @@
 
   <mat-card class="top-content background-transparent" style="margin-top:63px;">
     <mat-card-content class="artist-image-container text-white">
-      <mat-card-title>Artist Name</mat-card-title>
+      <mat-card-title>{{artist.brandName}}</mat-card-title>
       <div>
         <img mat-list-icon width="200" height="200" class="image-profile" [src]="imageUrl"
              alt="ArtistaImg">
@@ -61,7 +61,7 @@
     </mat-card-content>
     <mat-card-content class="artist-top-data">
       <div>
-        <p>789 seguidores</p>
+        <p>{{getRandomNumber(500)}} followers</p>
         <p>Correo/num contacto</p>
       </div>
       <div mat-list-icon class="artist-icons">

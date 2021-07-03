@@ -3,7 +3,7 @@
   <!--TODO: scrollbar para cada seccion-->
   <div mat-subheader>Tus artistas</div>
   <cdk-virtual-scroll-viewport  itemSize="50" class="viewport-scroll">
-    <mat-list-item *cdkVirtualFor="let artist of artists">
+    <mat-list-item *ngFor="let artist of artists">
       <mat-icon mat-list-icon>person</mat-icon>
       <div mat-line class="brand-name" style="font-size: small">{{artist.name}}</div>
     </mat-list-item>
@@ -13,7 +13,7 @@
 
   <div mat-subheader>Tus eventos</div>
   <cdk-virtual-scroll-viewport  itemSize="50" class="viewport-scroll">
-  <mat-list-item *cdkVirtualFor="let event of events">
+  <mat-list-item *ngFor="let event of events">
     <mat-icon mat-list-icon>event</mat-icon>
     <div mat-line style="font-size: small">{{event.name}}</div>
     <div mat-line style="font-size: small"> {{event.updated | date}} </div>

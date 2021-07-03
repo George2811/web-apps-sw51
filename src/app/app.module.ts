@@ -53,6 +53,8 @@ import { RecoverPasswordFormComponent } from './components/recover-password-form
 import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
 import {authInterceptorProviders} from "./helpers/auth.interceptor";
 import {MatNativeDateModule} from "@angular/material/core";
+import { FavoriteViewComponent } from './components/favorite-view/favorite-view.component';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     AssistanceFormComponent,
     RecoverPasswordFormComponent,
     RecoverPasswordDialogComponent,
+    FavoriteViewComponent,
   ],
   imports: [
     BrowserModule,

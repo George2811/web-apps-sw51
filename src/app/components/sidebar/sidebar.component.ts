@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ArtistsApiService} from "../../services/artists-api.service";
 import {EventsApiService} from "../../services/events-api.service";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {Hobbyist} from "../../models/hobbyist";
+import {HobbyistsApiService} from "../../services/hobbyists-api.service";
+import {FollowsApiService} from "../../services/follows-api.service";
+import {EventAssistanceService} from "../../services/event-assistance.service";
 
 export interface Section {
   name: string;
@@ -12,54 +17,48 @@ export interface Section {
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  artists: Section[] = [
-    {
-      name: 'Artist1',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Artist2',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Artist3',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Artist4',
-      updated: new Date('1/28/16'),
-    },
-    {
-      name: 'Artist5',
-      updated: new Date('1/28/16'),
-    },
-  ];
-  events: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
-  ];
+  artists: Array<any> = [];
+  events: Array<any> = [];
+  hobbyist: Hobbyist = {} as Hobbyist;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private tokenStorageService: TokenStorageService, private hobbyistApiService: HobbyistsApiService,
+              private followsApiService: FollowsApiService, private eventAssistanceService: EventAssistanceService) {
   }
 
+  ngOnInit(): void {
+    this.getHobbyistByUserId(this.tokenStorageService.getUser().userId);
+
+  }
+
+  getHobbyistByUserId(userId: number) {
+    this.hobbyistApiService.getByUserId(userId).subscribe((response: any) => {
+      this.hobbyist = response;
+      this.getAllFollowedArtistsByHobbyistId(this.hobbyist.id);
+      this.getEventAssistance(this.hobbyist.id);
+    });
+  }
+
+  getAllFollowedArtistsByHobbyistId(hobbyistId: number) {
+    this.followsApiService.getAllFollowedArtistsByHobbyistId(hobbyistId).subscribe((response: any) => {
+      for (let i = 0; i < response.content.length; i++) {
+        this.artists.push({
+          name: response.content[i].brandName,
+          updated: Date.now()
+        });
+      }
+      console.log(this.artists);
+    });
+  }
+
+  getEventAssistance(hobbyistId: number) {
+    this.eventAssistanceService.getEventAssistance(hobbyistId).subscribe((response: any) => {
+      for (let i = 0; i < response.content.length; i++) {
+        this.events.push({
+          name: response.content[i].title,
+          updated: Date.now()
+        });
+      }
+      console.log(response);
+    });
+  }
 }

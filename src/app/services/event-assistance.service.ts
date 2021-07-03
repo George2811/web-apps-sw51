@@ -11,6 +11,7 @@ import {Artwork} from "../models/artwork";
 export class EventAssistanceService {
 
   basepath =`https://perustars-api.herokuapp.com/api/hobbyists`;
+
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }

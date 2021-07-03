@@ -8,7 +8,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(artwork.cost)}}</button>
-    <button *ngIf="isLogged()" mat-raised-button color="warn" routerLink="/artist/1/artwork/2">Ver más</button>
+    <button *ngIf="isLogged()" mat-raised-button color="warn" (click)="goToArtwork(artwork.artistId, artwork.id)">Ver más</button>
     <button *ngIf="!isLogged()" mat-raised-button color="warn" (click)="openDialog()">Ver más</button>
   </mat-card-actions>
 </mat-card>

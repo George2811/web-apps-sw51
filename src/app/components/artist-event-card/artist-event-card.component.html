@@ -5,16 +5,16 @@
       <mat-card-title style="font-size: medium" class="border">{{event.title}}</mat-card-title>
       <button mat-button color="white" class="invitation-btn">
         <mat-icon>insert_invitation</mat-icon>
-        {{dateToString(event.dateStart)}}  -
-        {{dateToString(event.dateEnd)}}
+        {{event.dateStart.slice(0,10)}}  -
+        {{event.dateEnd.slice(0,10)}}
       </button>
       <p>{{event.description}}</p>
     </mat-card-content>
     <mat-card-actions class="border">
       <button mat-button color="white" class="button">
-        <mat-icon>attach_money</mat-icon>
+        <mat-icon><i class="fas fa-dollar-sign"></i></mat-icon>
         {{priceArtwork(event.cost)}}</button>
-      <button class="button special-btn" mat-raised-button color="warn" routerLink="/event">Ver más</button>
+      <button class="button special-btn" mat-raised-button color="warn" (click)="goToEvent(event.artistId,event.id)">Ver más</button>
     </mat-card-actions>
   </div>
 </mat-card>
