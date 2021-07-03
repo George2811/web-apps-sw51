@@ -5,7 +5,7 @@
     <mat-card-title class="form-tittle">Confirma tu asistencia</mat-card-title>
   </mat-card-header>
 
-  <form style="text-align: center" [formGroup]="assistanceForm" (ngSubmit)="sendForm(assistanceForm.value)">
+  <form style="text-align: center" [formGroup]="assistanceForm" (ngSubmit)="scheduledEvent()">
     <mat-form-field>
       <input matInput [matDatepicker]="picker" placeholder="Elige una fecha" formControlName="assistanceDay" (ngModelChange)="modelChanged($event)">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

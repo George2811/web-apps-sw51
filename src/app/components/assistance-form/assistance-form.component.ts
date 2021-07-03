@@ -5,6 +5,7 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {ActivatedRoute} from "@angular/router";
 import {HobbyistsApiService} from "../../services/hobbyists-api.service";
 import {Hobbyist} from "../../models/hobbyist";
+import {EventAssistanceService} from "../../services/event-assistance.service";
 
 @Component({
   selector: 'app-assistance-form',
@@ -15,9 +16,12 @@ export class AssistanceFormComponent implements OnInit {
   assistanceForm : FormGroup;
   currentUser: any;
   hobbyist : Hobbyist = {} as Hobbyist;
+  event: number = 0;
+  eventId: number = 0;
 
   constructor(private location: Location,private formBuilder: FormBuilder, private HobbyistsAPiService: HobbyistsApiService,
-              private tokenStorageService: TokenStorageService, private activatedRouter: ActivatedRoute) {
+              private tokenStorageService: TokenStorageService, private activatedRouter: ActivatedRoute,
+              private eventAssistanceService: EventAssistanceService) {
    this.assistanceForm = this.formBuilder.group({
      assistanceDay: [null,Validators.required]
    })
@@ -28,18 +32,24 @@ export class AssistanceFormComponent implements OnInit {
       this.hobbyist = response;
       console.log(this.hobbyist);
     });
-
+    this.event = Number(this.activatedRouter.params.subscribe( (params: any) => {
+      if (params.id) {
+        this.eventId = params.id;
+        const artistId = params.artistId;
+        console.log('Este es el Artist Id: '+artistId);
+      }
+    }));
   }
-  sendForm(values: any){
-    let day = new Date(Date.parse(values)).toLocaleString();
-    console.log('Este es Day: '+ day);
-    console.log(values);
+  scheduledEvent(){
+    this.eventAssistanceService.addEventAssistance(this.hobbyist.id, this.eventId)
+      .subscribe( (response:any) => {
+        console.log(response);
+        this.back();
+      })
   }
   modelChanged(date: any) {
     let theDate = new Date(Date.parse(date));
-    //const localDate = theDate.toLocaleString().split(" ");
     const localDate = theDate.toISOString();
-
     console.log(localDate);
   }
   back(): void{

@@ -18,7 +18,9 @@ export class EventsIdComponent implements OnInit {
   eventId!: number;
   eventData: Event = {} as Event;
   hobbyist : Hobbyist = {} as Hobbyist;
-
+  scheduledAction: string = '';
+  scheduled: boolean = false;
+  artistId: number = 0;
   constructor(private location: Location, private eventsApiService: EventsApiService,private HobbyistsAPiService: HobbyistsApiService,
               private tokenStorageService: TokenStorageService,
               private activatedRouter: ActivatedRoute, private router: Router,
@@ -26,38 +28,56 @@ export class EventsIdComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser().userId;
-    this.HobbyistsAPiService.getByUserId(this.currentUser).subscribe( (response: any) => {
-      this.hobbyist = response;
-      console.log(this.hobbyist);
-    });
     this.eventId = Number(this.activatedRouter.params.subscribe( (params: any) => {
       if (params.id) {
         const id = params.id;
-        const artistId = params.artistId;
-        console.log('Este es el Id:'+id);
-        console.log('Este es el Artist Id: '+artistId);
-        this.retrieveEvent(artistId, id);
+        this.artistId = params.artistId;
+        this.retrieveEvent(this.artistId, id);
       }
     }));
-  }
-  goToScheduled(artistId: number, eventId: number){
-    this.router.navigate([`artist/${artistId}/event/${eventId}/assistance`]);
+    this.HobbyistsAPiService.getByUserId(this.currentUser).subscribe( (response: any) => {
+      this.hobbyist = response;
+      //console.log(this.hobbyist);
+      this.isScheduled();
+    });
   }
   retrieveEvent(artistid: number, id: number): void {
     this.eventsApiService.getEventByIdAndArtistId(artistid, id)
       .subscribe((response:any) => {
         this.eventData = response;
-        console.log(this.eventData);
       })
   }
-  scheduledEvent(eventId: number){
-    this.eventAssistanceService.addEventAssistance(this.hobbyist.id, eventId)
-      .subscribe( (response:any) => {
-        console.log(response);
+  isScheduled(){
+    this.eventAssistanceService.getEventAssistance(this.hobbyist.id)
+      .subscribe((response:any)=>{
+        response.content.forEach((e:any)=>{
+          if (this.eventData.id === e.id){
+            this.scheduled = true;
+            this.scheduledAction = 'Dejar de asistir';
+          }
+          else {
+          this.scheduledAction = 'Agendar';
+          }
+        })
+        //console.log(response);
       })
   }
-
   back(): void{
     this.location.back();
+  }
+  updateScheduleState(){
+    if (this.scheduledAction === 'Agendar')
+      this.router.navigate([`/artist/${this.artistId}/event/${this.eventData.id}/assistance`]);
+    else{
+      this.deleteEventOnAgenda();
+    }
+  }
+  deleteEventOnAgenda(){
+    this.eventAssistanceService.deleteEventAssistance(this.hobbyist.id, this.eventData.id)
+      .subscribe((response:any)=>{
+        console.log('Se elimino '+ response);
+        this.scheduledAction = 'Agendar';
+      })
+
   }
 }

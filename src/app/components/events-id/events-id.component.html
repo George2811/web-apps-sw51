@@ -2,8 +2,7 @@
 <div class="banner">
   <h1 class="banner-tittle">{{eventData.title}}</h1>
   <button mat-raised-button class="btn-color"
-          (click)="scheduledEvent(eventData.id)"
-          routerLinkActive="active">Asistir</button>
+          (click)="updateScheduleState()">{{scheduledAction}}</button>
 </div>
 
 <br>
