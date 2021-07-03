@@ -1,9 +1,8 @@
 
 <div class="banner">
-  <h1 class="banner-tittle">Evento</h1>
+  <h1 class="banner-tittle">{{eventData.title}}</h1>
   <button mat-raised-button class="btn-color"
-          routerLink="/assistance"
-          routerLinkActive="active">Asistir</button>
+          (click)="updateScheduleState()">{{scheduledAction}}</button>
 </div>
 
 <br>
@@ -13,15 +12,14 @@
   <div class="left-content">
     <h1>Descripción</h1>
     <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.</p>
+    <p>{{eventData.description}}</p>
   </div>
 
   <div class="right-content">
     <h1>Datos: </h1>
-    <p><mat-icon>event</mat-icon>Fecha de inicio: 12/06/21</p>
-    <p><mat-icon>event</mat-icon>Fecha de fin: 31/06/21</p>
+
+    <p><mat-icon>event</mat-icon>Fecha de inicio: {{(eventData.dateStart.slice(0,10))}}</p>
+    <p><mat-icon>event</mat-icon>Fecha de fin: {{eventData.dateEnd.slice(0,10)}}</p>
     <button mat-button color="white"><mat-icon>share</mat-icon>Compartir</button>
   </div>
 
@@ -30,8 +28,8 @@
 <br>
 
 <div class="goBack">
-  <button mat-raised-button class="btn-color" routerLink="/home">Volver</button>
+  <button mat-raised-button class="btn-color" (click)="back()" >Volver</button>
 </div>
 
 <br>
-<p>events-id works!</p>
+

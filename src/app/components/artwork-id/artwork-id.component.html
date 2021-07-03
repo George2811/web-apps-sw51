@@ -1,6 +1,5 @@
-
 <div class="banner">
-  <h1 class="banner-tittle">OBRA DE ARTE</h1>
+  <h1 class="banner-tittle">{{artwork.title}}</h1>
 </div>
 
 <br>
@@ -10,15 +9,23 @@
   <div class="left-content">
     <h1>Descripción</h1>
     <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.</p>
+    <p>{{artwork.description}}</p>
   </div>
 
   <div class="right-content">
-     <h1>Datos: </h1>
-     <p><mat-icon>payment</mat-icon>Costo : S/. 89</p>
-    <button mat-button color="white"><mat-icon>share</mat-icon>Compartir</button>
+    <h1>Datos: </h1>
+    <p>
+      <mat-icon class="dollar-icon"><i class="fas fa-dollar-sign"></i></mat-icon>
+      {{artwork.cost}}</p>
+    <div class="artwork-actions">
+      <button mat-button color="white">
+        <mat-icon>share</mat-icon>
+        Compartir
+      </button>
+      <button mat-icon-button [color]="color" [class.mat-elevation-z8]="true" (click)="favoriteInteraction()">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
   </div>
 
 </div>
@@ -26,7 +33,7 @@
 <br>
 
 <div class="goBack">
-<button mat-raised-button class="btn-color" routerLink="/home">Volver</button>
+  <button mat-raised-button class="btn-color" (click)="back()">Volver</button>
 </div>
 
 <br>

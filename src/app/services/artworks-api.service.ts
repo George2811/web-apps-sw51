@@ -12,7 +12,7 @@ import {catchError, retry} from "rxjs/operators";
 export class ArtworksApiService {
 
   basePath = 'https://perustars-api.herokuapp.com/api/artworks';
-  ArtistArtworkPath = `https://perustars-api.herokuapp.com/api/artist/`;
+  ArtistArtworkPath = `https://perustars-api.herokuapp.com/api/artists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
@@ -43,7 +43,8 @@ export class ArtworksApiService {
 
   getAllArtwork():Observable<Artwork>{
     return  this.http.get<Artwork>(this.basePath)
-      .pipe(retry(2), catchError(this.handleError));
+      //.pipe(retry(2), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   getAllArtworkByArtistId(artistid:number):Observable<Artwork>{
@@ -60,7 +61,4 @@ export class ArtworksApiService {
     return this.http.get<Artwork>(`${this.basePath}/cost/${cost}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-
-
-
 }

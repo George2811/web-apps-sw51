@@ -5,5 +5,6 @@ export interface Event {
   dateStart: string; //DatePipe
   dateEnd: string; //DatePipe
   cost: number;
+  artistId: number;
   //type is enum
 }

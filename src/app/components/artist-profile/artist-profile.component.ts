@@ -1,6 +1,14 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {max} from "rxjs/operators";
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ArtistProfileService} from "../../services/artist-profile.service";
+import {ArtworksApiService} from "../../services/artworks-api.service";
+import {EventsApiService} from "../../services/events-api.service";
+import {ArtistsApiService} from "../../services/artists-api.service";
+import { Router, ActivatedRoute } from '@angular/router';
+import {Artist} from "../../models/artist";
+import {FollowersApiService} from "../../services/followers-api.service.service";
+import {Hobbyist} from "../../models/hobbyist";
+import {HobbyistsApiService} from "../../services/hobbyists-api.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-artist-profile',
@@ -8,127 +16,140 @@ import {ArtistProfileService} from "../../services/artist-profile.service";
   styleUrls: ['./artist-profile.component.css']
 })
 export class ArtistProfileComponent implements OnInit {
+  artist: Artist = {} as Artist;
+  hobbyist: Hobbyist = {} as Hobbyist;
+  //artistId!: number;
   isArtist: boolean = true;
   followAction: string = 'Seguir';
   followBtn: HTMLElement | null = null;
   imageUrl = "https://picsum.photos/id/1011/300";
-  showContactEdit: boolean = false;
-  showPhraseEdit: boolean = false;
+  //showContactEdit: boolean = false;
+  //showPhraseEdit: boolean = false;
+
   ArtworksCarousel = {
     Name: 'artworks',
     Showing: <any>[],
-    All: [
-      {
-        name: 'Vacation Itinerary',
-        cost: 801,
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 261.6
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 494
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 0.00,
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 50.5
-      },
-      {
-        name: 'Kitchen Remodel',
-        cost: 70.5
-      },
-      {
-        name: 'Kitchen Example',
-        cost: 40.5
-      },
-      {
-        name: 'Last Example',
-        cost: 40.5
-      }
-    ],
+    All: <any>[],
     cardsShowing: 3,
     Index: 1
   };
+
   EventsCarousel = {
     Name: 'events',
     Showing: <any>[],
-    All: [
-      {
-        title: 'Event1 Example',
-        dateStart: new Date('06/10/21'),
-        dateEnd: new Date('06/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event2 Example',
-        dateStart: new Date('07/10/21'),
-        dateEnd: new Date('07/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event3 Example',
-        dateStart: new Date('08/10/21'),
-        dateEnd: new Date('08/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event4 Example',
-        dateStart: new Date('09/10/21'),
-        dateEnd: new Date('09/15/21'),
-        cost: 0
-      },
-      {
-        title: 'Event5 Example',
-        dateStart: new Date('10/10/21'),
-        dateEnd: new Date('10/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event6 Example',
-        dateStart: new Date('11/10/21'),
-        dateEnd: new Date('11/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event7 Example',
-        dateStart: new Date('12/10/21'),
-        dateEnd: new Date('12/15/21'),
-        cost: 50.6
-      },
-      {
-        title: 'Event8 Example',
-        dateStart: new Date('13/10/21'),
-        dateEnd: new Date('13/15/21'),
-        cost: 50.6
-      }
-    ],
+    All: <any>[],
     cardsShowing: 1,
     Index: 1
   }
 
-  constructor(private artistProfileService: ArtistProfileService) {
-  }
+  constructor(private artistProfileService: ArtistProfileService, private hobbyistApiService: HobbyistsApiService,
+              private route: ActivatedRoute, private router: Router,
+              private artworksApiService: ArtworksApiService, private eventsApiService: EventsApiService,
+              private artistsApiService: ArtistsApiService, private followerApiService: FollowersApiService,
+              private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
     this.followBtn = document.getElementById('followBtn');
-    this.updateCarousel(this.EventsCarousel, 'eve', 'right');
-    this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
     this.isArtist = this.artistProfileService.getArtist();
+    //this.artistId = Number(this.route.params.subscribe( (params: any) => {
+      //if (params.id) {
+        //const id = params.id;
+        //console.log(id);
+        //return id;
+      //}
+    //}));
+    this.route.params.subscribe((params:any) => { this.getAllArtworksByArtistId(params.id); });
+    this.route.params.subscribe((params:any) => { this.getAllEventsByArtistId(params.id); });
+    this.route.params.subscribe((params:any) => { this.retrieveArtist(params.id); })
+    this.getHobbyistByUserId(this.tokenStorageService.getUser().userId);
+  }
+
+  getAllArtworksByArtistId(id: number): void{
+    this.artworksApiService.getAllArtworkByArtistId(id).subscribe((response:any) => {
+      for(let i=0; i<response.content.length; i++){
+        this.ArtworksCarousel.All.push({
+          name: response.content[i].title,
+          description: response.content[i].description,
+          cost: response.content[i].cost,
+          artistId: response.content[i].artistId,
+          id: response.content[i].id
+        })
+      }
+      console.log(response.content.length);
+      this.updateCarousel(this.ArtworksCarousel, 'art', 'right');
+    })
+    console.log(this.ArtworksCarousel);
+    console.log("CONSUMIDO");
+  }
+
+  getAllEventsByArtistId(id: number): void{
+    this.eventsApiService.getAllEventsByArtistId(id).subscribe((response:any) => {
+      for(let i=0; i<response.content.length; i++){
+        this.EventsCarousel.All.push({
+          title: response.content[i].title,
+          dateStart: response.content[i].dateStart,
+          dateEnd: response.content[i].dateEnd,
+          cost: response.content[i].cost,
+          id: response.content[i].id,
+          artistId: response.content[i].artistId
+        })
+      }
+      console.log(this.EventsCarousel.All);
+      this.updateCarousel(this.EventsCarousel, 'eve', 'right');
+    })
+    console.log("CONSUMIDO");
+  }
+
+  getAllFollwedArtistByHobbyistId(hobbyistId: number) {
+    this.followerApiService.getAllFollwedArtistByHobbyistId(hobbyistId).subscribe((response:any) => {
+      console.log(response);
+      this.followAction="Seguir";
+      for(let i = 0; i < response.content.length; i++){
+        if (this.artist.id === response.content[i].id) {
+          this.followAction="Dejar de Seguir";
+          break;
+        }
+      }
+    });
+  }
+
+  retrieveArtist(id: number): void {
+    this.artistsApiService.getArtistById(id).subscribe((response:any) => {
+        this.artist = response;
+        console.log(this.artist);
+      })
+  }
+
+  getHobbyistByUserId(userId: number) {
+    this.hobbyistApiService.getByUserId(userId).subscribe((response: any) => {
+      this.hobbyist = response;
+      this.getAllFollwedArtistByHobbyistId(this.hobbyist.id);
+    });
+  }
+
+  postFollower(hobbyistId: number, artistId: number) {
+    this.followerApiService.addFollower(hobbyistId, artistId).subscribe((response:any) => {
+      console.log(response);
+      this.followAction = 'Dejar de Seguir';
+    });
+  }
+
+  deleteFollower(hobbyistId: number, artistId: number) {
+    this.followerApiService.deleteFollower(hobbyistId, artistId).subscribe((response:any) => {
+      console.log(response);
+      this.followAction = 'Seguir';
+    });
   }
 
   updateFollowState() {
-    if (this.followAction === 'Seguir') {
-      this.followAction = 'Dejar de Seguir';
-      this.followBtn?.classList.add('resizeBtn');
-    } else {
-      this.followAction = 'Seguir';
-      this.followBtn?.classList.remove('resizeBtn');
-    }
+    if (this.followAction === 'Seguir')
+      //this.followAction = 'Dejar de Seguir';
+      this.postFollower(this.hobbyist.id, this.artist.id);
+      //this.followBtn?.classList.add('resizeBtn');
+     else
+      //this.followAction = 'Seguir';
+      //this.followBtn?.classList.remove('resizeBtn');
+      this.deleteFollower(this.hobbyist.id, this.artist.id);
   }
 
   updateCarousel(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string, direction: string) {
@@ -163,6 +184,8 @@ export class ArtistProfileComponent implements OnInit {
   }
 
   nextShowingElement(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
+    if (carousel.All.length === carousel.cardsShowing)
+      return;
     let maxIndex = carousel.All.length / carousel.cardsShowing;
     if (maxIndex > Math.trunc(maxIndex)) {
       maxIndex = Math.trunc(maxIndex);
@@ -180,6 +203,8 @@ export class ArtistProfileComponent implements OnInit {
   }
 
   backShowingElement(carousel: { Name: string, Showing: any[]; All: any[]; cardsShowing: number; Index: number }, _class: string) {
+    if (carousel.All.length === carousel.cardsShowing)
+      return;
     if (carousel.Index > 1) {
       carousel.Index--;
       if (carousel.Index <= 0)
@@ -229,5 +254,9 @@ export class ArtistProfileComponent implements OnInit {
 
   FormClick(event: any){
     event.stopPropagation();
+  }
+
+  getRandomNumber(num:number){
+    return Math.floor(Math.random() * num);
   }
 }

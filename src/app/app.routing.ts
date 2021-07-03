@@ -17,6 +17,7 @@ import {ArtistProfileComponent} from "./components/artist-profile/artist-profile
 import {AssistanceFormComponent} from "./components/assistance-form/assistance-form.component";
 import {RecoverPasswordFormComponent} from "./components/recover-password-form/recover-password-form.component";
 import {FavoriteArtworksComponent} from "./components/favorite-artworks/favorite-artworks.component";
+import {FavoriteViewComponent} from "./components/favorite-view/favorite-view.component";
 
 //Aqui se agregan las rutas con su respectivo componente
 // Sintaxis = {path: '', component: , pathMatch: 'full'}
@@ -28,16 +29,20 @@ const appRoutes:Routes = [
   {path: 'register', component: RegisterFormComponent, pathMatch: 'full'},
   {path: 'login', component: LoginFormComponent, pathMatch: 'full'},
   // {path: 'menu', component: InterfaceGroupComponent, pathMatch: 'full'},
-  {path: 'artwork', component: ArtworkIdComponent, pathMatch: 'full'},
-  {path: 'event', component: EventsIdComponent, pathMatch: 'full'},
+  {path: 'artist/:artistId/artwork/:id', component: ArtworkIdComponent, pathMatch: 'full'},
+  {path: 'artist/:artistId/event/:id', component: EventsIdComponent, pathMatch: 'full'},
   {path: 'terms&conditions', component: TermsAndConditionsComponent, pathMatch: 'full'},
   {path: 'favorites', component: FavoriteArtworksComponent, pathMatch: 'full'},
   {path: 'artwork/new', component: NewArtworkFormComponent, pathMatch: 'full'},
   {path: 'hobbyist-profile', component: HobbyistProfileComponent, pathMatch: 'full'},
   {path: 'event/new', component: NewEventFormComponent, pathMatch: 'full'},
-  {path: 'artist-profile', component: ArtistProfileComponent, pathMatch: 'full'},
-  {path: 'assistance', component:AssistanceFormComponent, pathMatch:'full'},
-  {path: 'recover', component: RecoverPasswordFormComponent, pathMatch: 'full'}
+  {path: 'artist/:id', component: ArtistProfileComponent, pathMatch: 'full'},
+  {path: 'artist/:artistId/event/:id/assistance', component:AssistanceFormComponent, pathMatch:'full'},
+  {path: 'recover', component: RecoverPasswordFormComponent, pathMatch: 'full'},
+  {path: 'artist-profile/:id', component: ArtistProfileComponent, pathMatch: 'full'},
+  {path: 'recover', component: RecoverPasswordFormComponent, pathMatch: 'full'},
+  {path: 'favorites', component: FavoriteViewComponent, pathMatch: 'full'}
+
 ];
 
 @NgModule({

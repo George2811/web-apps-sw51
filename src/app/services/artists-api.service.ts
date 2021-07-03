@@ -6,6 +6,7 @@ import {catchError, retry} from "rxjs/operators";
 import {Pageable} from "../models/pageable";
 import {J} from "@angular/cdk/keycodes";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,24 +30,25 @@ export class ArtistsApiService {
       .pipe(retry(2), catchError(this.handleError));
   }
   getArtistById(id: number): Observable<Artist> {
-    return this.http.get<Artist>(`${this.basePath}/${id}`, this.httpOptions)
+    return this.http.get<Artist>(`${this.basePath}/id/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   getAllArtist(): Observable<Artist>{
-    //this.http.request("GET", this.basePath, {body: this.pageable});
-    return  this.http.get<Artist>(this.basePath)
-      .pipe(retry(2), catchError(this.handleError));
+    return this.http.get<Artist>(this.basePath)
+      .pipe(catchError(this.handleError));
+
   }
 
   updateArtist(id:number, item:Artist): Observable<Artist>{
-    return this.http.put<Artist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
+    return this.http.put<Artist>(`${this.basePath}/id/${id}`,JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
   deleteArtist(id: number):Observable<any>{
-    return  this.http.delete<Artist>(`${this.basePath}/${id}`, this.httpOptions)
+    return  this.http.delete<Artist>(`${this.basePath}/id/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
 
 }

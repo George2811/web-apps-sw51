@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -8,16 +9,24 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class ToolbarComponent implements OnInit {
   viewsNotAllowed : string[] = ['/','/about','/login', '/register', '/recover'];
-  constructor(private router: Router) { }
+  private roles: string[] | undefined;
+  isLoggedIn = false;
+  username: string | undefined;
+
+  constructor(private tokenStorageService:TokenStorageService,private router: Router) { }
 
   ngOnInit(): void {
-  }
-  inSession(): boolean{
-    for(const view of this.viewsNotAllowed){
-      if(this.router.url === view)
-        return false;
+    this.isLoggedIn = !!this.tokenStorageService.getUser();
+    if(this.isLoggedIn) {
+      const  user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      this.username = user.username;
     }
-    return true;
   }
+  logout(): void{
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
+
 
 }

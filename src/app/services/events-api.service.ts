@@ -11,7 +11,7 @@ import {Event} from "../models/event";
 export class EventsApiService {
 
   basePath = 'https://perustars-api.herokuapp.com/api/events';
-  ArtistEventPath = `https://perustars-api.herokuapp.com/api/artist/`;
+  ArtistEventPath = `https://perustars-api.herokuapp.com/api/artists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
@@ -42,7 +42,7 @@ export class EventsApiService {
   }
 
   getAllEvent():Observable<Event>{
-    return  this.http.get<Event>(this.basePath)
+    return this.http.get<Event>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -55,8 +55,4 @@ export class EventsApiService {
     return this.http.get<Event>(`${this.ArtistEventPath}/${artistid}/events/${id}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-
-
-
-
 }

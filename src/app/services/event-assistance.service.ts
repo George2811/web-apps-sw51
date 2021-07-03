@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Hobbyist} from "../models/hobbyist";
 import {Observable, throwError} from "rxjs";
+import {EventAssistance} from "../models/EventAssistance";
 import {catchError, retry} from "rxjs/operators";
+import {Artwork} from "../models/artwork";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HobbyistsApiService {
+export class EventAssistanceService {
 
-  basePath = 'https://perustars-api.herokuapp.com/api/hobbyists';
+  basepath =`https://perustars-api.herokuapp.com/api/hobbyists`;
+
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
@@ -23,18 +25,20 @@ export class HobbyistsApiService {
     return throwError('Something happened with request, please try again later.');
   }
 
-  addHobbyist(item:any):Observable<Hobbyist>{
-    return this.http.post<Hobbyist>(this.basePath, JSON.stringify(item), this.httpOptions)
+  addEventAssistance(hobbyistId: number, eventId: number):Observable<EventAssistance>{
+    return this.http.post<EventAssistance>(`${this.basepath}/${hobbyistId}/events/${eventId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  updateHobbyist(id:number, item:Hobbyist):Observable<any>{
-    return this.http.put<Hobbyist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
+  deleteEventAssistance(hobbyistId: number, eventId: number):Observable<EventAssistance>{
+    return this.http.delete<EventAssistance>(`${this.basepath}/${hobbyistId}/events/${eventId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getByUserId(userId: number):Observable<Hobbyist>{
-    return this.http.get<Hobbyist>(`${this.basePath}/userid/${userId}`, this.httpOptions)
+  getEventAssistance(hobbyistId:number):Observable<Event>{
+    return this.http.get<Event>(`${this.basepath}/${hobbyistId}/events`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+
 }

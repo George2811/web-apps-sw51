@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Hobbyist} from "../models/hobbyist";
 import {Observable, throwError} from "rxjs";
+import {FavoriteArtwork} from "../models/favoriteArtwork";
 import {catchError, retry} from "rxjs/operators";
+import {Artwork} from "../models/artwork";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HobbyistsApiService {
+export class FavoriteArtworkApiService {
 
-  basePath = 'https://perustars-api.herokuapp.com/api/hobbyists';
+  basepath =`https://perustars-api.herokuapp.com/api/hobbyists`;
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})};
 
   constructor(private http: HttpClient) { }
@@ -23,18 +24,19 @@ export class HobbyistsApiService {
     return throwError('Something happened with request, please try again later.');
   }
 
-  addHobbyist(item:any):Observable<Hobbyist>{
-    return this.http.post<Hobbyist>(this.basePath, JSON.stringify(item), this.httpOptions)
+  addFavoriteArtwork(hobbyistId:number, artworkId:number ):Observable<FavoriteArtwork>{
+    return this.http.post<FavoriteArtwork>(`${this.basepath}/${hobbyistId}/artworks/${artworkId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  updateHobbyist(id:number, item:Hobbyist):Observable<any>{
-    return this.http.put<Hobbyist>(`${this.basePath}/${id}`,JSON.stringify(item), this.httpOptions)
+  deleteFavoriteArtwork(hobbyistId:number, artworkId:number):Observable<FavoriteArtwork>{
+    return this.http.delete<FavoriteArtwork>(`${this.basepath}/${hobbyistId}/artworks/${artworkId}`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getByUserId(userId: number):Observable<Hobbyist>{
-    return this.http.get<Hobbyist>(`${this.basePath}/userid/${userId}`, this.httpOptions)
+  getFavoriteArtwork(hobbyistId:number):Observable<Artwork>{
+    return this.http.get<Artwork>(`${this.basepath}/${hobbyistId}/artworks`, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
+
 }

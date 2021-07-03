@@ -1,32 +1,31 @@
 <mat-card class="artwork-card" *ngIf="typeOfCard()=='artwork'">
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image [src]="getImage()">
   <mat-card-content>
     <mat-card-title style="font-size: medium">{{artwork.name}}</mat-card-title>
-    <p style="font-size: small">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit elit.
-      Dignissimos dolorem minima minus siu.
+    <p style="font-size: small; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
+      {{artwork.description}}
     </p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(artwork.cost)}}</button>
-    <button *ngIf="isLogged()" mat-raised-button color="warn" routerLink="/artwork">Ver más</button>
+    <button *ngIf="isLogged()" mat-raised-button color="warn" (click)="goToArtwork(artwork.artistId, artwork.id)">Ver más</button>
     <button *ngIf="!isLogged()" mat-raised-button color="warn" (click)="openDialog()">Ver más</button>
   </mat-card-actions>
 </mat-card>
 
 <mat-card class="event-card" *ngIf="typeOfCard()=='event'">
-  <img mat-card-image src="https://picsum.photos/id/184/800" alt="Photo of a Shiba Inu">
+  <img mat-card-image [src]="getImage()" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <mat-card-title style="font-size: medium">{{event.title}}</mat-card-title>
     <button mat-button color="white" class="date-event">
       <mat-icon>insert_invitation</mat-icon>
-      {{dateToString(event.dateStart)}}  -
-      {{dateToString(event.dateEnd)}}
+      {{event.dateStart.slice(0,10)}}   /
+        {{event.dateEnd.slice(0,10)}}
     </button>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button color="white"><mat-icon>attach_money</mat-icon>{{priceArtwork(event.cost)}}</button>
-    <button *ngIf="isLogged()" mat-raised-button color="warn" routerLink="/event">Ver más</button>
+    <button *ngIf="isLogged()" mat-raised-button color="warn" (click)="goToEvent(event.artistId,event.id)">Ver más</button>
     <button *ngIf="!isLogged()" mat-raised-button color="warn" (click)="openDialog()">Ver más</button>
   </mat-card-actions>
 </mat-card>
@@ -35,7 +34,7 @@
   <mat-card-header>
     <div mat-card-avatar class="artist-header-image"></div>
     <mat-card-title>{{artist.brandName}}</mat-card-title>
-    <mat-card-subtitle>Brand Name</mat-card-subtitle>
+    <mat-card-subtitle>{{artist.firstName}} {{artist.lastName}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <button mat-button color="white" class="date-event">
@@ -43,18 +42,19 @@
     </button>
     <button mat-button color="white" class="date-event">
       <mat-icon>insert_photo</mat-icon>
-      {{artist.numArtworks}}
+      {{getRandomNumber(50)}}
     </button>
     <p style="font-size: small">
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit adipisicing elit elitu adipisicing."
+      {{artist.phrase}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="white"><mat-icon>groups</mat-icon>{{artist.followers}}</button>
-    <button *ngIf="isLogged()" mat-raised-button color="warn" routerLink="/artist-profile">Conocer</button>
+    <button mat-button color="white"><mat-icon>groups</mat-icon>{{getRandomNumber(500)}}</button>
+    <button *ngIf="isLogged()" mat-raised-button color="warn" (click)="goToArtist(artist.id)">Conocer</button>
     <button *ngIf="!isLogged()" mat-raised-button color="warn" (click)="openDialog()">Conocer</button>
   </mat-card-actions>
 </mat-card>
+<!--
 <div class="artwork-container" *ngIf="false">
 
   <mat-card class="artworks-card" *ngFor="let artwork of artworks">
@@ -62,16 +62,15 @@
     <mat-card-header class="artwork-header">
       <div mat-card-avatar class="card-avatar"></div>
       <mat-card-title style="font-size: medium">{{artwork}}</mat-card-title>
-      <!-- AQUI IRIA EL NOMBRE DEL ARTISTA COMO SUBTITULO<mat-card-subtitle>{{artwork.artist.brandName}}</mat-card-subtitle>-->
+       AQUI IRIA EL NOMBRE DEL ARTISTA COMO SUBTITULO<mat-card-subtitle>{{artwork.artist.brandName}}</mat-card-subtitle>
     </mat-card-header>
     <br>
 
     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
 
-
     <mat-card-content>
       <mat-card-title style="font-size: medium">{{artwork}}</mat-card-title>
-      <!-- AQUI NO SE MOSTRARIA EL LOREM, SINO, LA DESCRIPCION <p style="font-size: small">{{artwork.description}}</p>-->
+       AQUI NO SE MOSTRARIA EL LOREM, SINO, LA DESCRIPCION <p style="font-size: small">{{artwork.description}}</p>
       <p style="font-size: small">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos dolorem minima minus.
@@ -88,4 +87,4 @@
   </mat-card>
   <br>
   <br>
-</div>
+</div>-->

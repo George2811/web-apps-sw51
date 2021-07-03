@@ -6,6 +6,7 @@ import{Router,ActivatedRoute} from "@angular/router";
 import {EventsApiService} from "../../services/events-api.service";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-new-event-form',
@@ -24,7 +25,7 @@ export class NewEventFormComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   links: string[] = [];
-  constructor(private eventsApi:EventsApiService,private formBuilder: FormBuilder) {
+  constructor(private location: Location, private eventsApi:EventsApiService,private formBuilder: FormBuilder) {
     this.eventForm = this.formBuilder.group({
       title: [null, [Validators.required, Validators.maxLength(50)]],
       description: [null, [Validators.required, Validators.maxLength(300) ]],
@@ -44,6 +45,11 @@ export class NewEventFormComponent implements OnInit {
     }
     console.log(this.eventForm.value);
   }
+
+  back(): void{
+    this.location.back();
+  }
+
 
   addEvent(): void{
     const newEvent = { title: this.eventData.title,

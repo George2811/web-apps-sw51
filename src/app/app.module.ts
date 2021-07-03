@@ -43,6 +43,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HobbyistProfileComponent } from './components/hobbyist-profile/hobbyist-profile.component';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
 import { ArtistEventCardComponent } from './components/artist-event-card/artist-event-card.component';
@@ -50,7 +51,14 @@ import { OpenFileDialogComponent } from './components/open-file-dialog/open-file
 import { AssistanceFormComponent } from './components/assistance-form/assistance-form.component';
 import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
 import { RecoverPasswordDialogComponent } from './components/recover-password-dialog/recover-password-dialog.component';
+
 import { FavoriteArtworksComponent } from './components/favorite-artworks/favorite-artworks.component';
+
+import {authInterceptorProviders} from "./helpers/auth.interceptor";
+import {MatNativeDateModule} from "@angular/material/core";
+import { FavoriteViewComponent } from './components/favorite-view/favorite-view.component';
+
+
 
 @NgModule({
   declarations: [
@@ -78,6 +86,8 @@ import { FavoriteArtworksComponent } from './components/favorite-artworks/favori
     RecoverPasswordFormComponent,
     RecoverPasswordDialogComponent,
     FavoriteArtworksComponent,
+    FavoriteViewComponent
+
   ],
   imports: [
     BrowserModule,
@@ -103,9 +113,12 @@ import { FavoriteArtworksComponent } from './components/favorite-artworks/favori
     MatDialogModule,
     MatChipsModule,
     LayoutModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

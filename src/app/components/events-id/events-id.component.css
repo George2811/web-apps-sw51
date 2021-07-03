@@ -15,27 +15,29 @@
 }
 
 .banner-tittle{
-
   font-size: 35px;
   font-weight: 800;
   color: white;
   line-height: 280px;
-
 }
 
 .info-container{
   display: flex;
-
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 35px auto;
 }
 .left-content{
-  padding-left: 5%;
-  padding-right: 30%;
+  max-width: 50%;
 }
-
-.right-content{
-  padding-right: 15%;
+.right-content p{
+  width: 105%;
+  display: flex;
+  align-items: center;
 }
-
+.right-content p .mat-icon{
+  margin-right: 10px;
+}
 .btn-color{
   color: white;
   background: linear-gradient(175deg, #ff9143 0, #ff824a 12.5%, #ff734e 25%, #ff6352 37.5%, #f25353 50%, #df4453 62.5%, #cd3753 75%, #bd2c54 87.5%, #ae2455 100%);
